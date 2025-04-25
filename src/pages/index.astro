@@ -8,8 +8,53 @@
     <title>Willkommen bei Petrievents</title>
     <!-- Favicon einfügen -->
     <link rel="icon" href="/favicon.svg" />
-    <!-- Stylesheet einbinden -->
-    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Elemente oben ausrichten */
+        align-items: center;
+        min-height: 100vh; /* Mindestens die Höhe des Viewports */
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 20px;
+      }
+      .image-container {
+        margin-top: 50px; /* Abstand vor dem Bild */
+      }
+      img {
+        width: 100%;
+        max-width: 800px; /* Begrenzung der Bildgröße */
+        height: auto;
+        margin-bottom: 30px; /* Abstand unter dem Bild */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .content {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 800px;
+      }
+      h1 {
+        font-size: 2.5rem;
+        color: #0056b3;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+    </style>
   </head>
   <body>
     <!-- Bild in ein Container-Div einfügen -->
@@ -57,11 +102,7 @@
       </p>
 
       <p>
-        <strong>Kontaktieren Sie uns noch heute unter 
-          <p>
-            0173 / 993 6282
-          </p>
-          </strong> – wir freuen uns darauf, Ihre Veranstaltung mit unserer Technik und Musik zu einem echten Highlight zu machen. Bei Petrievents ist jedes Event ein Meisterwerk! 🎧✨
+        <strong>Kontaktieren Sie uns noch heute</strong> – wir freuen uns darauf, Ihre Veranstaltung mit unserer Technik und Musik zu einem echten Highlight zu machen. Bei Petrievents ist jedes Event ein Meisterwerk! 🎧✨
       </p>
     </div>
   </body>
