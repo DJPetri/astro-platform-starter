@@ -1,0 +1,34 @@
+---
+// src/pages/index.astro
+---
+
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nur ein Bild</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <img src="/mein-bild.jpg" alt="Zentriertes Bild" />
+  </body>
+</html>
