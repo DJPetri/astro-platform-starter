@@ -34,7 +34,7 @@ body {
   justify-content: space-between;
   transition: transform 0.3s ease;
   /*position: sticky;*/
-  margin-top: 50px;
+  margin-top: 5.152rem;
   z-index: 1000;
 }
 
@@ -95,10 +95,12 @@ body {
   position: fixed;
   top: 1rem;
   left: 1rem;
-  background: none;
+  background: #66ccff;
   border: none;
   z-index: 1000;
   cursor: pointer;
+  padding: 0,25rm;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .sidebar-toggle img {
