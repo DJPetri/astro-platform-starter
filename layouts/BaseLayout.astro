@@ -10,16 +10,16 @@ const { title = "Petrievents" } = Astro.props;
     <link rel="stylesheet" href="/styles.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
+  
   <body>
-    <button class="sidebar-toggle" aria-label="Menü ein-/ausblenden">
-      <img src="/favicon.svg" alt="Menü" />
-    </button>
-
-    <div class="layout">
-      <aside class="sidebar">
-        <div class="sidebar-top">
-          <input type="text" placeholder="Suche..." class="sidebar-search" />
-        </div>
+   <div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <input type="text" placeholder="Suche..." class="sidebar-search" />
+      <button class="sidebar-toggle" aria-label="Menü ein-/ausblenden">
+        <img src="/favicon.svg" alt="Menü" />
+      </button>
+    </div>
 
         <nav class="sidebar-nav">
           <a href="/">Startseite</a>
