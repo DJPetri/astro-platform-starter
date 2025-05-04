@@ -34,7 +34,7 @@ body {
   justify-content: space-between;
   transition: transform 0.3s ease;
   position: sticky;
-  top: 1rem;
+  top: 50px;
   z-index: 1000;
 }
 
