@@ -1,24 +1,12 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Galerie | Petrievents</title>
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
-    <main>
-      <h1>Galerie</h1>
-      <div class="grid">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <img src={`/Bilder/bild${i + 1}.jpg`} alt={`Eventbild ${i + 1}`} loading="lazy" />
-        ))}
-      </div>
-
-      <footer>
-        <p><a href="/">Zurück zur Startseite</a></p>
-      </footer>
-    </main>
-  </body>
-</html>
+<BaseLayout title="Galerie | Petrievents">
+  <h2>Galerie</h2>
+  <div class="grid">
+    {Array.from({ length: 6 }).map((_, i) => (
+      <img src={`/Bilder/bild${i + 1}.jpg`} alt={`Eventbild ${i + 1}`} loading="lazy" />
+    ))}
+  </div>
+</BaseLayout>

@@ -1,82 +1,27 @@
 ---
-import { Fragment } from "astro/jsx-runtime";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Petrievents – Eventtechnik & DJ-Service</title>
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Willkommen bei Petrievents</h1>
-      <p>Ihre Eventtechnik und DJ-Experten für unvergessliche Momente!</p>
-    </header>
+<BaseLayout title="Startseite | Petrievents">
+  <section id="intro">
+    <p>Sie sind genau am richtigen Ort ... 🎉</p>
+    <p>Unsere Mission ist es ... 🎶✨</p>
+  </section>
 
-    <main>
-      <section id="intro">
-        <p>
-          Sie sind genau am richtigen Ort, wenn Sie auf der Suche nach erstklassiger Eventtechnik und einem DJ-Service sind, der Ihre Veranstaltung unvergesslich macht! Egal, ob Hochzeiten, Geburtstagsfeiern, Firmenfeiern oder jede andere Art von Event – bei uns bekommen Sie alles, was Sie für ein perfektes Event brauchen. 🎉
-        </p>
-        <p>
-          Unsere Mission ist es, jedes Event mit der richtigen Technik und der perfekten Musik zu bereichern, damit Sie sich zurücklehnen können und sich um nichts mehr sorgen müssen. Von der Hochzeitsfeier über die große Firmenfeier bis hin zu privaten Geburtstagsfeiern – wir sorgen dafür, dass Ihre Gäste von der ersten bis zur letzten Minute begeistert sind. 🎶✨
-        </p>
-      </section>
+  <section id="warum">
+    <h2>Warum Petrievents?</h2>
+    <ul>
+      <li><strong>Professionelle Technik:</strong> Modernste Technik für jeden Eventtyp</li>
+      <li><strong>DJ-Service der Extraklasse:</strong> Begeisterung garantiert</li>
+      <li><strong>Flexibilität:</strong> Individuelle Umsetzung</li>
+      <li><strong>Erfahrung:</strong> Leidenschaft & Know-how</li>
+    </ul>
+  </section>
 
-      <section id="warum">
-        <h2>Warum Petrievents?</h2>
-        <ul>
-          <li><strong>Professionelle Technik:</strong> Modernste Technik für jeden Eventtyp – klarer Sound, starke Wirkung.</li>
-          <li><strong>DJ-Service der Extraklasse:</strong> Begeisterung garantiert – mitreißende Musik für jede Stimmung.</li>
-          <li><strong>Flexibilität & Individualität:</strong> Wir passen alles individuell an Ihre Wünsche an – von Anfang bis Ende.</li>
-          <li><strong>Erfahrung & Leidenschaft:</strong> Jahrelange Erfahrung & echte Begeisterung – Ihr Erfolg ist unser Ziel.</li>
-        </ul>
-      </section>
-
-      <section id="leidenschaft">
-        <h2>Ihr Event. Unsere Leidenschaft.</h2>
-        <p>
-          Ob Sie eine elegante Hochzeit planen, eine ausgelassene Geburtstagsfeier oder ein großartiges Firmenevent – wir helfen Ihnen, das perfekte Erlebnis zu schaffen. Verlassen Sie sich auf uns, um die richtige Atmosphäre zu schaffen, damit sich Ihre Gäste rundum wohlfühlen und noch lange nach der Veranstaltung davon sprechen werden.
-        </p>
-        <p>
-          Kontaktieren Sie uns noch heute – wir freuen uns darauf, Ihre Veranstaltung mit unserer Technik und Musik zu einem echten Highlight zu machen. Bei Petrievents ist jedes Event ein Meisterwerk! 🎧✨
-        </p>
-        <p><strong>Telefon:</strong> 0173 / 993 6282</p>
-        <a href="/Preisliste.pdf" class="button" download>📄 Preisliste herunterladen</a>
-      </section>
-
-      <section id="galerie">
-        <h2>Galerie</h2>
-        <div class="grid">
-          {/* Du kannst deine Bilder einfach im /public/Bilder/ Ordner speichern */}
-          {Array.from({ length: 6 }).map((_, i) => (
-            <img src={`/Bilder/bild${i + 1}.jpg`} alt={`Eventbild ${i + 1}`} loading="lazy" />
-          ))}
-        </div>
-      </section>
-
-      <section id="kontakt">
-        <h2>Kontaktformular</h2>
-        <form action="mailto:info@petrievents.de" method="POST" enctype="text/plain">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="Name" required />
-
-          <label for="email">E-Mail:</label>
-          <input type="email" id="email" name="Email" required />
-
-          <label for="nachricht">Nachricht:</label>
-          <textarea id="nachricht" name="Nachricht" rows="5" required></textarea>
-
-          <button type="submit">Absenden</button>
-        </form>
-      </section>
-
-      <footer>
-        <p>&copy; 2025 Petrievents</p>
-        <a href="/impressum">Impressum</a>
-      </footer>
-    </main>
-  </body>
-</html>
+  <section id="leidenschaft">
+    <h2>Ihr Event. Unsere Leidenschaft.</h2>
+    <p>Ob Hochzeit, Geburtstag oder Firmenevent – wir sorgen für das perfekte Erlebnis.</p>
+    <p><strong>Telefon:</strong> 0173 / 993 6282</p>
+    <a href="/Preisliste.pdf" class="button" download>📄 Preisliste herunterladen</a>
+  </section>
+</BaseLayout>

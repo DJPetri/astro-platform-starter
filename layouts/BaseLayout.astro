@@ -1,0 +1,31 @@
+---
+const { title = "Petrievents" } = Astro.props;
+---
+
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Petrievents</h1>
+      <nav>
+        <a href="/">Startseite</a> |
+        <a href="/galerie">Galerie</a> |
+        <a href="/kontakt">Kontakt</a> |
+        <a href="/impressum">Impressum</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Petrievents – Ihre Eventtechnik & DJ-Experten</p>
+    </footer>
+  </body>
+</html>

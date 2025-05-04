@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Kontakt | Petrievents">
+  <h2>Kontakt</h2>
+
+  <form action="mailto:info@petrievents.de" method="POST" enctype="text/plain">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="Name" required />
+
+    <label for="email">E-Mail:</label>
+    <input type="email" id="email" name="Email" required />
+
+    <label for="nachricht">Nachricht:</label>
+    <textarea id="nachricht" name="Nachricht" rows="5" required></textarea>
+
+    <button type="submit">Absenden</button>
+  </form>
+</BaseLayout>
