@@ -84,32 +84,21 @@ body {
   border-radius: 1rem;
 }
 
-/* === Toggle Buttons === */
-.sidebar-toggle-outside {
+/* Toggle Button */
+.sidebar-toggle {
   position: fixed;
   top: 1rem;
   left: 1rem;
   background: none;
   border: none;
-  z-index: 2000;
+  z-index: 1000;
   cursor: pointer;
-  display: none;
 }
 
-.sidebar-toggle-outside img,
-.sidebar-toggle-inside img {
-  width: 32px;
-  height: 32px;
+.sidebar-toggle img {
+  width: 40px;
+  height: 40px;
 }
-
-.sidebar-toggle-inside {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
 /* === Hauptinhalt === */
 .main-content {
   flex: 1;
@@ -189,42 +178,4 @@ footer {
   margin-top: 4rem;
   color: #777;
   font-size: 0.9rem;
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .layout {
-    flex-direction: column;
-    padding-left: 0;
-  }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    transform: translateX(-280px);
-    border-radius: 0 2rem 2rem 0;
-  }
-
-  .sidebar.collapsed {
-    transform: translateX(0);
-  }
-
-  .main-content {
-    padding: 1rem;
-  }
-
-  .sidebar.collapsed + .main-content {
-    margin-left: 0;
-  }
-
-  .sidebar-toggle-outside {
-    display: block;
-  }
-
-  .sidebar:not(.collapsed) ~ .sidebar-toggle-outside {
-    display: none;
-  }
 }
