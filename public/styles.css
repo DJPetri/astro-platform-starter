@@ -7,10 +7,7 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('/hintergrund.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background-color: #0b033a;
   color: #f0f0f0;
   line-height: 1.6;
   padding-bottom: 2rem;
@@ -18,7 +15,7 @@ body {
 
 /* Header */
 header {
-  background: #000;
+  background: #ffffff;
   padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
@@ -31,14 +28,14 @@ header img {
 }
 
 nav a {
-  color: #66ccff;
+  color: #000000;
   text-decoration: none;
   margin-left: 1rem;
   font-weight: 500;
 }
 
 nav a:hover {
-  color: #ffffff;
+  color: #1d2672;
 }
 
 /* Hauptinhalt */
