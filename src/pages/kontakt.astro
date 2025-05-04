@@ -1,11 +1,20 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Kontakt | Petrievents">
   <h2>Kontakt</h2>
 
-  <form action="https://formspree.io/f/xovddaaz" method="POST">
+  <form
+    action="https://formspree.io/f/mwkzjqbz"
+    method="POST"
+  >
+    <!-- Honeypot-Feld -->
+    <input type="text" name="_gotcha" style="display: none;" autocomplete="off" />
+
+    <!-- Weiterleitung nach Absenden -->
+    <input type="hidden" name="_redirect" value="/danke" />
+
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required />
 
