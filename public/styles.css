@@ -187,3 +187,47 @@ footer {
   color: #777;
   font-size: 0.9rem;
 }
+
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero .highlight {
+  color: #66ccff;
+}
+
+.subheading {
+  font-size: 1.25rem;
+  color: #ccc;
+}
+
+.intro p,
+.mission p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.features {
+  background: #0f0f0f;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.features ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.features li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.features li::before {
+  content: "✔️";
+  position: absolute;
+  left: 0;
+}
