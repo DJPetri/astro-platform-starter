@@ -8,25 +8,42 @@ const { title = "Petrievents" } = Astro.props;
     <title>{title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <header>
-      <img src="/mein-bild.png" alt="Petrievents Logo" />
-      <nav>
-        <a href="/">Startseite</a>
-        <a href="/galerie">Galerie</a>
-        <a href="/kontakt">Kontakt</a>
-        <a href="/impressum">Impressum</a>
-      </nav>
-    </header>
+    <button class="sidebar-toggle" aria-label="Menü ein-/ausblenden">
+      <img src="/favicon.svg" alt="Menü" />
+    </button>
 
-    <main>
-      <slot />
-    </main>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <input type="text" placeholder="Suche..." class="sidebar-search" />
+        </div>
 
-    <footer>
-      <p>&copy; 2025 Petrievents – Ihre Eventtechnik & DJ-Experten</p>
-    </footer>
+        <nav class="sidebar-nav">
+          <a href="/">Startseite</a>
+          <a href="/galerie">Galerie</a>
+          <a href="/kontakt">Kontakt</a>
+          <a href="/impressum">Impressum</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <img src="/mein-bild.jpg" alt="Petrievents Logo" />
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <slot />
+      </main>
+    </div>
+
+    <script>
+      const toggle = document.querySelector('.sidebar-toggle');
+      const sidebar = document.querySelector('.sidebar');
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+      });
+    </script>
   </body>
 </html>
