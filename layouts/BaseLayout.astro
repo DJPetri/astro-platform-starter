@@ -11,13 +11,14 @@ const { title } = Astro.props;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <!-- Toggle-Button außerhalb der Sidebar -->
+    <!-- Toggle-Button zum Einblenden (immer sichtbar) -->
     <button class="sidebar-toggle-outside" aria-label="Menü einblenden">
       <img src="/favicon.svg" alt="Menü öffnen" />
     </button>
 
     <div class="layout">
       <aside class="sidebar collapsed">
+        <!-- Suchleiste + Toggle-Button zum Schließen -->
         <div class="sidebar-header">
           <input type="text" placeholder="Suche..." class="sidebar-search" />
           <button class="sidebar-toggle-inside" aria-label="Menü ausblenden">
@@ -33,7 +34,7 @@ const { title } = Astro.props;
         </nav>
 
         <div class="sidebar-logo">
-          <img src="/mein-bild.jpg" alt="Firmenlogo" />
+          <img src="/mein-bild.jpg" alt="Logo" />
         </div>
       </aside>
 
@@ -42,17 +43,18 @@ const { title } = Astro.props;
       </main>
     </div>
 
+    <!-- Toggle-Script -->
     <script>
       const sidebar = document.querySelector('.sidebar');
       const openBtn = document.querySelector('.sidebar-toggle-outside');
       const closeBtn = document.querySelector('.sidebar-toggle-inside');
 
       openBtn?.addEventListener('click', () => {
-        sidebar.classList.remove('collapsed');
+        sidebar?.classList.remove('collapsed');
       });
 
       closeBtn?.addEventListener('click', () => {
-        sidebar.classList.add('collapsed');
+        sidebar?.classList.add('collapsed');
       });
     </script>
   </body>
