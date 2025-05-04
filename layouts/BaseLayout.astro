@@ -1,35 +1,39 @@
 ---
-const { title = "Petrievents" } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <title>{title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title || 'Petrievents'}</title>
     <link rel="stylesheet" href="/styles.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
-  
   <body>
-   <div class="layout">
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <input type="text" placeholder="Suche..." class="sidebar-search" />
-      <button class="sidebar-toggle" aria-label="Menü ein-/ausblenden">
-        <img src="/favicon.svg" alt="Menü" />
-      </button>
-    </div>
+    <!-- Toggle-Button außerhalb der Sidebar -->
+    <button class="sidebar-toggle-outside" aria-label="Menü einblenden">
+      <img src="/favicon.svg" alt="Menü öffnen" />
+    </button>
+
+    <div class="layout">
+      <aside class="sidebar collapsed">
+        <div class="sidebar-header">
+          <input type="text" placeholder="Suche..." class="sidebar-search" />
+          <button class="sidebar-toggle-inside" aria-label="Menü ausblenden">
+            <img src="/favicon.svg" alt="Menü schließen" />
+          </button>
+        </div>
 
         <nav class="sidebar-nav">
-          <a href="/">Startseite</a>
-          <a href="/galerie">Galerie</a>
-          <a href="/kontakt">Kontakt</a>
-          <a href="/impressum">Impressum</a>
+          <a href="/" class="nav-link">Startseite</a>
+          <a href="/galerie" class="nav-link">Galerie</a>
+          <a href="/kontakt" class="nav-link">Kontakt</a>
+          <a href="/impressum" class="nav-link">Impressum</a>
         </nav>
 
-        <div class="sidebar-bottom">
-          <img src="/mein-bild.png" alt="Petrievents Logo" />
+        <div class="sidebar-logo">
+          <img src="/mein-bild.jpg" alt="Firmenlogo" />
         </div>
       </aside>
 
@@ -39,10 +43,16 @@ const { title = "Petrievents" } = Astro.props;
     </div>
 
     <script>
-      const toggle = document.querySelector('.sidebar-toggle');
       const sidebar = document.querySelector('.sidebar');
-      toggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
+      const openBtn = document.querySelector('.sidebar-toggle-outside');
+      const closeBtn = document.querySelector('.sidebar-toggle-inside');
+
+      openBtn?.addEventListener('click', () => {
+        sidebar.classList.remove('collapsed');
+      });
+
+      closeBtn?.addEventListener('click', () => {
+        sidebar.classList.add('collapsed');
       });
     </script>
   </body>
