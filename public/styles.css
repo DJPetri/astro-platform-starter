@@ -51,7 +51,16 @@ h1, h2 {
 }
 
 section {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
   margin-bottom: 3rem;
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
 }
 
 /* Galerie */
