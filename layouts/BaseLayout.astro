@@ -1,46 +1,61 @@
 ---
-import { AstroComponent } from "astro";
+const { title } = Astro.props;
 ---
 
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <title>Meine Seite</title>
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="icon" href="/favicon.svg" />
-    <script type="module" src="/sidebar-toggle.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title || 'Petrievents'}</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
-    <button class="sidebar-toggle-outside" id="sidebarToggleOutside">
-      <img src="/favicon.svg" alt="Menü" />
+    <!-- Toggle-Button zum Einblenden (immer sichtbar) -->
+    <button class="sidebar-toggle-outside" aria-label="Menü einblenden">
+      <img src="/favicon.svg" alt="Menü öffnen" />
     </button>
 
     <div class="layout">
-      <!-- Sidebar -->
-      <aside class="sidebar collapsed" id="sidebar">
+      <aside class="sidebar collapsed">
+        <!-- Suchleiste + Toggle-Button zum Schließen -->
         <div class="sidebar-header">
-          <input type="text" class="sidebar-search" placeholder="Suche..." />
-          <button class="sidebar-toggle-inside" id="sidebarToggleInside">
-            <img src="/favicon.svg" alt="Toggle" />
+          <input type="text" placeholder="Suche..." class="sidebar-search" />
+          <button class="sidebar-toggle-inside" aria-label="Menü ausblenden">
+            <img src="/favicon.svg" alt="Menü schließen" />
           </button>
         </div>
 
         <nav class="sidebar-nav">
-          <a href="/">Startseite</a>
-          <a href="/galerie">Galerie</a>
-          <a href="/kontakt">Kontakt</a>
-          <a href="/impressum">Impressum</a>
+          <a href="/" class="nav-link">Startseite</a>
+          <a href="/galerie" class="nav-link">Galerie</a>
+          <a href="/kontakt" class="nav-link">Kontakt</a>
+          <a href="/impressum" class="nav-link">Impressum</a>
         </nav>
 
-        <div class="sidebar-bottom">
+        <div class="sidebar-logo">
           <img src="/mein-bild.jpg" alt="Logo" />
         </div>
       </aside>
 
-      <!-- Hauptinhalt -->
       <main class="main-content">
         <slot />
       </main>
     </div>
+
+    <!-- Toggle-Script -->
+    <script>
+      const sidebar = document.querySelector('.sidebar');
+      const openBtn = document.querySelector('.sidebar-toggle-outside');
+      const closeBtn = document.querySelector('.sidebar-toggle-inside');
+
+      openBtn?.addEventListener('click', () => {
+        sidebar?.classList.remove('collapsed');
+      });
+
+      closeBtn?.addEventListener('click', () => {
+        sidebar?.classList.add('collapsed');
+      });
+    </script>
   </body>
 </html>
