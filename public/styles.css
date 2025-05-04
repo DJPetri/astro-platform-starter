@@ -22,16 +22,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Wenn eingeklappt */
-.layout.sidebar-collapsed .sidebar {
-  width: 0;
-  transform: translateX(-100%);
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
 /* === Sidebar === */
 .sidebar {
   background-color: #000;
@@ -46,6 +36,16 @@ body {
   transition: width 0.3s,transform 0.3s ease;
   margin-top: 5.152rem;
   z-index: 1000;
+}
+
+/* Wenn eingeklappt */
+.layout.sidebar-collapsed .sidebar {
+  width: 0;
+  transform: translateX(-100%);
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 .sidebar.collapsed {
