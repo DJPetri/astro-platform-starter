@@ -19,6 +19,17 @@ body {
   min-height: 100vh;
   gap: 1rem;
   padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Wenn eingeklappt */
+.layout.sidebar-collapsed .sidebar {
+  width: 0;
+  transform: translateX(-100%);
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 /* === Sidebar === */
@@ -32,8 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease;
-  /*position: sticky;*/
+  transition: width 0.3s,transform 0.3s ease;
   margin-top: 5.152rem;
   z-index: 1000;
 }
@@ -116,6 +126,7 @@ body {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   max-width: 1000px;
   margin: auto;
+  transition: all 0.3s;
 }
 
 /* === Sektionen === */
