@@ -24,16 +24,17 @@ body {
 
 /* === Sidebar === */
 .sidebar {
-  background-color: #000;
+  background-color: #1c1c1dd4;
   color: white;
   border-radius: 2rem;
   width: 260px;
+  min-width: 260px;
   min-height: 90vh;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: width 0.3s,transform 0.3s ease;
+  transition: transform 0.3s ease;
   margin-top: 5.152rem;
   z-index: 1000;
 }
@@ -41,11 +42,10 @@ body {
 /* Wenn eingeklappt */
 .layout.sidebar-collapsed .sidebar {
   width: 0;
+  min-width: 0;
   transform: translateX(-100%);
   overflow: hidden;
   padding: 0;
-  margin: 0;
-  border: none;
 }
 
 .sidebar.collapsed {
