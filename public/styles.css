@@ -24,7 +24,7 @@ body {
 
 /* === Sidebar === */
 .sidebar {
-  background-color: #1c1c1dd4;
+  background-color: #11111de0;
   color: white;
   border-radius: 2rem;
   width: 260px;
@@ -197,12 +197,6 @@ footer {
 .subheading {
   font-size: 1.25rem;
   color: #ccc;
-}
-
-.intro p,
-.mission p {
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
 }
 
 .features ul {
