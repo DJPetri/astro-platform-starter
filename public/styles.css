@@ -1,80 +1,65 @@
-:root {
-  --PE-blue-grey-transparent: #11111de0;       /* halbtransparenter schwarzer Overlay */
-  --PE-black-shadow: #00000033;        /* leichter schwarzer Schatten */
-  --PE-dark-grey: #1c1c1d;             /* dunkles Sidebar-Hintergrund */
-  --PE-mid-grey: #6f6f6f;              /* Hover, Rahmen, Logo-Hintergrund */
-  --PE-light-grey: #cccccc;            /* Subheading */
-  --PE-muted-grey: #777777;            /* Footer-Text */
-  --PE-input-grey: #222222;            /* Input-Hintergrund */
-  --PE-white-transparent: #ffffff0d;   /* Main Content & Section Hintergrund */
-  --PE-text-white: #f0f0f0;            /* Haupttext */
-  --PE-blue: #66ccff;                  /* Hauptfarbe: Links, Buttons, Akzente */
-  --PE-blue-hover: #33bbee;            /* Button-Hover */
-}
-
-/* === 1. RESET & GRUNDLAYOUT === */
+/* === Reset & Grundlayout === */
 * {
-  box-sizing: border-box; /* Verhindert, dass Padding/Margin Breite/Höhe beeinflusst */
-  margin: 0;              /* Entfernt Standard-Abstände */
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif; /* Setzt moderne, lesbare Schrift */
-  background: linear-gradient(var(--PE-blue-grey-transparent), var(--PE-blue-grey-transparent)), /* Halbtransparenter schwarzer Overlay */
-              url('/hintergrund.jpg') no-repeat center center fixed; /* Hintergrundbild fixiert & zentriert */
-  background-size: cover; /* Bild immer vollflächig skalieren */
-  color: var(--PE-text-white); /* Textfarbe: hellgrau */
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('/hintergrund.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #f0f0f0;
 }
 
-/* === 2. GRUNDSTRUKTUR & LAYOUT === */
+/* === Hauptlayout === */
 .layout {
-  display: flex; /* Layout in Flex-Zeile: Sidebar + Content */
-  min-height: 100vh; /* Volle Bildschirmhöhe */
-  gap: 1rem; /* Abstand zwischen Sidebar & Content */
-  padding: 1rem; /* Innenabstand außen */
-  transition: all 0.3s ease; /* Weiche Übergänge bei Änderungen */
+  display: flex;
+  min-height: 100vh;
+  gap: 1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
 }
 
-/* Sidebar eingeklappt: komplett ausblenden */
+/* === Sidebar === */
+.sidebar {
+  background-color: #1c1c1dd4;
+  color: white;
+  border-radius: 2rem;
+  width: 260px;
+  min-width: 260px;
+  min-height: 90vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  margin-top: 5.152rem;
+  z-index: 1000;
+}
+
+/* Wenn eingeklappt */
 .layout.sidebar-collapsed .sidebar {
   width: 0;
   min-width: 0;
-  transform: translateX(-100%); /* Raus aus dem Sichtbereich */
+  transform: translateX(-100%);
   overflow: hidden;
-  padding: 0; /* Padding entfernen, damit sie wirklich "weg" ist */
+  padding: 0;
 }
 
-/* === 3. SIDEBAR === */
-.sidebar {
-  background-color: var(--PE-dark-grey); /* Dunkles halbtransparentes Grau */
-  color: #ffffff; /* Weißer Text */
-  border-radius: 2rem; /* Abgerundete Ecken */
-  width: 260px;
-  min-width: 260px;
-  min-height: 90vh; /* Mindestens 90% Bildschirmhöhe */
-  padding: 1rem; /* Innenabstand */
-  display: flex;
-  flex-direction: column; /* Elemente untereinander */
-  justify-content: space-between; /* Navigation oben, Bild unten */
-  transition: transform 0.3s ease;
-  margin-top: 5.152rem; /* Platz unter dem Toggle-Button */
-  z-index: 1000; /* Immer über anderem Inhalt */
-}
-
-/* Sidebar bei .collapsed manuell rausschieben */
 .sidebar.collapsed {
-  transform: translateX(-280px); /* Ganz nach links rausschieben */
+  transform: translateX(-280px);
 }
 
 .sidebar nav {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Abstand zwischen Links */
+  gap: 1rem;
 }
 
 .sidebar-nav a {
-  color: var(--PE-blue); /* Türkis-blau für Navigation */
+  color: #66ccff;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
@@ -82,70 +67,74 @@ body {
 }
 
 .sidebar-nav a:hover {
-  background-color: var(--PE-mid-grey); /* Mittelgrauer Hover-Hintergrund */
+  background-color: #6f6f6f;
 }
 
-/* Logo oben oder unten */
-.sidebar-logo img,
-.sidebar-bottom img {
+.sidebar-logo img {
   max-width: 100%;
   height: auto;
   border-radius: 1rem;
-  border: 16px solid var(--PE-mid-grey); /* Grauer Rahmen */
-  background-color: var(--PE-mid-grey); /* Gleiche Farbe wie Rahmen */
-  margin-top: 2rem;
+  border: 16px solid #6f6f6f;
+  background-color: #6f6f6f;
 }
 
-/* === 4. TOGGLE BUTTON === */
+.sidebar-bottom img {
+  width: 100%;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  border: 16px solid #6f6f6f; 
+  background-color: #6f6f6f;
+}
+
+/* Toggle Button */
 .sidebar-toggle {
-  position: fixed; /* Immer oben links sichtbar */
+  position: fixed;
   top: 1rem;
   left: 1rem;
-  background: var(--PE-blue); /* Türkis-blauer Hintergrund */
+  background: #66ccff;
   border: none;
   z-index: 1000;
   cursor: pointer;
-  padding: 0.25rem; /* Abstand im Button */
-  box-shadow: 0 2px 6px var(--PE-black-shadow); /* Leichter Schatten */
+  padding: 0,25rm;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .sidebar-toggle img {
   width: 236px;
-  height: 40px; /* Größe vom Bild-Button */
+  height: 40px;
 }
-
-/* === 5. HAUPTINHALT === */
+/* === Hauptinhalt === */
 .main-content {
-  flex: 1; /* Nimmt restliche Breite ein */
+  flex: 1;
   padding: 2rem;
-  background: var(--PE-white-transparent); /* Sehr hell transparentes Weiß */
-  border-radius: 1rem;
-  box-shadow: 0 0 15px var(--PE-black-shadow); /* Weicher Schatten */
-  max-width: 1000px; /* Begrenzte Lesebreite */
-  margin: auto; /* Zentriert */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  max-width: 1000px;
+  margin: auto;
   transition: all 0.3s;
 }
 
-/* === 6. SEKTIONEN === */
+/* === Sektionen === */
 section {
-  background: var(--PE-blue-grey-transparent); /* Heller Hintergrund */
+  background:rgba(255, 255, 255, 0.05);
   padding: 2rem;
   border-radius: 2rem;
-  box-shadow: 0 0 10px var(--PE-blue-grey-transparent); /* Stärkerer Schatten */
-  margin-bottom: 3rem; /* Abstand zwischen Sektionen */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-bottom: 3rem;
   transition: transform 0.3s ease;
 }
 
 section:hover {
-  transform: translateY(-5px); /* Leichtes Hovern */
+  transform: translateY(-5px);
 }
 
 h1, h2 {
-  color: var(--PE-blue); /* Türkis für Überschriften */
+  color: #66ccff;
   margin-bottom: 1rem;
 }
 
-/* === 7. GALERIE === */
+/* === Galerie === */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -155,10 +144,10 @@ h1, h2 {
 .grid img {
   width: 100%;
   border-radius: 8px;
-  object-fit: cover; /* Kein Verzerren */
+  object-fit: cover;
 }
 
-/* === 8. FORMULARE === */
+/* === Formular === */
 form {
   display: flex;
   flex-direction: column;
@@ -173,48 +162,47 @@ input, textarea, button {
 }
 
 input, textarea {
-  background: var(--PE-input-grey); /* Dunkler Hintergrund */
-  color: #ffffff; /* Weißer Text */
+  background: #222;
+  color: #fff;
 }
 
 button {
-  background-color: var(--PE-blue); /* Türkis Hintergrund */
-  color: #000000; /* Schwarzer Text */
+  background-color: #66ccff;
+  color: #000;
   font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: var(--PE-blue-hover); /* Etwas dunkleres Türkis beim Hover */
+  background-color: #33bbee;
 }
 
-/* === 9. FOOTER === */
+/* === Footer === */
 footer {
   text-align: center;
   margin-top: 4rem;
-  color: var(--PE-muted-grey); /* Grauer Text */
+  color: #777;
   font-size: 0.9rem;
 }
 
-/* === 10. SONDERKLASSEN === */
 .hero {
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .hero .highlight {
-  color: var(--PE-blue); /* Türkis-farbener Akzent */
+  color: #66ccff;
 }
 
 .subheading {
   font-size: 1.25rem;
-  color: var(--PE-light-grey); /* Heller Grauton für Untertitel */
+  color: #ccc;
 }
 
 .intro p,
 .mission p {
   margin-bottom: 1.5rem;
-  line-height: 1.6; /* Bessere Lesbarkeit */
+  line-height: 1.6;
 }
 
 .features ul {
@@ -229,7 +217,7 @@ footer {
 }
 
 .features li::before {
-  content: "✔️"; /* Haken als Symbol */
+  content: "✔️";
   position: absolute;
   left: 0;
 }
