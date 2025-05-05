@@ -24,7 +24,7 @@ body {
 
 /* === Sidebar === */
 .sidebar {
-  background-color: #ffffffd0;
+  background-color: #1c1c1dd4;
   color: white;
   border-radius: 2rem;
   width: 260px;
@@ -117,7 +117,7 @@ body {
 
 /* === Sektionen === */
 section {
-  background: #1a1a1a;
+  background:rgba(255, 255, 255, 0.05);
   padding: 2rem;
   border-radius: 2rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -203,13 +203,6 @@ footer {
 .mission p {
   margin-bottom: 1.5rem;
   line-height: 1.6;
-}
-
-.features {
-  background: #0f0f0f;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  margin-bottom: 2rem;
 }
 
 .features ul {
