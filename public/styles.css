@@ -86,6 +86,7 @@ body {
 
 .sidebar-nav a:hover {
   background-color: #6f6f6f;
+<<<<<<< HEAD
 }
 
 .sidebar-logo img {
@@ -94,6 +95,8 @@ body {
   border-radius: 1rem;
   border: 16px solid #6f6f6f;
   background-color: #6f6f6f;
+=======
+>>>>>>> 4e65e9675c6964003c333ae1018c3d1a85b889dd
 }
 
 .sidebar-bottom img {
