@@ -11,6 +11,7 @@ body {
               url('/hintergrund.jpg') no-repeat center center fixed;
   background-size: cover;
   color: #f0f0f0;
+  transition: all 0.3s ease;
 }
 
 /* === Hauptlayout === */
@@ -39,7 +40,7 @@ body {
   z-index: 1000;
 }
 
-/* Wenn eingeklappt */
+/* Wenn Sidebar eingeklappt ist */
 .layout.sidebar-collapsed .sidebar {
   width: 0;
   min-width: 0;
@@ -86,7 +87,7 @@ body {
   background-color: #6f6f6f;
 }
 
-/* Toggle Button */
+/* Toggle Button für Sidebar */
 .sidebar-toggle {
   position: fixed;
   top: 1rem;
@@ -95,7 +96,7 @@ body {
   border: none;
   z-index: 1000;
   cursor: pointer;
-  padding: 0,25rm;
+  padding: 0.25rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
@@ -103,6 +104,7 @@ body {
   width: 236px;
   height: 40px;
 }
+
 /* === Hauptinhalt === */
 .main-content {
   flex: 1;
@@ -112,12 +114,12 @@ body {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   max-width: 1000px;
   margin: auto;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 /* === Sektionen === */
 section {
-  background:#11111de0;
+  background: #11111de0;
   padding: 2rem;
   border-radius: 2rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -185,6 +187,7 @@ footer {
   font-size: 0.9rem;
 }
 
+/* === Hero Section === */
 .hero {
   text-align: center;
   margin-bottom: 2rem;
@@ -199,6 +202,7 @@ footer {
   color: #ccc;
 }
 
+/* === Intro & Mission === */
 .intro p,
 .mission p {
   margin-bottom: 1.5rem;
@@ -220,4 +224,99 @@ footer {
   content: "✔️";
   position: absolute;
   left: 0;
+}
+
+/* === Media Queries für mobile Responsivität === */
+@media (max-width: 1024px) {
+  /* Für Tablets (768px - 1024px) */
+  .layout {
+    flex-direction: row; /* Flexbox Layout für Tablet: Sidebar und Hauptinhalt nebeneinander */
+  }
+
+  .sidebar {
+    width: 200px; /* Verkleinerte Sidebar für Tablets */
+  }
+
+  .sidebar-toggle {
+    display: none; /* Toggle Button ausblenden auf Tablets */
+  }
+
+  .hero h1 {
+    font-size: 2rem; /* Kleinere Schrift im Hero-Bereich */
+  }
+
+  .hero .subheading {
+    font-size: 1.2rem; /* Kleinere Subheading-Schriftgröße */
+  }
+
+  .features h2 {
+    font-size: 1.3rem;
+  }
+
+  .features li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Für mobile Geräte (bis 768px) */
+  .layout {
+    flex-direction: column; /* Layout ändert sich auf eine vertikale Anordnung */
+  }
+
+  /* Sidebar wird bei Mobilgeräten ausgeblendet */
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar-toggle {
+    display: block; /* Toggle Button anzeigen für mobile Geräte */
+  }
+
+  .hero h1 {
+    font-size: 1.8rem; /* Noch kleinere Schrift für den Hero-Text */
+  }
+
+  .hero .subheading {
+    font-size: 1rem; /* Noch kleinere Subheading-Schriftgröße */
+  }
+
+  .features h2 {
+    font-size: 1.2rem; /* Noch kleinere Schrift für die Features */
+  }
+
+  .features li {
+    font-size: 0.9rem; /* Kleinere Schrift für Features */
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Galerie wird auf eine Spalte umgestellt */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Für sehr kleine Geräte (bis 480px) */
+  .hero h1 {
+    font-size: 1.5rem; /* Sehr kleine Schrift für den Hero-Text */
+  }
+
+  .hero .subheading {
+    font-size: 0.9rem; /* Sehr kleine Schrift für den Subheading */
+  }
+
+  .features h2 {
+    font-size: 1.1rem;
+  }
+
+  .features li {
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 0.5rem; /* Weniger Padding auf sehr kleinen Geräten */
+  }
 }
