@@ -199,6 +199,12 @@ footer {
   color: #ccc;
 }
 
+.intro p,
+.mission p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
 .features ul {
   list-style: none;
   padding-left: 0;
