@@ -52,24 +52,6 @@ body {
   transform: translateX(-280px);
 }
 
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.sidebar-search {
-  flex: 1;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  border: none;
-  outline: none;
-  background: #1a1a1a;
-  color: #f0f0f0;
-  min-width: 0;
-}
-
 .sidebar nav {
   display: flex;
   flex-direction: column;

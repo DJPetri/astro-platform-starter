@@ -17,10 +17,6 @@ const { title = "Petrievents" } = Astro.props;
 
     <div class="layout">
       <aside class="sidebar">
-        <div class="sidebar-top">
-          <input type="text" placeholder="Suche..." class="sidebar-search" />
-        </div>
-
         <nav class="sidebar-nav">
           <a href="/">Startseite</a>
           <a href="/galerie">Galerie</a>
@@ -32,6 +28,7 @@ const { title = "Petrievents" } = Astro.props;
           <img src="/mein-bild.png" alt="Petrievents Logo" />
         </div>
       </aside>
+
 
       <main class="main-content">
         <slot />
