@@ -24,7 +24,7 @@ body {
 
 /* === Sidebar === */
 .sidebar {
-  background-color: #1c1c1dd4;
+  background-color: #ffffffd0;
   color: white;
   border-radius: 2rem;
   width: 260px;
@@ -85,19 +85,15 @@ body {
 }
 
 .sidebar-nav a:hover {
-  background-color: #1a1a1a;
-}
-
-.sidebar-logo img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 1rem;
+  background-color: #6f6f6f;
 }
 
 .sidebar-bottom img {
   width: 100%;
   border-radius: 1rem;
   margin-top: 2rem;
+  border: 16px solid #6f6f6f; 
+  background-color: #6f6f6f;
 }
 
 /* Toggle Button */
@@ -114,7 +110,7 @@ body {
 }
 
 .sidebar-toggle img {
-  width: 40px;
+  width: 236px;
   height: 40px;
 }
 /* === Hauptinhalt === */

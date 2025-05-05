@@ -18,7 +18,6 @@
     "@tailwindcss/vite": "^4.0.14",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
-    "astro": "^5.5.3",
     "blobshape": "^1.0.0",
     "marked": "^13.0.0",
     "marked-shiki": "^1.2.0",
@@ -29,6 +28,7 @@
   },
   "devDependencies": {
     "@types/blobshape": "^1.0.3",
-    "@types/node": "^20.12.7"
+    "@types/node": "^20.12.7",
+    "astro": "^5.7.10"
   }
 }
