@@ -1,65 +1,80 @@
-/* === Reset & Grundlayout === */
+:root {
+  --PE-blue-grey-transparent: #11111de0;       /* halbtransparenter schwarzer Overlay */
+  --PE-black-shadow: #00000033;        /* leichter schwarzer Schatten */
+  --PE-dark-grey: #1c1c1d;             /* dunkles Sidebar-Hintergrund */
+  --PE-mid-grey: #6f6f6f;              /* Hover, Rahmen, Logo-Hintergrund */
+  --PE-light-grey: #cccccc;            /* Subheading */
+  --PE-muted-grey: #777777;            /* Footer-Text */
+  --PE-input-grey: #222222;            /* Input-Hintergrund */
+  --PE-white-transparent: #ffffff0d;   /* Main Content & Section Hintergrund */
+  --PE-text-white: #f0f0f0;            /* Haupttext */
+  --PE-blue: #66ccff;                  /* Hauptfarbe: Links, Buttons, Akzente */
+  --PE-blue-hover: #33bbee;            /* Button-Hover */
+}
+
+/* === 1. RESET & GRUNDLAYOUT === */
 * {
-  box-sizing: border-box;
-  margin: 0;
+  box-sizing: border-box; /* Verhindert, dass Padding/Margin Breite/Höhe beeinflusst */
+  margin: 0;              /* Entfernt Standard-Abstände */
   padding: 0;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-              url('/hintergrund.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif; /* Setzt moderne, lesbare Schrift */
+  background: linear-gradient(var(--PE-blue-grey-transparent), var(--PE-blue-grey-transparent)), /* Halbtransparenter schwarzer Overlay */
+              url('/hintergrund.jpg') no-repeat center center fixed; /* Hintergrundbild fixiert & zentriert */
+  background-size: cover; /* Bild immer vollflächig skalieren */
+  color: var(--PE-text-white); /* Textfarbe: hellgrau */
 }
 
-/* === Hauptlayout === */
+/* === 2. GRUNDSTRUKTUR & LAYOUT === */
 .layout {
-  display: flex;
-  min-height: 100vh;
-  gap: 1rem;
-  padding: 1rem;
-  transition: all 0.3s ease;
+  display: flex; /* Layout in Flex-Zeile: Sidebar + Content */
+  min-height: 100vh; /* Volle Bildschirmhöhe */
+  gap: 1rem; /* Abstand zwischen Sidebar & Content */
+  padding: 1rem; /* Innenabstand außen */
+  transition: all 0.3s ease; /* Weiche Übergänge bei Änderungen */
 }
 
-/* === Sidebar === */
-.sidebar {
-  background-color: #1c1c1dd4;
-  color: white;
-  border-radius: 2rem;
-  width: 260px;
-  min-width: 260px;
-  min-height: 90vh;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-  margin-top: 5.152rem;
-  z-index: 1000;
-}
-
-/* Wenn eingeklappt */
+/* Sidebar eingeklappt: komplett ausblenden */
 .layout.sidebar-collapsed .sidebar {
   width: 0;
   min-width: 0;
-  transform: translateX(-100%);
+  transform: translateX(-100%); /* Raus aus dem Sichtbereich */
   overflow: hidden;
-  padding: 0;
+  padding: 0; /* Padding entfernen, damit sie wirklich "weg" ist */
 }
 
+/* === 3. SIDEBAR === */
+.sidebar {
+  background-color: var(--PE-dark-grey); /* Dunkles halbtransparentes Grau */
+  color: #ffffff; /* Weißer Text */
+  border-radius: 2rem; /* Abgerundete Ecken */
+  width: 260px;
+  min-width: 260px;
+  min-height: 90vh; /* Mindestens 90% Bildschirmhöhe */
+  padding: 1rem; /* Innenabstand */
+  display: flex;
+  flex-direction: column; /* Elemente untereinander */
+  justify-content: space-between; /* Navigation oben, Bild unten */
+  transition: transform 0.3s ease;
+  margin-top: 5.152rem; /* Platz unter dem Toggle-Button */
+  z-index: 1000; /* Immer über anderem Inhalt */
+}
+
+/* Sidebar bei .collapsed manuell rausschieben */
 .sidebar.collapsed {
-  transform: translateX(-280px);
+  transform: translateX(-280px); /* Ganz nach links rausschieben */
 }
 
 .sidebar nav {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1rem; /* Abstand zwischen Links */
 }
 
 .sidebar-nav a {
-  color: #66ccff;
+  color: var(--PE-blue); /* Türkis-blau für Navigation */
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
@@ -67,74 +82,70 @@ body {
 }
 
 .sidebar-nav a:hover {
-  background-color: #6f6f6f;
+  background-color: var(--PE-mid-grey); /* Mittelgrauer Hover-Hintergrund */
 }
 
-.sidebar-logo img {
+/* Logo oben oder unten */
+.sidebar-logo img,
+.sidebar-bottom img {
   max-width: 100%;
   height: auto;
   border-radius: 1rem;
-  border: 16px solid #6f6f6f;
-  background-color: #6f6f6f;
-}
-
-.sidebar-bottom img {
-  width: 100%;
-  border-radius: 1rem;
+  border: 16px solid var(--PE-mid-grey); /* Grauer Rahmen */
+  background-color: var(--PE-mid-grey); /* Gleiche Farbe wie Rahmen */
   margin-top: 2rem;
-  border: 16px solid #6f6f6f; 
-  background-color: #6f6f6f;
 }
 
-/* Toggle Button */
+/* === 4. TOGGLE BUTTON === */
 .sidebar-toggle {
-  position: fixed;
+  position: fixed; /* Immer oben links sichtbar */
   top: 1rem;
   left: 1rem;
-  background: #66ccff;
+  background: var(--PE-blue); /* Türkis-blauer Hintergrund */
   border: none;
   z-index: 1000;
   cursor: pointer;
-  padding: 0,25rm;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 0.25rem; /* Abstand im Button */
+  box-shadow: 0 2px 6px var(--PE-black-shadow); /* Leichter Schatten */
 }
 
 .sidebar-toggle img {
   width: 236px;
-  height: 40px;
+  height: 40px; /* Größe vom Bild-Button */
 }
-/* === Hauptinhalt === */
+
+/* === 5. HAUPTINHALT === */
 .main-content {
-  flex: 1;
+  flex: 1; /* Nimmt restliche Breite ein */
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  max-width: 1000px;
-  margin: auto;
+  background: var(--PE-white-transparent); /* Sehr hell transparentes Weiß */
+  border-radius: 1rem;
+  box-shadow: 0 0 15px var(--PE-black-shadow); /* Weicher Schatten */
+  max-width: 1000px; /* Begrenzte Lesebreite */
+  margin: auto; /* Zentriert */
   transition: all 0.3s;
 }
 
-/* === Sektionen === */
+/* === 6. SEKTIONEN === */
 section {
-  background:rgba(255, 255, 255, 0.05);
+  background: var(--PE-blue-grey-transparent); /* Heller Hintergrund */
   padding: 2rem;
   border-radius: 2rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  margin-bottom: 3rem;
+  box-shadow: 0 0 10px var(--PE-blue-grey-transparent); /* Stärkerer Schatten */
+  margin-bottom: 3rem; /* Abstand zwischen Sektionen */
   transition: transform 0.3s ease;
 }
 
 section:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Leichtes Hovern */
 }
 
 h1, h2 {
-  color: #66ccff;
+  color: var(--PE-blue); /* Türkis für Überschriften */
   margin-bottom: 1rem;
 }
 
-/* === Galerie === */
+/* === 7. GALERIE === */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -144,10 +155,10 @@ h1, h2 {
 .grid img {
   width: 100%;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: cover; /* Kein Verzerren */
 }
 
-/* === Formular === */
+/* === 8. FORMULARE === */
 form {
   display: flex;
   flex-direction: column;
@@ -162,47 +173,48 @@ input, textarea, button {
 }
 
 input, textarea {
-  background: #222;
-  color: #fff;
+  background: var(--PE-input-grey); /* Dunkler Hintergrund */
+  color: #ffffff; /* Weißer Text */
 }
 
 button {
-  background-color: #66ccff;
-  color: #000;
+  background-color: var(--PE-blue); /* Türkis Hintergrund */
+  color: #000000; /* Schwarzer Text */
   font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #33bbee;
+  background-color: var(--PE-blue-hover); /* Etwas dunkleres Türkis beim Hover */
 }
 
-/* === Footer === */
+/* === 9. FOOTER === */
 footer {
   text-align: center;
   margin-top: 4rem;
-  color: #777;
+  color: var(--PE-muted-grey); /* Grauer Text */
   font-size: 0.9rem;
 }
 
+/* === 10. SONDERKLASSEN === */
 .hero {
   text-align: center;
   margin-bottom: 2rem;
 }
 
 .hero .highlight {
-  color: #66ccff;
+  color: var(--PE-blue); /* Türkis-farbener Akzent */
 }
 
 .subheading {
   font-size: 1.25rem;
-  color: #ccc;
+  color: var(--PE-light-grey); /* Heller Grauton für Untertitel */
 }
 
 .intro p,
 .mission p {
   margin-bottom: 1.5rem;
-  line-height: 1.6;
+  line-height: 1.6; /* Bessere Lesbarkeit */
 }
 
 .features ul {
@@ -217,7 +229,7 @@ footer {
 }
 
 .features li::before {
-  content: "✔️";
+  content: "✔️"; /* Haken als Symbol */
   position: absolute;
   left: 0;
 }
