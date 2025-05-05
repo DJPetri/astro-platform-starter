@@ -103,6 +103,8 @@ body {
   width: 100%;
   border-radius: 1rem;
   margin-top: 2rem;
+  border: 16px solid #6f6f6f; 
+  background-color: #6f6f6f;
 }
 
 /* Toggle Button */
@@ -119,7 +121,11 @@ body {
 }
 
 .sidebar-toggle img {
+<<<<<<< HEAD
   width: 126px;
+=======
+  width: 236px;
+>>>>>>> 4e65e9675c6964003c333ae1018c3d1a85b889dd
   height: 40px;
 }
 /* === Hauptinhalt === */
