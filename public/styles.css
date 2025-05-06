@@ -258,7 +258,6 @@ footer {
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
     background-color: #11111de0;
     color: white;
     display: flex;
@@ -269,21 +268,28 @@ footer {
     z-index: 1000;
     transform-origin: top center;
     transition: transform 0.3s ease, padding 0.3s ease;
+    height: auto;
   }
 
-  .sidebar nav {
-    display: grid;
-    grid-template-columns: repeat(2, auto); /* 2 Spalten */
-    gap: 0.5rem 1.5rem;
-    justify-items: stretch;
-  }
+/* Doppelte Zeile der Navigation */
+.sidebar nav {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 0.5rem 1.5rem;
+}
 
-  .sidebar-nav a {
-    display: block;
-    text-align: center;
-    padding: 0.5rem 1rem;
-  }
-
+/* Einzelne Links */
+.sidebar-nav a {
+  color: #66ccff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+.sidebar-nav a:hover {
+  background-color: #6f6f6f;
+}
   .sidebar-bottom img {
     display: none;
   }
