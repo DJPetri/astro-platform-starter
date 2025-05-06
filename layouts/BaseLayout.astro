@@ -35,20 +35,6 @@ const { title = "Petrievents" } = Astro.props;
       </main>
     </div>
 
-    <p id="visitor-count">Besucher: Lädt...</p>
-
-      <script>
-        fetch('/api/visitor-count')
-          .then(res => res.json())
-          .then(data => {
-            document.getElementById('visitor-count').textContent = 'Besucher: ' + data.count;
-          })
-          .catch(err => {
-            console.error('Fehler beim Laden der Besucheranzahl', err);
-            document.getElementById('visitor-count').textContent = 'Besucher: Fehler';
-          });
-      </script>
-
     <script>
       const toggle = document.querySelector('.sidebar-toggle');
       const sidebar = document.querySelector('.sidebar');

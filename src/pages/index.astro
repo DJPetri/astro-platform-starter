@@ -5,7 +5,7 @@ import Layout from '/layouts/BaseLayout.astro';
 
 <Layout>
   <section class="hero">
-    <h1>Willkommen bei <span class="highlight">Petrievents</span></h1>
+    <h1>Willkommen <span id="visitor-count">Lädt...</span> bei <span class="highlight">Petrievents</span></h1>
     <p class="subheading">Ihre Eventtechnik und DJ-Experten für unvergessliche Momente!</p>
   </section>
 
@@ -61,3 +61,14 @@ import Layout from '/layouts/BaseLayout.astro';
     </p>
   </section>
 </Layout>
+<script>
+  fetch('https://api.countapi.xyz/hit/petrievents.de')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('visitor-count').textContent = data.value;
+    })
+    .catch(err => {
+      console.error('Zählerfehler:', err);
+      document.getElementById('visitor-count').textContent = '❌';
+    });
+</script>
