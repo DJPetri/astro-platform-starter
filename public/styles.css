@@ -254,24 +254,34 @@ footer {
   }*/
 
   .sidebar {
-    position: fixed; /* Sidebar bleibt sichtbar */
+    position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    width: 100%;
+    height: auto;
+    background-color: #11111de0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 2rem 2rem;
+    z-index: 1000;
     transform-origin: top center;
-    transition: transform 0.2s ease, height 0.2s ease;
+    transition: transform 0.3s ease, padding 0.3s ease;
   }
 
   .sidebar nav {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 Spalten */
-    gap: 0.5rem;
+    grid-template-columns: repeat(2, auto); /* 2 Spalten */
+    gap: 0.5rem 1.5rem;
     justify-items: stretch;
   }
 
   .sidebar-nav a {
     display: block;
     text-align: center;
+    padding: 0.5rem 1rem;
   }
 
   .sidebar-bottom img {
