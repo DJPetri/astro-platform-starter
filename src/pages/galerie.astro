@@ -3,10 +3,12 @@ import BaseLayout from "/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Galerie | Petrievents">
-  <h2>Galerie</h2>
-  <div class="grid">
-    {Array.from({ length: 6 }).map((_, i) => (
-      <img src={`/Bilder/bild${i + 1}.jpg`} alt={`Eventbild ${i + 1}`} loading="lazy" />
-    ))}
-  </div>
+  <section class="features">
+    <h2>Galerie</h2>
+    <div class="grid">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <img src={`/Bilder/bild${i + 1}.jpg`} alt={`Eventbild ${i + 1}`} loading="lazy" />
+      ))}
+    </div>
+  </section>
 </BaseLayout>
