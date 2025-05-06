@@ -225,3 +225,28 @@ footer {
   position: absolute;
   left: 0;
 }
+
+
+/* === Media Queries für mobile Responsivität === */
+@media (max-width: 480px) {
+  /* Für sehr kleine Geräte (bis 480px) */
+  .hero h1 {
+    font-size: 1.5rem; /* Sehr kleine Schrift für den Hero-Text */
+  }
+
+  .hero .subheading {
+    font-size: 0.9rem; /* Sehr kleine Schrift für den Subheading */
+  }
+
+  .features h2 {
+    font-size: 1.1rem;
+  }
+
+  .features li {
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 0.5rem; /* Weniger Padding auf sehr kleinen Geräten */
+  }
+}
