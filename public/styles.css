@@ -5,6 +5,11 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -29,7 +34,7 @@ body {
   color: white;
   border-radius: 2rem;
   width: 260px;
-  min-width: 130;
+  min-width: 130px;
   min-height: 90vh;
   padding: 1rem;
   display: flex;
@@ -112,8 +117,8 @@ body {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 2rem;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  max-width: 1000px;
-  margin: auto;
+  max-width: 100%;
+  margin: 0 auto;
   transition: all 0.3s ease;
 }
 
@@ -228,218 +233,55 @@ footer {
 
 /* === Media Queries für mobile Responsivität === */
 @media (max-width: 480px) {
-  /* Für sehr kleine Geräte (bis 480px) */
-/* === Hauptlayout === */
-.layout {
-  display: flex;
-  min-height: 40px;
-  gap: 0.2rem;
-  padding: 0.2rem;
-  transition: all 0.3s ease;
-}
+  html, body {
+    height: auto;
+  }
 
-/* === Sidebar === */
-.sidebar {
-  background-color: #11111de0;
-  color: white;
-  border-radius: 0.4rem;
-  width: 130;
-  min-width: 130;
-  min-height: 90vh;
-  padding: 0.1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-  margin-top: 1.152rem;
-  z-index: 1000;
-}
+  .layout {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    min-height: auto;
+  }
 
-/* Wenn Sidebar eingeklappt ist */
-.layout.sidebar-collapsed .sidebar {
-  width: 0;
-  min-width: 0;
-  transform: translateX(-100%);
-  overflow: hidden;
-  padding: 0;
-}
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+  }
 
-.sidebar.collapsed {
-  transform: translateX(-280px);
-}
+  .sidebar-toggle {
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.2rem;
+  }
 
-.sidebar nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
+  .sidebar-toggle img {
+    width: 118px;
+    height: 20px;
+  }
 
-.sidebar-nav a {
-  color: #66ccff;
-  text-decoration: none;
-  padding: 0.05rem 0.1rem;
-  border-radius: 0.1rem;
-  transition: background 0.3s;
-}
+  .main-content {
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  }
 
-.sidebar-nav a:hover {
-  background-color: #6f6f6f;
-}
+  .hero h1 {
+    font-size: 1.5rem;
+  }
 
-.sidebar-logo img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.1rem;
-  border: 2px solid #6f6f6f;
-  background-color: #6f6f6f;
-}
+  .hero .subheading {
+    font-size: 0.9rem;
+  }
 
-.sidebar-bottom img {
-  width: 100%;
-  border-radius: 0.11rem;
-  margin-top: 0.2rem;
-  border: 2px solid #6f6f6f; 
-  background-color: #6f6f6f;
-}
+  .features h2 {
+    font-size: 1.1rem;
+  }
 
-/* Toggle Button für Sidebar */
-.sidebar-toggle {
-  position: fixed;
-  top: 0.1rem;
-  left: 0.1rem;
-  background: #66ccff;
-  border: none;
-  z-index: 1000;
-  cursor: pointer;
-  padding: 0.1rem;
-  box-shadow: 0 0.4px 2px rgba(0,0,0,0.2);
+  .features li {
+    font-size: 0.9rem;
+  }
 }
-
-.sidebar-toggle img {
-  width: 118;
-  height: 20px;
-}
-
-/* === Hauptinhalt === */
-.main-content {
-  flex: 1;
-  padding: 0.2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.22rem;
-  box-shadow: 0 0 4px rgba(0,0,0,0.2);
-  max-width: 1000px;
-  margin: auto;
-  transition: all 0.3s ease;
-}
-
-/* === Sektionen === */
-section {
-  background: #11111de0;
-  padding: 0.2rem;
-  border-radius: 0.2rem;
-  box-shadow: 0 0 2px rgba(0,0,0,0.5);
-  margin-bottom: 0.3rem;
-  transition: transform 0.3s ease;
-}
-
-section:hover {
-  transform: translateY(-5px);
-}
-
-h1, h2 {
-  color: #66ccff;
-  margin-bottom: 0.1rem;
-}
-
-/* === Galerie === */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(125x, 1fr));
-  gap: 0.1rem;
-}
-
-.grid img {
-  width: 100%;
-  border-radius: 2px;
-  object-fit: cover;
-}
-
-/* === Formular === */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.11rem;
-}
-
-input, textarea, button {
-  padding: 0.1rem;
-  border-radius: 1px;
-  border: none;
-  font-size: 0.11rem;
-}
-
-input, textarea {
-  background: #222;
-  color: #fff;
-}
-
-button {
-  background-color: #66ccff;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #33bbee;
-}
-
-/* === Footer === */
-footer {
-  text-align: center;
-  margin-top: 0.4rem;
-  color: #777;
-  font-size: 0.2rem;
-}
-
-/* === Hero Section === */
-.hero {
-  text-align: center;
-  margin-bottom: 0.2rem;
-}
-
-.hero .highlight {
-  color: #66ccff;
-}
-
-.subheading {
-  font-size: 0.125rem;
-  color: #ccc;
-}
-
-/* === Intro & Mission === */
-.intro p,
-.mission p {
-  margin-bottom: 0.15rem;
-  line-height: 0.16;
-}
-
-.features ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.features li {
-  margin-bottom: 0.1rem;
-  padding-left: 0.15rem;
-  position: relative;
-}
-
-.features li::before {
-  content: "✔️";
-  position: absolute;
-  left: 0;
-}
-}
-
-
