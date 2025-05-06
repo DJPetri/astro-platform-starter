@@ -253,6 +253,10 @@ footer {
     width: 130px;
   }
 
+  .sidebar-bottom img {
+    width: 50%;
+  }
+
   .sidebar-toggle img {
     width: 118px;
     height: 20px;
