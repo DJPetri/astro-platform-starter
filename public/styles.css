@@ -253,12 +253,16 @@ footer {
     width: 130px;
   }
 
-  .sidebar-bottom img {
-    width: 50%;
-  }
-
   .sidebar-toggle img {
     width: 118px;
     height: 20px;
+  }
+
+  .layout {
+    display: flex;
+    min-height: 100vh;
+    gap: 0.2rem;
+    padding: 0.2rem;
+    transition: all 0.3s ease;
   }
 }
