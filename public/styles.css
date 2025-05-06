@@ -251,6 +251,10 @@ footer {
   }
   .sidebar {
     width: 130px;
+    border-radius: 0.5rem;
+    min-height: 90vh;
+    padding: 0.2rem;
+    margin-top: 2.152rem;
   }
 
   .sidebar-toggle img {
@@ -260,9 +264,11 @@ footer {
 
   .layout {
     display: flex;
-    min-height: 100vh;
+    min-height: 75vh;
     gap: 0.2rem;
     padding: 0.2rem;
     transition: all 0.3s ease;
   }
 }
+
+
