@@ -83,17 +83,5 @@ import Layout from '/layouts/BaseLayout.astro';
   });
 </script>
 
-
-<script>
-  window.addEventListener('scroll', () => {
-    const sidebar = document.querySelector('.sidebar');
-    const scrollY = window.scrollY;
-    const maxShrink = 0.8;
-
-    const scale = Math.max(maxShrink, 1 - scrollY / 1000);
-    sidebar.style.transform = `scale(${scale})`;
-  });
-</script>
-
 <script type="module" src="/scripts/adjustSidebar.js"></script>
 
