@@ -29,7 +29,7 @@ body {
   color: white;
   border-radius: 2rem;
   width: 260px;
-  min-width: 260px;
+  min-width: 130;
   min-height: 90vh;
   padding: 1rem;
   display: flex;
