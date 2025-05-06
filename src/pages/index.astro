@@ -94,3 +94,14 @@ import Layout from '/layouts/BaseLayout.astro';
     sidebar.style.transform = `scale(${scale})`;
   });
 </script>
+
+<script>
+  window.addEventListener('load', () => {
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
+    if (window.innerWidth <= 480 && sidebar && mainContent) {
+      const sidebarHeight = sidebar.offsetHeight;
+      mainContent.style.marginTop = `${sidebarHeight + 10}px`;
+    }
+  });
+</script>
