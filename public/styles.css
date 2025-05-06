@@ -258,7 +258,7 @@ footer {
     top: 0;
     left: 0;
     height: 100vh;
-    transform-origin: top left;
+    transform-origin: top center;
     transition: transform 0.2s ease, height 0.2s ease;
   }
 
