@@ -245,12 +245,21 @@ footer {
     min-height: auto;
   }
 
-  .sidebar {
+ /* .sidebar {
     width: 100%;
     min-height: auto;
     border-radius: 1rem;
     padding: 0.75rem;
     margin-top: 1rem;
+  }*/
+
+  .sidebar {
+    position: fixed; /* Sidebar bleibt sichtbar */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform-origin: top left;
+    transition: transform 0.2s ease, height 0.2s ease;
   }
 
   .sidebar nav {
@@ -296,4 +305,3 @@ footer {
     font-size: 0.9rem;
   }
 }
-
