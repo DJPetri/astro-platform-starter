@@ -61,14 +61,26 @@ import Layout from '/layouts/BaseLayout.astro';
     </p>
   </section>
 </Layout>
+<p>Besucher: <span id="visitor-count">Lädt...</span></p>
+
+<p>Besucher Startseite: <span id="count-startseite">Lädt...</span></p>
+<p>Besucher Impressum: <span id="count-impressum">Lädt...</span></p>
+
 <script>
-  fetch('https://api.countapi.xyz/hit/petrievents.de')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('visitor-count').textContent = data.value;
-    })
-    .catch(err => {
-      console.error('Zählerfehler:', err);
-      document.getElementById('visitor-count').textContent = '❌';
-    });
+  const counters = [
+    { key: 'startseite', elementId: 'count-startseite' },
+    { key: 'impressum', elementId: 'count-impressum' }
+  ];
+
+  counters.forEach(counter => {
+    fetch(`https://api.counterapi.dev/v1/petrievents/${counter.key}/up`)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById(counter.elementId).textContent = data.count;
+      })
+      .catch(err => {
+        console.error(`Fehler beim Zähler für ${counter.key}:`, err);
+        document.getElementById(counter.elementId).textContent = '❌';
+      });
+  });
 </script>
