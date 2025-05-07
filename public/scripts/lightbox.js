@@ -4,6 +4,7 @@ const lightboxImg = lightbox.querySelector('.lightbox-img');
 const closeBtn = lightbox.querySelector('.close');
 const leftArrow = lightbox.querySelector('.lightbox-arrow.left');
 const rightArrow = lightbox.querySelector('.lightbox-arrow.right');
+const lightboxClose = lightbox.querySelector('.lightbox-close');
 
 let currentIndex = 0;
 
@@ -42,3 +43,18 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') showImage(currentIndex + 1);
   if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
 });
+
+// Schließen über das X
+lightboxClose.addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+  });
+  
+  // Schließen durch Klick auf den Hintergrund (nicht Bild oder Pfeile)
+  lightbox.addEventListener('click', (e) => {
+    const isImage = e.target.classList.contains('lightbox-img');
+    const isArrow = e.target.classList.contains('lightbox-arrow');
+    const isClose = e.target.classList.contains('lightbox-close');
+    if (!isImage && !isArrow && !isClose) {
+      lightbox.classList.add('hidden');
+    }
+  });

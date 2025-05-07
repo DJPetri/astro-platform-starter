@@ -278,6 +278,20 @@ footer {
   right: 2vw;
 }
 
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  opacity: 0.6;
+  z-index: 1002;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
 
 
 /* === Media Queries für mobile Responsivität === */
