@@ -9,7 +9,21 @@ const { title = "Petrievents" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <!-- 🔗 Open Graph Meta Tags für Social Media Vorschau -->
+    <meta property="og:title" content="Petrievents – Eventtechnik & DJ-Service" />
+    <meta property="og:description" content="Professionelle Eventtechnik & DJ für Hochzeiten, Feiern & mehr!" />
+    <meta property="og:image" content="https://petrievents.de/social-preview.jpg" />
+    <meta property="og:url" content="https://petrievents.de/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Für Twitter (optional) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Petrievents – Eventtechnik & DJ-Service" />
+    <meta name="twitter:description" content="Eventtechnik & DJ für unvergessliche Feiern. Jetzt anfragen!" />
+    <meta name="twitter:image" content="https://petrievents.de/social-preview.jpg" />
   </head>
+
   <body>
     <button class="sidebar-toggle" aria-label="Menü ein-/ausblenden">
       <img src="/favicon.svg" alt="Menü" />
