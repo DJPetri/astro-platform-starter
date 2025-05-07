@@ -7,8 +7,21 @@ import BaseLayout from "/layouts/BaseLayout.astro";
     <h2>Galerie</h2>
     <div class="grid">
       {Array.from({ length: 4 }).map((_, i) => (
-        <img src={`/Bilder/bild${i + 1}.jpg`} alt={`Eventbild ${i + 1}`} loading="lazy" />
+        <img
+         src={`/Bilder/bild${i + 1}.jpg`} 
+         alt={`Eventbild ${i + 1}`} 
+         loading="lazy"
+         class="gallery-image"
+         />
       ))}
+    </div>
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="lightbox hidden">
+      <span class="close">&times;</span>
+      <img class="lightbox-img" src="" alt="Großansicht" />
     </div>
   </section>
 </BaseLayout>
+
+<!-- 🟢 Dein zusätzliches Sidebar-Skript -->
+    <script type="module" src="/scripts/lightbox.js"></script>
