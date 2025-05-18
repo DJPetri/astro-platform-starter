@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "/layouts/BaseLayout.astro";
+import PartnerGallery from "/components/PartnerGallery.astro";
+import partnerUrls from "/data/partners.json";
 ---
 
 <BaseLayout title="Partner | Petrievents">
   <section class="features">
-    <h2>Kontakt</h2>
-
-
+    <h2>Partner</h2>
+    <PartnerGallery partnerUrls={partnerUrls} />
   </section>
 </BaseLayout>

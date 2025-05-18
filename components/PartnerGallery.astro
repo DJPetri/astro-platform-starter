@@ -1,0 +1,74 @@
+---
+const { partnerUrls } = Astro.props;
+---
+
+<div id="gallery">Lade Partner...</div>
+
+<script type="module">
+  const urls = JSON.parse({JSON.stringify(partnerUrls)});
+
+  async function fetchData(url) {
+    try {
+      const res = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`);
+      const { data } = await res.json();
+      return {
+        url,
+        title: data.title || url,
+        description: data.description || "",
+        image: data.image?.url || "/fallback.png"
+      };
+    } catch (err) {
+      return {
+        url,
+        title: url,
+        description: "Keine Vorschau verfügbar.",
+        image: "/fallback.png"
+      };
+    }
+  }
+
+  async function loadGallery() {
+    const gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
+
+    const cards = await Promise.all(urls.map(fetchData));
+
+    cards.forEach(({ url, title, description, image }) => {
+      const card = document.createElement("a");
+      card.href = url;
+      card.target = "_blank";
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${image}" alt="${title}" />
+        <h3>${title}</h3>
+        <p>${description}</p>
+      `;
+      gallery.appendChild(card);
+    });
+  }
+
+  loadGallery();
+</script>
+
+<style>
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: scale(1.02);
+}
+.card img {
+  max-width: 100px;
+  margin: 0 auto;
+}
+</style>
