@@ -63,50 +63,52 @@
   loadGallery();
 </script>
 
-#gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-}
+<style>
+  #gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
 
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-}
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
 
-.card:hover {
-  transform: scale(1.03);
-}
+  .card:hover {
+    transform: scale(1.03);
+  }
 
-.card img {
-  width: 100px;          /* feste Breite */
-  height: 100px;         /* feste Höhe für gleichmäßige Größe */
-  object-fit: contain;   /* Bild proportional skalieren, damit nichts verzerrt */
-  margin-bottom: 0.75rem;
-  flex-shrink: 0;
-}
+  .card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+  }
 
-.card h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-  line-height: 1.2;
-}
+  .card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
 
-.card p {
-  font-size: 0.9rem;
-  color: #555;
-  overflow-wrap: break-word;
-  flex-grow: 1;
-}
+  .card p {
+    font-size: 0.9rem;
+    color: #555;
+    overflow-wrap: break-word;
+    flex-grow: 1;
+  }
+</style>
