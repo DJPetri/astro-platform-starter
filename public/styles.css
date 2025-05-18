@@ -390,5 +390,53 @@ footer {
     height: 60vh; /* Weniger Platz auf kleinen Bildschirmen */
   }
 }
+
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.gallery-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  padding: 1rem;
+  text-align: center;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  text-decoration: none;
+}
+
+.gallery-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(102, 204, 255, 0.5);
+}
+
+.gallery-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  background: white;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.gallery-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: #66ccff;
+}
+
+.gallery-card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  flex-grow: 1;
 }
 
