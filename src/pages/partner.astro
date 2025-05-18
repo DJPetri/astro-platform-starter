@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "/layouts/BaseLayout.astro";
 import PartnerGallery from "/components/PartnerGallery.astro";
-import partnerUrls from "/public/data/partners.json";
 ---
 
 <BaseLayout title="Partner | Petrievents">
@@ -9,6 +8,5 @@ import partnerUrls from "/public/data/partners.json";
     <h2>Partner</h2>
     <PartnerGallery />
   </section>
-  <pre>{JSON.stringify(partnerUrls, null, 2)}</pre>
 
 </BaseLayout>
