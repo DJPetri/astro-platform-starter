@@ -5,7 +5,7 @@ const { partnerUrls } = Astro.props;
 <div id="gallery">Lade Partner...</div>
 
 <script type="module">
-  const urls = {JSON.stringify(partnerUrls)};
+  const urls = JSON.parse(`{JSON.stringify(partnerUrls).replace(/`/g, '\\`')}`);
   console.log("PartnerGallery Script startet", urls);
 
   async function fetchData(url) {
