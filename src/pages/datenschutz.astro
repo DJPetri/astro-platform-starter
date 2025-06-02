@@ -84,34 +84,20 @@ import BaseLayout from "/layouts/BaseLayout.astro";
 
 <style>
  .datenschutz_style {
-  background-color: white;
-    padding: 2rem 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.08);
-    max-width: 1024;
-    margin: 3rem auto;
-    font-family: 'Source Serif 4', Georgia, serif;
-    color: #222;
-    line-height: 1.7;
-  }
- .datenschutz_style h1,
-    .datenschutz_style h2 {
-      color: #111;
-      margin-top: 1.8rem;
-    }
+  background: #11111de0;
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-bottom: 3rem;
+  transition: transform 0.3s ease;
+}
 
-    .datenschutz_style p,
-    .datenschutz_style ul {
-      margin: 1rem 0;
-    }
+section:hover {
+  transform: translateY(-5px);
+}
 
-    .bdatenschutz_style ul {
-      list-style-type: disc;
-      margin-left: 1.5rem;
-    }
-
-    .datenschutz_style a {
-      color: #004080;
-      text-decoration: underline;
-    }
+h1, h2 {
+  color: #66ccff;
+  margin-bottom: 1rem;
+}
   </style>
