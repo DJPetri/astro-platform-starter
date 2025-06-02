@@ -3,84 +3,150 @@ import BaseLayout from "/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Datenschutzerklärung | Petrievents">
-  <section class="features">
-    <h1>Datenschutzerklärung</h1>
+---
+const title = "Datenschutzerklärung";
+---
+  <!DOCTYPE html>
+  <html lang="de">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>{title}</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet"
+      />
+      <style>
+        html, body {
+          margin: 0;
+          padding: 0;
+          background-color: #fff;
+          font-family: 'Source Serif 4', Georgia, serif;
+          color: #222;
+        }
 
-    <h2>1. Verantwortlicher</h2>
-    <p>
-      Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
-      <strong>Christian Petri</strong><br />
-      Taubesgarten 23c<br />
-      info@petrievents.de<br />
-      0173 / 993 6282
-    </p>
+        main {
+          max-width: 700px;
+          margin: 4rem auto;
+          padding: 2rem;
+          background: white;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+          border: 1px solid #e0e0e0;
+        }
 
-    <h2>2. Hosting (Netlify)</h2>
-    <p>
-      Unsere Website wird bei <strong>Netlify, Inc.</strong> (2325 3rd Street, Suite 296, San Francisco, CA 94107, USA) gehostet.
-      Netlify speichert die Daten in unserem Auftrag auf Servern, die ggf. auch außerhalb der EU liegen.
-      Weitere Informationen: <a href="https://www.netlify.com/gdpr/" target="_blank" rel="noopener">https://www.netlify.com/gdpr/</a>
-    </p>
+        h1, h2 {
+          color: #111;
+          margin-top: 2rem;
+        }
 
-    <h2>3. Zugriffsdaten und Logfiles</h2>
-    <p>
-      Beim Besuch der Website werden automatisch folgende Daten erhoben:
-    </p>
-    <ul>
-      <li>IP-Adresse</li>
-      <li>Datum und Uhrzeit der Anfrage</li>
-      <li>verwendeter Browser und Betriebssystem</li>
-      <li>Referrer-URL</li>
-    </ul>
-    <p>
-      Diese Daten werden zur Sicherstellung des technischen Betriebs und zur Erkennung von Angriffen verarbeitet. Eine Zusammenführung mit anderen Daten erfolgt nicht.
-    </p>
+        p {
+          line-height: 1.7;
+          margin: 1rem 0;
+        }
 
-    <h2>4. Kontaktformular (Formspree)</h2>
-    <p>
-      Wenn Sie uns über das Kontaktformular kontaktieren, werden Ihr Name und Ihre E-Mail-Adresse über <strong>Formspree</strong> (Formspree Inc., USA) an uns übermittelt.
-      Die Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
-      Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">https://formspree.io/legal/privacy-policy/</a>
-    </p>
+        ul {
+          list-style-type: disc;
+          margin-left: 1.5rem;
+        }
 
-    <h2>5. Rechtsgrundlage der Verarbeitung</h2>
-    <p>
-      Die Verarbeitung personenbezogener Daten erfolgt auf Grundlage von:
-    </p>
-    <ul>
-      <li>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse, z. B. zur Absicherung und Funktion der Website)</li>
-      <li>Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bei Anfragen über das Kontaktformular)</li>
-    </ul>
+        a {
+          color: #004080;
+          text-decoration: underline;
+        }
 
-    <h2>6. Ihre Rechte</h2>
-    <p>
-      Sie haben das Recht auf:
-    </p>
-    <ul>
-      <li>Auskunft (Art. 15 DSGVO)</li>
-      <li>Berichtigung (Art. 16 DSGVO)</li>
-      <li>Löschung (Art. 17 DSGVO)</li>
-      <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-      <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-      <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
-      <li>Beschwerde bei der zuständigen Aufsichtsbehörde</li>
-    </ul>
+        footer {
+          text-align: center;
+          margin-top: 4rem;
+          font-size: 0.9rem;
+          color: #777;
+        }
+      </style>
+    </head>
+    <body>
+      <main>
+        <h1>Datenschutzerklärung</h1>
 
-    <h2>7. Speicherung und Löschung</h2>
-    <p>
-      Personenbezogene Daten werden nur so lange gespeichert, wie dies für den jeweiligen Zweck erforderlich ist oder gesetzlich vorgeschrieben ist. Danach werden sie gelöscht.
-    </p>
+        <h2>1. Verantwortlicher</h2>
+        <p>
+          [Dein vollständiger Name]<br />
+          [Deine Adresse]<br />
+          [Deine E-Mail-Adresse]
+        </p>
 
-    <h2>8. SSL-Verschlüsselung</h2>
-    <p>
-      Diese Website nutzt HTTPS zur sicheren Datenübertragung.
-    </p>
+        <h2>2. Hosting (Netlify)</h2>
+        <p>
+          Unsere Website wird bei <strong>Netlify</strong> (Netlify Inc., 2325 3rd Street, Suite 296, San Francisco, CA 94107, USA) gehostet.
+          Die Server können sich auch außerhalb der EU befinden. Mit Netlify besteht ein Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO.
+          Weitere Informationen: <a href="https://www.netlify.com/gdpr/" target="_blank">https://www.netlify.com/gdpr/</a>
+        </p>
 
-    <h2>9. Änderungen dieser Datenschutzerklärung</h2>
-    <p>
-      Wir behalten uns vor, diese Datenschutzerklärung zu ändern, wenn sich die rechtlichen Grundlagen oder der Funktionsumfang der Website ändern.
-    </p>
+        <h2>3. Zugriffsdaten und Logfiles</h2>
+        <p>
+          Beim Besuch der Website werden automatisch folgende Daten verarbeitet:
+        </p>
+        <ul>
+          <li>IP-Adresse</li>
+          <li>Datum und Uhrzeit der Anfrage</li>
+          <li>Browsertyp und Version</li>
+          <li>verwendetes Betriebssystem</li>
+          <li>Referrer-URL (die zuvor besuchte Seite)</li>
+        </ul>
+        <p>
+          Diese Daten dienen der technischen Überwachung und Sicherheit. Eine Zusammenführung mit anderen Daten erfolgt nicht.
+        </p>
 
-    <p><em>Stand: 02.06.2025</em></p>
-  </section>
+        <h2>4. Kontaktformular (Formspree)</h2>
+        <p>
+          Bei Nutzung unseres Kontaktformulars wird Ihre Nachricht über den Dienst <strong>Formspree</strong> (Formspree Inc., USA) verarbeitet.
+          Dabei werden Name und E-Mail-Adresse erfasst. Die Daten werden ausschließlich zur Beantwortung Ihrer Anfrage genutzt.
+          Informationen: <a href="https://formspree.io/legal/privacy-policy/" target="_blank">https://formspree.io/legal/privacy-policy/</a>
+        </p>
+
+        <h2>5. Keine Cookies, kein Tracking</h2>
+        <p>
+          Diese Website verwendet keine Cookies, keine Analysetools und kein Tracking.
+        </p>
+
+        <h2>6. Rechtsgrundlagen der Verarbeitung</h2>
+        <p>
+          Die Datenverarbeitung erfolgt auf Grundlage von:
+        </p>
+        <ul>
+          <li>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse, z. B. für Server-Sicherheit)</li>
+          <li>Art. 6 Abs. 1 lit. b DSGVO (Verarbeitung von Kontaktanfragen)</li>
+        </ul>
+
+        <h2>7. Ihre Rechte</h2>
+        <p>Sie haben das Recht auf:</p>
+        <ul>
+          <li>Auskunft (Art. 15 DSGVO)</li>
+          <li>Berichtigung (Art. 16 DSGVO)</li>
+          <li>Löschung (Art. 17 DSGVO)</li>
+          <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+          <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+          <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+          <li>Beschwerde bei der zuständigen Datenschutzaufsichtsbehörde</li>
+        </ul>
+
+        <h2>8. SSL-Verschlüsselung</h2>
+        <p>
+          Diese Seite nutzt SSL- bzw. TLS-Verschlüsselung über HTTPS zur sicheren Übertragung von Daten.
+        </p>
+
+        <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+        <p>
+          Wir behalten uns vor, diese Datenschutzerklärung anzupassen, wenn sich rechtliche oder technische Änderungen ergeben.
+        </p>
+
+        <p><em>Stand: 2. Juni 2025</em></p>
+      </main>
+
+      <footer>
+        <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+      </footer>
+    </body>
+  </html>
+
 </BaseLayout>
