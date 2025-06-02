@@ -4,8 +4,13 @@ import BaseLayout from "/layouts/BaseLayout.astro";
 <BaseLayout title="Mietkatalog | Petrievents">
   <section class="features">
     <h2>Mietkatalog</h2>
-        <div class="pdf-container">
-            <embed src="/PetriEvents_mietkatalog.pdf" type="application/pdf">
-        </div>
+     <p>Hier finden Sie unseren aktuellen Mietkatalog als eingebettetes PDF-Dokument:</p>
+      <iframe
+        src="/PetriEvents_mietkatalog.pdf"
+        width="100%"
+        height="800px"
+        style="border: none; border-radius: 1rem; box-shadow: 0 0 10px rgba(0,0,0,0.3); background: white;"
+        title="Mietkatalog PDF"
+      ></iframe>
   </section>
 </BaseLayout>
