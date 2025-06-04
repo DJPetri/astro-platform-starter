@@ -10,11 +10,15 @@
 </div>
 
 <style>
-  .gallery-skeleton {
+  #gallery {
+    margin-top: 2rem;
+  }
+
+  .gallery-skeleton,
+  .gallery-loaded {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin-top: 2rem;
   }
 
   .skeleton-card {
@@ -33,9 +37,33 @@
       background-position: -100% 0;
     }
   }
+
+  .gallery-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #1e1e1e;
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .gallery-card:hover {
+    transform: scale(1.02);
+  }
+
+  .gallery-card img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 </style>
 
 <script type="module">
+  async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   async function fetchPartnerUrls() {
     const res = await fetch('/data/partners.json');
     if (!res.ok) throw new Error('Partner-URLs konnten nicht geladen werden');
@@ -65,20 +93,24 @@
 
   async function loadGallery() {
     const gallery = document.getElementById('gallery');
-    gallery.innerHTML = `
-      <div class="gallery-skeleton">
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-        <div class="skeleton-card"></div>
-      </div>
-    `;
+
+    // Skeleton bleibt erst mal stehen
 
     try {
       const urls = await fetchPartnerUrls();
 
+      // Testweise Verzögerung (löschen, wenn nicht mehr nötig)
+      await sleep(1200);
+
+      if (!Array.isArray(urls) || urls.length === 0) {
+        gallery.innerHTML = '<p>Keine Partner gefunden.</p>';
+        return;
+      }
+
       const cardsData = await Promise.all(urls.map(fetchMetadata));
 
-      gallery.innerHTML = '';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'gallery-loaded';
 
       for (const { url, title, description, image } of cardsData) {
         const card = document.createElement('a');
@@ -90,10 +122,13 @@
           <h3>${title}</h3>
           <p>${description}</p>
         `;
-        gallery.appendChild(card);
+        wrapper.appendChild(card);
       }
+
+      gallery.innerHTML = '';
+      gallery.appendChild(wrapper);
     } catch (e) {
-      gallery.textContent = 'Fehler beim Laden der Partner.';
+      gallery.innerHTML = '<p>Fehler beim Laden der Partnerdaten.</p>';
       console.error(e);
     }
   }
