@@ -36,10 +36,6 @@
 </style>
 
 <script type="module">
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   async function fetchPartnerUrls() {
     const res = await fetch('/data/partners.json');
     if (!res.ok) throw new Error('Partner-URLs konnten nicht geladen werden');
@@ -79,9 +75,6 @@
 
     try {
       const urls = await fetchPartnerUrls();
-
-      // 🕒 Hier ist die künstliche Verzögerung zum Testen
-      await sleep(1500);
 
       const cardsData = await Promise.all(urls.map(fetchMetadata));
 
