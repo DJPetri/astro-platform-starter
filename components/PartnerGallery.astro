@@ -1,8 +1,52 @@
 ---
-// Keine Props, alles clientseitig
 ---
 
+// Kein Server-Side-Code nötig
+
 <div id="gallery">Lade Partner...</div>
+
+<style>
+  /* Skeleton Styles */
+  .gallery-card.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    animation: pulse 1.5s infinite;
+    gap: 0.75rem;
+  }
+
+  .skeleton-image {
+    width: 100px;
+    height: 100px;
+    background: #333;
+    border-radius: 50%;
+  }
+
+  .skeleton-text {
+    height: 1rem;
+    background: #444;
+    border-radius: 0.25rem;
+  }
+
+  .skeleton-text.title {
+    width: 60%;
+    height: 1.2rem;
+  }
+
+  .skeleton-text.description {
+    width: 80%;
+    height: 0.8rem;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>
 
 <script type="module">
   async function fetchPartnerUrls() {
@@ -34,30 +78,47 @@
 
   async function loadGallery() {
     const gallery = document.getElementById('gallery');
-    gallery.textContent = 'Lade Partner...';
+    gallery.innerHTML = '';
 
+    // Step 1: URLs laden
+    let urls;
     try {
-      const urls = await fetchPartnerUrls();
-      const cardsData = await Promise.all(urls.map(fetchMetadata));
-
-      gallery.innerHTML = '';
-
-      for (const { url, title, description, image } of cardsData) {
-        const card = document.createElement('a');
-        card.href = url;
-        card.target = '_blank';
-        card.className = 'gallery-card';
-        card.innerHTML = `
-          <img src="${image}" alt="${title}" />
-          <h3>${title}</h3>
-          <p>${description}</p>
-        `;
-        gallery.appendChild(card);
-      }
+      urls = await fetchPartnerUrls();
     } catch (e) {
       gallery.textContent = 'Fehler beim Laden der Partner.';
       console.error(e);
+      return;
     }
+
+    // Step 2: Skeletons anzeigen
+    const placeholders = urls.map(() => {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'gallery-card loading';
+      placeholder.innerHTML = `
+        <div class="skeleton-image"></div>
+        <div class="skeleton-text title"></div>
+        <div class="skeleton-text description"></div>
+      `;
+      gallery.appendChild(placeholder);
+      return placeholder;
+    });
+
+    // Step 3: Metadaten laden und Skeletons ersetzen
+    const cardsData = await Promise.all(urls.map(fetchMetadata));
+
+    cardsData.forEach((data, i) => {
+      const { url, title, description, image } = data;
+      const card = document.createElement('a');
+      card.href = url;
+      card.target = '_blank';
+      card.className = 'gallery-card';
+      card.innerHTML = `
+        <img src="${image}" alt="${title}" />
+        <h3>${title}</h3>
+        <p>${description}</p>
+      `;
+      gallery.replaceChild(card, placeholders[i]);
+    });
   }
 
   loadGallery();
