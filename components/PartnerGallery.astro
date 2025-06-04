@@ -35,26 +35,40 @@
 
   async function loadGallery() {
     const gallery = document.getElementById('gallery');
-    gallery.textContent = 'Lade Partner...';
+    gallery.textContent = '';
 
     try {
       const urls = await fetchPartnerUrls();
-      const cardsData = await Promise.all(urls.map(fetchMetadata));
 
-      gallery.innerHTML = '';
+      // Platzhalter-Karten einfügen
+      const placeholderCards = urls.map(() => {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'gallery-card loading';
+        placeholder.innerHTML = `
+          <img src="/loader.gif" alt="Lade..." />
+          <h3>Lädt...</h3>
+          <p>Vorschau wird geladen</p>
+        `;
+        gallery.appendChild(placeholder);
+        return placeholder;
+      });
 
-      for (const { url, title, description, image } of cardsData) {
+      // Metadaten laden und Platzhalter ersetzen
+      urls.forEach(async (url, index) => {
+        const data = await fetchMetadata(url);
         const card = document.createElement('a');
-        card.href = url;
+        card.href = data.url;
         card.target = '_blank';
         card.className = 'gallery-card';
         card.innerHTML = `
-          <img src="${image}" alt="${title}" />
-          <h3>${title}</h3>
-          <p>${description}</p>
+          <img src="${data.image}" alt="${data.title}" />
+          <h3>${data.title}</h3>
+          <p>${data.description}</p>
         `;
-        gallery.appendChild(card);
-      }
+
+        gallery.replaceChild(card, placeholderCards[index]);
+      });
+
     } catch (e) {
       gallery.textContent = 'Fehler beim Laden der Partner.';
       console.error(e);
