@@ -1,9 +1,9 @@
 ---
 // index.astro
-import Layout from '/layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<Layout>
+<BaseLayout>
   <section class="hero">
     <h1>Willkommen bei <span class="highlight">Petrievents</span></h1>
     <p class="subheading">Ihre Eventtechnik und DJ-Experten für unvergessliche Momente!</p>
@@ -73,11 +73,13 @@ import Layout from '/layouts/BaseLayout.astro';
     fetch(`https://api.counterapi.dev/v1/petrievents/${counter.key}/up`)
       .then(response => response.json())
       .then(data => {
-        document.getElementById(counter.elementId).textContent = data.count;
+        const el = document.getElementById(counter.elementId);
+        if (el) el.textContent = data.count;
       })
       .catch(err => {
         console.error(`Fehler beim Zähler für ${counter.key}:`, err);
-        document.getElementById(counter.elementId).textContent = '❌';
+        const el = document.getElementById(counter.elementId);
+        if (el) el.textContent = '❌';
       });
   });
 </script>

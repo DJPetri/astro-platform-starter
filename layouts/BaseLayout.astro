@@ -42,7 +42,7 @@ const { title = "Petrievents" } = Astro.props;
           <a href="/partner">Partner</a>
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutzerklärung</a>
-         <!-- <a href="/PetriEvents_mietkatalog.pdf" target="_blank">Mietkatalog 💾</a>
+          <a href="/PetriEvents_mietkatalog.pdf" target="_blank">Mietkatalog 💾</a>
         </nav>
 
         <div class="sidebar-bottom">
@@ -59,9 +59,11 @@ const { title = "Petrievents" } = Astro.props;
     <script>
       const toggle = document.querySelector('.sidebar-toggle');
       const sidebar = document.querySelector('.sidebar');
-      toggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-      });
+      if (toggle && sidebar) {
+        toggle.addEventListener('click', () => {
+          sidebar.classList.toggle('collapsed');
+        });
+      }
     </script>
     <!-- 🟢 Dein zusätzliches Sidebar-Skript -->
     <script type="module" src="/scripts/adjustSidebar.js"></script>
