@@ -368,6 +368,11 @@ footer {
   color: #ccc;
   flex-grow: 1;
 }
+
+.sidebar-nav .with-icon { display:flex; align-items:center; }
+.sidebar-nav .with-icon svg { flex:0 0 auto; }
+
+
 /* === Media Queries für mobile Responsivität === */
 /* === Media Queries für mobile Responsivität === */
 /* === Media Queries für mobile Responsivität === */
