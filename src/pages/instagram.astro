@@ -17,4 +17,60 @@ const IG_URL = `https://www.instagram.com/${IG_USER}/`;
 </p>
 </section>
 
+
+<script>
+  // IG_URL aus Astro-Template ins Skript bringen
+  const IG_URL = "{IG_URL}";
+  const WIDGET_URL = ""; // optional: z.B. "https://lightwidget.com/widgets/DEIN_WIDGET.html"
+
+
+const loadBtn = document.getElementById('ig-load');
+const consent = document.getElementById('ig-consent');
+const embed = document.getElementById('ig-embed');
+
+
+function buildFallbackBadge(url) {
+// Fallback: Zeige ein großes Profil-Badge, falls kein Widget hinterlegt ist
+const a = document.createElement('a');
+a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+a.className = 'ig-badge';
+a.textContent = url.replace('https://www.instagram.com/','@');
+return a;
+}
+
+
+if (loadBtn && consent && embed) {
+loadBtn.addEventListener('click', () => {
+consent.hidden = true;
+embed.hidden = false;
+
+
+if (WIDGET_URL) {
+const iframe = document.createElement('iframe');
+iframe.src = WIDGET_URL;
+iframe.loading = 'lazy';
+iframe.referrerPolicy = 'no-referrer-when-downgrade';
+iframe.style.width = '100%';
+iframe.style.height = '800px';
+iframe.style.border = '0';
+iframe.setAttribute('title', 'Instagram Vorschau');
+embed.appendChild(iframe);
+} else {
+embed.appendChild(buildFallbackBadge("" + IG_URL));
+}
+});
+}
+</script>
+
+
+<style>
+.btn { display:inline-block; padding:.6rem 1rem; border-radius:.6rem; background:#66ccff; color:#00121a; text-decoration:none; font-weight:600; }
+.btn:hover { filter:brightness(.95); }
+
+
+.ig-consent { background:#11111de0; border-radius:1rem; padding:1rem; box-shadow:0 0 10px rgba(0,0,0,.4); }
+.ig-box { display:flex; gap:1rem; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.ig-embed { margin-top:1rem; }
+.ig-badge { display:inline-block; padding:1rem 1.25rem; border:2px solid #444; border-radius:1rem; font-weight:700; text-decoration:none; }
+</style>
 </BaseLayout>
