@@ -391,7 +391,6 @@ footer {
 .paket-img {
   width: 45%;
   height: auto;
-  max-height: none;
   object-fit: cover;
   border-radius: 1rem;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
@@ -405,6 +404,9 @@ footer {
 .paket-text {
   flex: 1;
   min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* optional: Text mittig zur Bildhöhe */
 }
 
 /* === Zubuchoptionen Grid === */
