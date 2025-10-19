@@ -375,47 +375,49 @@ footer {
 
 /* === Paket Layouts === */
 /* === Paket Layouts === Für Leistungen.astro */
-/* === Paket-Layout: Text und Bild gleich hoch === */
-/* === Gleichhohes Paketlayout === */
-/* === Paket-Layout mit gleichem Text-/Bildhöhe === */
-/* === Pakete nebeneinander, gleich hohe Spalten === */
-.paket-content {
-  display: flex;
-  align-items: stretch; /* beide Spalten gleich hoch */
-  gap: 2rem;
-  flex-wrap: nowrap;
-  position: relative;
+/* === Paket Layout === */
+.features.paket {
+  padding: 0;
 }
 
+/* Container mit Bild + Text */
+.paket-content {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Für Paket 2 (Bild links, Text rechts) */
+.paket-content.right {
+  flex-direction: row-reverse;
+}
+
+/* Textspalte */
 .paket-text {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  z-index: 2;
 }
 
-/* Bildcontainer füllt exakt dieselbe Höhe wie Text */
+/* Bildspalte */
 .paket-img-wrapper {
   flex: 1;
-  position: relative;
-  overflow: hidden;
+  display: flex;
   border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Das Bild selbst */
 .paket-img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 1/1; /* hält das Bild quadratisch, kann angepasst werden */
   object-fit: cover;
-}
-
-/* Spiegelung für Paket 2 */
-.paket-content.right {
-  flex-direction: row-reverse;
+  flex: 1;
+  align-self: stretch;
+  display: block;
 }
 
 /* === Mobile: Bild über Text === */
@@ -423,54 +425,13 @@ footer {
   .paket-content {
     flex-direction: column;
   }
+
   .paket-img {
-    position: static;
+    width: 100%;
     height: auto;
+    aspect-ratio: auto;
   }
 }
-.paket-content {
-  align-items: stretch;
-}
-.paket-text, .paket-img-wrapper {
-  display: flex;
-  flex: 1;
-}
-.paket-img-wrapper {
-  align-items: stretch;
-}
-.paket-img {
-  display: block;
-}
-.features.paket {
-  padding: 0;
-}
-
-.paket-content {
-  align-items: stretch;
-}
-
-.paket-text, .paket-img-wrapper {
-  display: flex;
-  flex: 1;
-}
-
-.paket-img-wrapper {
-  align-items: stretch;
-}
-
-.paket-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.features.paket {
-  padding: 0;
-}
-
 
 /* === Zubuchoptionen Grid === */
 .options-grid {
