@@ -377,7 +377,7 @@ footer {
 /* === Paket Layouts === Für Leistungen.astro */
 .paket-content {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 2rem;
   flex-wrap: wrap;
 }
@@ -390,6 +390,9 @@ footer {
 
 .paket-img {
   width: 45%;
+  height: auto;
+  max-height: none;
+  object-fit: cover;
   border-radius: 1rem;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
   transition: transform 0.3s ease;
