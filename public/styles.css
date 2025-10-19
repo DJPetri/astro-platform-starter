@@ -378,57 +378,97 @@ footer {
 /* === Paket-Layout: Text und Bild gleich hoch === */
 /* === Gleichhohes Paketlayout === */
 /* === Paket-Layout mit gleichem Text-/Bildhöhe === */
-.paket-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: stretch;
+/* === Pakete nebeneinander, gleich hohe Spalten === */
+.paket-content {
+  display: flex;
+  align-items: stretch; /* beide Spalten gleich hoch */
   gap: 2rem;
+  flex-wrap: nowrap;
+  position: relative;
 }
 
 .paket-text {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 2;
 }
 
-/* Bildblock */
-.paket-bild {
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
+/* Bildcontainer füllt exakt dieselbe Höhe wie Text */
+.paket-img-wrapper {
+  flex: 1;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-.paket-bild img {
+.paket-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.paket-bild img:hover {
-  transform: scale(1.03);
+/* Spiegelung für Paket 2 */
+.paket-content.right {
+  flex-direction: row-reverse;
 }
 
-/* Gespiegeltes Layout für Paket 2 */
-.paket-grid.right {
-  direction: rtl;
-}
-.paket-grid.right > * {
-  direction: ltr;
-}
-
-/* === Mobile Ansicht === */
+/* === Mobile: Bild über Text === */
 @media (max-width: 900px) {
-  .paket-grid {
-    grid-template-columns: 1fr;
+  .paket-content {
+    flex-direction: column;
   }
-
-  .paket-bild img {
+  .paket-img {
+    position: static;
     height: auto;
-    max-height: 400px;
   }
+}
+.paket-content {
+  align-items: stretch;
+}
+.paket-text, .paket-img-wrapper {
+  display: flex;
+  flex: 1;
+}
+.paket-img-wrapper {
+  align-items: stretch;
+}
+.paket-img {
+  display: block;
+}
+.features.paket {
+  padding: 0;
+}
+
+.paket-content {
+  align-items: stretch;
+}
+
+.paket-text, .paket-img-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.paket-img-wrapper {
+  align-items: stretch;
+}
+
+.paket-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.features.paket {
+  padding: 0;
 }
 
 
