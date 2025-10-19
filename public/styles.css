@@ -376,70 +376,59 @@ footer {
 /* === Paket Layouts === */
 /* === Paket Layouts === Für Leistungen.astro */
 /* === Paket-Layout: Text und Bild gleich hoch === */
-.paket-content {
+/* === Gleichhohes Paketlayout === */
+.paket-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: stretch; /* beide Spalten gleich hoch */
   gap: 2rem;
-  align-items: stretch;
 }
 
-/* Reihenfolge für Variante "rechts" (Bild links, Text rechts) */
-.paket-content.right {
-  direction: rtl;
-}
-.paket-content.right .paket-text,
-.paket-content.right .paket-img-wrapper {
-  direction: ltr;
-}
-
-/* Bildcontainer */
-.paket-img-wrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Bild selbst */
-.paket-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-.paket-img:hover {
-  transform: scale(1.03);
-}
-
-/* Textspalte */
 .paket-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 300px;
 }
 
-/* === Mobile Ansicht: Bild über Text === */
+/* Bildblock */
+.paket-bild {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.paket-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* füllt die Spaltenhöhe exakt aus */
+  transition: transform 0.3s ease;
+}
+
+.paket-bild img:hover {
+  transform: scale(1.03);
+}
+
+/* Gespiegeltes Layout (Bild links, Text rechts) */
+.paket-grid.right {
+  direction: rtl;
+}
+.paket-grid.right > * {
+  direction: ltr;
+}
+
+/* === Mobil === */
 @media (max-width: 900px) {
-  .paket-content {
-    grid-template-columns: 1fr;   /* nur eine Spalte */
+  .paket-grid {
+    grid-template-columns: 1fr;
   }
 
-  .paket-content.right {
-    direction: ltr; /* Normalrichtung wiederherstellen */
-  }
-
-  .paket-img-wrapper {
-    order: -1; /* Bild nach oben */
-  }
-
-  .paket-img {
+  .paket-bild img {
     height: auto;
-    max-height: 400px; /* optional: verhindert übergroßes Bild */
+    max-height: 400px;
   }
 }
-
 
 /* === Zubuchoptionen Grid === */
 .options-grid {
