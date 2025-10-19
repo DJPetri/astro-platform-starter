@@ -375,49 +375,52 @@ footer {
 
 /* === Paket Layouts === */
 /* === Paket Layouts === Für Leistungen.astro */
-/* === Paket Layout === */
+/* === Paket Layout stabil === */
 .features.paket {
   padding: 0;
 }
 
-/* Container mit Bild + Text */
 .paket-content {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   gap: 2rem;
-  align-items: stretch;
 }
 
-/* Für Paket 2 (Bild links, Text rechts) */
+/* Text links */
+.paket-content.left {
+  flex-direction: row;
+}
+
+/* Bild links */
 .paket-content.right {
   flex-direction: row-reverse;
 }
 
-/* Textspalte */
 .paket-text {
-  flex: 1;
+  flex: 1 1 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Bildspalte */
 .paket-img-wrapper {
-  flex: 1;
+  flex: 1 1 45%;
+  max-height: 500px;       /* ←  Bildhöhe begrenzen  */
   display: flex;
-  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
 }
 
-/* Das Bild selbst */
 .paket-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 1/1; /* hält das Bild quadratisch, kann angepasst werden */
   object-fit: cover;
-  flex: 1;
-  align-self: stretch;
   display: block;
+  border-radius: 1rem;
 }
 
 /* === Mobile: Bild über Text === */
@@ -426,10 +429,8 @@ footer {
     flex-direction: column;
   }
 
-  .paket-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: auto;
+  .paket-img-wrapper {
+    max-height: none;
   }
 }
 
