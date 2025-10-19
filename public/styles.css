@@ -376,10 +376,6 @@ footer {
 /* === Paket Layouts === */
 /* === Paket Layouts === Für Leistungen.astro */
 /* === Paket Layout stabil === */
-.features.paket {
-  padding: 0;
-}
-
 .paket-content {
   display: flex;
   flex-wrap: wrap;
