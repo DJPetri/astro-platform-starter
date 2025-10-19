@@ -375,48 +375,53 @@ footer {
 
 /* === Paket Layouts === */
 /* === Paket Layouts === Für Leistungen.astro */
-/* === Paket Layout stabil === */
+/* === Paket Layout – ausgewogen und stabil === */
+.features.paket {
+  padding: 2rem;
+}
+
 .paket-content {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
-/* Text links */
-.paket-content.left {
-  flex-direction: row;
-}
-
-/* Bild links */
 .paket-content.right {
   flex-direction: row-reverse;
 }
 
 .paket-text {
-  flex: 1 1 50%;
+  flex: 1 1 55%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  line-height: 1.6;
 }
 
+/* Bildspalte */
 .paket-img-wrapper {
-  flex: 1 1 45%;
-  max-height: 500px;       /* ←  Bildhöhe begrenzen  */
+  flex: 1 1 40%;
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 420px; /* wirkt harmonisch zu 6–8 Textzeilen */
   overflow: hidden;
-  border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  border-radius: 1.2rem;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
 }
 
 .paket-img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  display: block;
-  border-radius: 1rem;
+  border-radius: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.paket-img:hover {
+  transform: scale(1.03);
 }
 
 /* === Mobile: Bild über Text === */
@@ -424,8 +429,8 @@ footer {
   .paket-content {
     flex-direction: column;
   }
-
   .paket-img-wrapper {
+    width: 100%;
     max-height: none;
   }
 }
