@@ -373,6 +373,73 @@ footer {
 .sidebar-nav .with-icon svg { flex:0 0 auto; }
 
 
+/* === Paket Layouts === */
+/* === Paket Layouts === Für Leistungen.astro */
+.paket-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.paket-content.left .paket-text { order: 1; }
+.paket-content.left .paket-img { order: 2; }
+
+.paket-content.right .paket-text { order: 2; }
+.paket-content.right .paket-img { order: 1; }
+
+.paket-img {
+  width: 45%;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.paket-img:hover {
+  transform: scale(1.03);
+}
+
+.paket-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* === Zubuchoptionen Grid === */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.option-card {
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(102,204,255,0.5);
+}
+
+.option-card h3 {
+  color: #66ccff;
+  margin-bottom: 0.75rem;
+}
+
+.option-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  background: #222;
+}
+
+
 /* === Media Queries für mobile Responsivität === */
 /* === Media Queries für mobile Responsivität === */
 /* === Media Queries für mobile Responsivität === */
