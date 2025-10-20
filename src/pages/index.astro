@@ -100,13 +100,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-    .offset-left {
-      transform: translateX(-2%);
-    }
+.offset-left {
+  --card-offset: -2%;
+  transform: translateX(var(--card-offset));
+}
 
-    .offset-right {
-      transform: translateX(2%);
-    }
+.offset-right {
+  --card-offset: 2%;
+  transform: translateX(var(--card-offset));
+}
 
     .offset-left,
     .offset-right {
