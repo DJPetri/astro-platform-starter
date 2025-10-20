@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
-  <section class="hero card">
+  <section class="heading">
     <h1>Willkommen bei <span class="highlight">Petrievents</span></h1>
     <p class="subheading">Ihre Eventtechnik und DJ-Experten für unvergessliche Momente!</p>
   </section>
@@ -14,14 +14,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <strong>Sie</strong> sind genau am richtigen Ort, wenn Sie auf der Suche nach
       <strong>erstklassiger Eventtechnik</strong> und einem <strong>DJ-Service</strong> sind, der Ihre Veranstaltung
       unvergesslich macht! Egal ob <em>Hochzeiten</em>, <em>Geburtstagsfeiern</em>, <em>Firmenfeiern</em> oder jede andere
-      Art von Event – bei uns bekommen Sie alles, was Sie für ein perfektes Event brauchen. 🎉
+      Art von Event – bei uns bekommen Sie alles, was Sie für ein perfektes Event brauchen.
     </p>
 
     <p>
       Unsere Mission ist es, jedes Event mit der richtigen Technik und der perfekten Musik zu bereichern, damit Sie sich
       zurücklehnen können und sich um nichts mehr sorgen müssen. Von der Hochzeitsfeier über die große Firmenfeier bis hin
       zu privaten Geburtstagsfeiern – wir sorgen dafür, dass Ihre Gäste von der ersten bis zur letzten Minute begeistert
-      sind. 🎶✨
+      sind.
     </p>
   </section>
 
@@ -30,19 +30,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
     <ul>
       <li>
-        <strong>🎛️ Professionelle Technik:</strong> Modernste Technik, die für jeden Eventtyp perfekt geeignet ist –
+        <strong>Professionelle Technik:</strong> Modernste Technik, die für jeden Eventtyp perfekt geeignet ist –
         mit klarem Sound und eindrucksvoller Wirkung.
       </li>
       <li>
-        <strong>🎧 DJ-Service der Extraklasse:</strong> Mit der perfekten Mischung aus Musikstilen bringen wir jede
+        <strong>DJ-Service der Extraklasse:</strong> Mit der perfekten Mischung aus Musikstilen bringen wir jede
         Stimmung auf den Höhepunkt. Kein Fuß bleibt still!
       </li>
       <li>
-        <strong>🛠️ Flexibilität & Individualität:</strong> Jedes Event ist einzigartig – wir passen unseren Service
+        <strong>Flexibilität & Individualität:</strong> Jedes Event ist einzigartig – wir passen unseren Service
         individuell an Ihre Wünsche an.
       </li>
       <li>
-        <strong>🔥 Erfahrung & Leidenschaft:</strong> Mit jahrelanger Erfahrung und echter Begeisterung sorgen wir für
+        <strong>Erfahrung & Leidenschaft:</strong> Mit jahrelanger Erfahrung und echter Begeisterung sorgen wir für
         reibungslose Abläufe und begeisterte Gäste.
       </li>
     </ul>
@@ -107,7 +107,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 }
 
 .offset-right {
-  --card-offset: 2%;
+  --card-offset: 5%;
   transform: translateX(var(--card-offset));
 }
 
@@ -121,22 +121,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       .offset-right {
         transform: none;
       }
-    }
-
-    /* === Hero Section === */
-    .hero {
-      text-align: center;
-      margin-bottom: 2rem;
-      background: rgba(0, 0, 0, 0.4);
-    }
-
-    .hero .highlight {
-      color: #66ccff;
-    }
-
-    .subheading {
-      font-size: 1.25rem;
-      color: #ccc;
     }
 
     /* === Features / Mission / Intro === */
