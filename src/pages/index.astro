@@ -4,12 +4,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
-  <section class="hero card">
+  <section class="hero">
     <h1>Willkommen bei <span class="highlight">Petrievents</span></h1>
     <p class="subheading">Ihre Eventtechnik und DJ-Experten für unvergessliche Momente!</p>
   </section>
 
-  <section class="intro card offset-left">
+  <section class="intro">
     <p>
       <strong>Sie</strong> sind genau am richtigen Ort, wenn Sie auf der Suche nach <strong>erstklassiger Eventtechnik</strong> und einem
       <strong>DJ-Service</strong> sind, der Ihre Veranstaltung unvergesslich macht! Egal ob <em>Hochzeiten</em>,
@@ -25,7 +25,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <section class="features card offset-right">
+  <section class="features">
     <h2>Warum <span class="highlight">Petrievents</span>?</h2>
 
     <ul>
@@ -48,7 +48,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </ul>
   </section>
 
-  <section class="mission card offset-left">
+  <section class="mission">
     <h2>Ihr Event. Unsere Leidenschaft.</h2>
     <p>
       Ob elegante Hochzeit, ausgelassene Geburtstagsfeier oder großartiges Firmenevent – wir helfen Ihnen, das perfekte
@@ -60,125 +60,27 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       Musik zu einem echten Highlight zu machen. Bei <strong>Petrievents</strong> ist jedes Event ein Meisterwerk! 🎧✨
     </p>
   </section>
+</Layout>
 
-  <p class="counter">Besucher Startseite: <span id="count-startseite">Lädt...</span></p>
+<p>Besucher Startseite: <span id="count-startseite">Lädt...</span></p>
 
-  <script>
-    const counters = [
-      { key: 'startseite', elementId: 'count-startseite' },
-    ];
+<script>
+  const counters = [
+    { key: 'startseite', elementId: 'count-startseite' },
+  ];
 
-    counters.forEach(counter => {
-      fetch(`https://api.counterapi.dev/v1/petrievents/${counter.key}/up`)
-        .then(response => response.json())
-        .then(data => {
-          const el = document.getElementById(counter.elementId);
-          if (el) el.textContent = data.count;
-        })
-        .catch(err => {
-          console.error(`Fehler beim Zähler für ${counter.key}:`, err);
-          const el = document.getElementById(counter.elementId);
-          if (el) el.textContent = '❌';
-        });
-    });
-  </script>
+  counters.forEach(counter => {
+    fetch(`https://api.counterapi.dev/v1/petrievents/${counter.key}/up`)
+      .then(response => response.json())
+      .then(data => {
+        const el = document.getElementById(counter.elementId);
+        if (el) el.textContent = data.count;
+      })
+      .catch(err => {
+        console.error(`Fehler beim Zähler für ${counter.key}:`, err);
+        const el = document.getElementById(counter.elementId);
+        if (el) el.textContent = '❌';
+      });
+  });
+</script>
 
-  <style>
-    /* ===== Grundlayout ===== */
-    :root {
-      --petrievents-blue: #00134e;
-      --petrievents-yellow: #ffcc00;
-      --bg-light: #f8f9fb;
-      --bg-white: #ffffff;
-    }
-
-    section {
-      margin: 4rem auto;
-      max-width: 900px;
-      line-height: 1.6;
-      padding: 2rem;
-    }
-
-    h1, h2 {
-      color: var(--petrievents-blue);
-      margin-bottom: 1rem;
-    }
-
-    .highlight {
-      color: var(--petrievents-yellow);
-    }
-
-    p, li {
-      color: #333;
-      font-size: 1.1rem;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    li {
-      margin-bottom: 1rem;
-    }
-
-    /* ===== Kartenstil ===== */
-    .card {
-      background: var(--bg-white);
-      border-radius: 20px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    }
-
-    /* ===== Versetzter Stil ===== */
-    .offset-left {
-      background: var(--bg-light);
-      transform: translateX(-30px);
-    }
-
-    .offset-right {
-      background: var(--bg-light);
-      transform: translateX(30px);
-    }
-
-    /* Mobile Optimierung */
-    @media (max-width: 768px) {
-      .offset-left,
-      .offset-right {
-        transform: none;
-      }
-    }
-
-    /* ===== Hero ===== */
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, var(--petrievents-blue), #012a7b);
-      color: white;
-    }
-
-    .hero .highlight {
-      color: var(--petrievents-yellow);
-    }
-
-    .subheading {
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      font-weight: 300;
-    }
-
-    /* ===== Counter ===== */
-    .counter {
-      text-align: center;
-      color: #555;
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-    }
-  </style>
-</BaseLayout>
