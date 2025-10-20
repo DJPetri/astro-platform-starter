@@ -94,7 +94,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-
+.card:hover {
+  transform: scale(1.02); /* sanfter Zoom-Effekt */
+  box-shadow: 0 0 15px rgba(102, 204, 255, 0.3); /* reduzierter Glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
     .offset-left {
       transform: translateX(-2%);
