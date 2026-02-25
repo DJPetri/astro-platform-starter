@@ -10,6 +10,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <section class="intro card offset-left">
+    <div class="card-text">
     <p>
       <strong>Sie</strong> sind genau am richtigen Ort, wenn Sie auf der Suche nach
       <strong>erstklassiger Eventtechnik</strong> und einem <strong>DJ-Service</strong> sind, der Ihre Veranstaltung
@@ -23,6 +24,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       zu privaten Geburtstagsfeiern – wir sorgen dafür, dass Ihre Gäste von der ersten bis zur letzten Minute begeistert
       sind.
     </p>
+     </div>
+     <div class="card-image">
+      <img src="/Bilder/bild12.jpg" alt="Intro Bild" />
+    </div>
   </section>
 
   <section class="features card offset-right">
@@ -154,5 +159,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       font-size: 0.9rem;
       margin-top: 2rem;
     }
+    .card-content {
+  display: flex;
+  align-items: center;      /* vertikal zentriert */
+  justify-content: space-between;
+  gap: 2rem;                /* Abstand zwischen Text & Bild */
+  flex-wrap: wrap;           /* für Mobile */
+}
+
+.card-text {
+  flex: 1 1 60%;             /* Text nimmt ca. 60% der Breite ein */
+}
+
+.card-image {
+  flex: 1 1 35%;             /* Bild nimmt ca. 35% ein */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;       /* optional */
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
   </style>
 </BaseLayout>
