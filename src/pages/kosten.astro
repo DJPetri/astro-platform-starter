@@ -3,7 +3,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Was kostet ein DJ? | Petrievents">
-  <!-- === Abschnitt 1: Intro === -->
+
+  <!-- ================= Intro ================= -->
   <section class="heading">
     <h1>Was kostet ein DJ?</h1>
     <p class="subheading">
@@ -13,10 +14,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </p>
   </section>
 
-  <!-- === Abschnitt 2: Preisstruktur === -->
+
+  <!-- ================= Preise ================= -->
   <section class="preise-section">
     <h2>Eure DJ Kosten</h2>
-    <h2>Alles, was ihr wissen müsst</h2>
 
     <div class="preise-grid">
       <div class="preise-card">
@@ -37,66 +38,54 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <li><strong>Profi-DJ im Nebenberuf:</strong> 1.500 € – 1.900 €</li>
           <li><strong>Hauptberuflicher Profi-DJ:</strong> 1.900 € – 2.500 €</li>
         </ul>
-        <p><em>Jede Veranstaltung ist einzigartig, ich passe mein Angebot individuell an eure Wünsche an.</em></p>
       </div>
     </div>
 
+
+    <!-- ================= Beratung Block ================= -->
     <div class="beratung-block">
-      <img src="/bilder/beratung_hochzeitsdj.jpg" alt="DJ berät Brautpaar über Musik und Lichttechnik" />
-      <div>
+      <div class="beratung-image">
+        <img src="/bilder/beratung_hochzeitsdj.jpg" alt="DJ berät Brautpaar über Musik und Lichttechnik" />
+      </div>
+
+      <div class="beratung-text">
         <h3>Warum Petrievents?</h3>
         <p>Bei mir bekommt ihr nicht nur einen DJ, sondern ein Rundum-sorglos-Paket:</p>
         <ul>
-          <li><strong>🌍 Deutschland- & europaweite Buchung:</strong> Ob Mainz, Heidelberg oder Montafon. Ich bin für euch da.</li>
-          <li><strong>🤝 Persönlicher Kontakt:</strong> Vom ersten Gespräch bis zur Party stehe ich euch persönlich zur Seite.</li>
-          <li><strong>💡 Individuelle Lösungen:</strong> Jede Hochzeit ist einzigartig, genauso wie mein Service.</li>
+          <li><strong>🌍 Deutschland- & europaweite Buchung:</strong> Ich bin für euch da.</li>
+          <li><strong>🤝 Persönlicher Kontakt:</strong> Vom ersten Gespräch bis zur Party.</li>
+          <li><strong>💡 Individuelle Lösungen:</strong> Jede Hochzeit ist einzigartig.</li>
         </ul>
         <a href="/kontakt" class="button">Jetzt unverbindlich anfragen</a>
       </div>
     </div>
   </section>
 
-  <!-- === Abschnitt 3: Faktoren === -->
+
+  <!-- ================= Faktoren ================= -->
   <section class="features fakten">
-    <h2>Welche Faktoren beeinflussen die Kosten für einen Hochzeits-DJ?</h2>
-    <p>Die Kosten können stark variieren. Hier sind die wichtigsten Punkte, die ihr bei eurer Planung berücksichtigen solltet:</p>
+    <h2>Welche Faktoren beeinflussen die Kosten?</h2>
 
     <div class="faktoren-grid">
-      <div class="faktor"><div class="icon">🎧</div><h3>Erfahrung & Qualifikation</h3><p>Erfahrene DJs mit Referenzen sorgen für Sicherheit und perfekte Stimmung – das wirkt sich auf den Preis aus.</p></div>
-      <div class="faktor"><div class="icon">📍</div><h3>Regionale Unterschiede</h3><p>In Ballungsräumen sind Preise oft höher als in ländlichen Regionen – je nach Nachfrage und Lebenshaltungskosten.</p></div>
-      <div class="faktor"><div class="icon">⏱️</div><h3>Dauer der Buchung</h3><p>Längere Veranstaltungen bedeuten höhere Kosten – viele DJs berechnen nach Stunden.</p></div>
-      <div class="faktor"><div class="icon">💡</div><h3>Technik & Equipment</h3><p>Je mehr Licht- und Tontechnik eingesetzt wird, desto höher der Preis.</p></div>
-      <div class="faktor"><div class="icon">🎁</div><h3>Individuelle Leistungen</h3><p>Zusatzoptionen wie Trauungsbegleitung oder Karaoke werden extra berechnet.</p></div>
-      <div class="faktor"><div class="icon">⭐</div><h3>Bewertungen & Reputation</h3><p>Ein bekannter DJ mit Top-Bewertungen darf mehr verlangen – Qualität spricht sich herum.</p></div>
-      <div class="faktor"><div class="icon">👥</div><h3>Gästeanzahl & Veranstaltungsgröße</h3><p>Je größer die Feier, desto mehr Technik und Aufwand sind nötig.</p></div>
-      <div class="faktor"><div class="icon">✈️</div><h3>Reisekosten</h3><p>Längere Anfahrten oder Übernachtungen erhöhen die Gesamtkosten.</p></div>
-      <div class="faktor"><div class="icon">🕒</div><h3>Buchungszeitpunkt</h3><p>Frühzeitige Buchungen sichern bessere Preise – Hochsaison ist teurer.</p></div>
-      <div class="faktor"><div class="icon">💍</div><h3>Art der Veranstaltung</h3><p>Hochzeiten erfordern mehr Planung und Musikabstimmung als andere Events.</p></div>
-      <div class="faktor"><div class="icon">📄</div><h3>Versicherung & Gewerbe</h3><p>Professionelle DJs mit Gewerbe & Versicherung haben höhere Fixkosten, bieten aber mehr Sicherheit.</p></div>
-    </div>
-
-    <div class="fazit">
-      <h3>Fazit</h3>
-      <p>Die DJ-Kosten hängen von vielen Faktoren ab: Erfahrung, Region, Technik, Dauer und individuellen Wünschen. Wenn ihr all diese Punkte beachtet, findet ihr den DJ, der perfekt zu eurem Budget passt.</p>
+      <div class="faktor"><div class="icon">🎧</div><h3>Erfahrung</h3><p>Erfahrung sorgt für Sicherheit und perfekte Stimmung.</p></div>
+      <div class="faktor"><div class="icon">📍</div><h3>Region</h3><p>Ballungsräume sind meist teurer.</p></div>
+      <div class="faktor"><div class="icon">⏱️</div><h3>Dauer</h3><p>Längere Events bedeuten höheren Aufwand.</p></div>
+      <div class="faktor"><div class="icon">💡</div><h3>Technik</h3><p>Mehr Licht & Sound = mehr Kosten.</p></div>
     </div>
   </section>
 
-  <!-- === Eingebettetes CSS === -->
+
+  <!-- ================= CSS ================= -->
   <style>
 
-    /* === Preise Sektion === */
+    /* ================= Preise ================= */
+
     .preise-section {
       margin-top: 3rem;
-      padding: 2rem;
+      padding: 3rem;
       background: #11111de0;
       border-radius: 2rem;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
-
-    .preise-section h2 {
-      color: #66ccff;
-      margin-bottom: 2rem;
-      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
     .preise-grid {
@@ -110,7 +99,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       background: rgba(255,255,255,0.05);
       padding: 2rem;
       border-radius: 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -119,60 +107,58 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       box-shadow: 0 0 20px rgba(102,204,255,0.4);
     }
 
-    .preise-card h3 {
-      color: #66ccff;
-      margin-bottom: 1rem;
-    }
-
-    .preise-card ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .preise-card li {
-      margin: 0.5rem 0;
-      color: #eee;
-    }
-
     .preise-card.highlight {
       border: 1px solid #66ccff;
       background: rgba(255,255,255,0.08);
     }
 
-    /* === Beratung + Warum Petrievents === */
+
+    /* ================= Beratung Block ================= */
+
     .beratung-block {
       display: flex;
-      align-items: center;
-      gap: 2rem;
+      align-items: stretch; /* gleiche Höhe */
+      gap: 3rem;
       margin-top: 3rem;
       flex-wrap: wrap;
     }
 
-    .beratung-block img {
-      flex: 1 1 45%;
+    .beratung-image {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .beratung-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 1.5rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
-    .beratung-block div {
-      flex: 1 1 50%;
+    .beratung-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .beratung-block h3 {
+    .beratung-text h3 {
       color: #66ccff;
       margin-bottom: 1rem;
     }
 
-    .beratung-block ul {
+    .beratung-text ul {
       list-style: none;
       padding: 0;
+      margin-top: 1rem;
     }
 
-    .beratung-block li {
+    .beratung-text li {
       margin-bottom: 0.75rem;
     }
 
-    .beratung-block .button {
+    .button {
       display: inline-block;
       margin-top: 1.5rem;
       background: #66ccff;
@@ -184,22 +170,24 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       transition: background 0.3s;
     }
 
-    .beratung-block .button:hover {
+    .button:hover {
       background: #33bbee;
     }
 
-    /* === Faktoren === */
+
+    /* ================= Faktoren ================= */
+
     .features.fakten {
+      margin-top: 4rem;
+      padding: 3rem;
       background: #11111de0;
       border-radius: 2rem;
-      padding: 3rem;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      margin-top: 4rem;
     }
 
     .faktoren-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
@@ -217,44 +205,23 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       box-shadow: 0 0 20px rgba(102,204,255,0.4);
     }
 
-    .faktor .icon {
+    .icon {
       font-size: 2rem;
       margin-bottom: 0.5rem;
-      color: #66ccff;
     }
 
-    .faktor h3 {
-      color: #66ccff;
-      margin-bottom: 0.5rem;
-    }
-
-    .faktor p {
-      color: #ddd;
-      font-size: 0.95rem;
-    }
-
-    .fazit {
-      margin-top: 3rem;
-      background: rgba(255,255,255,0.08);
-      border-left: 4px solid #66ccff;
-      padding: 1.5rem 2rem;
-      border-radius: 1rem;
-    }
-
-    .fazit h3 {
-      color: #66ccff;
-    }
+    /* ================= Responsive ================= */
 
     @media (max-width: 900px) {
       .beratung-block {
         flex-direction: column;
       }
-      .beratung-block img {
-        width: 100%;
-      }
-      .preise-intro h1 {
-        font-size: 1.5rem;
+
+      .beratung-image img {
+        height: auto;
       }
     }
+
   </style>
+
 </BaseLayout>

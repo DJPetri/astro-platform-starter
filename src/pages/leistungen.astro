@@ -110,7 +110,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <div class="options-grid">
       <div class="option-card">
         <h3>Weitere Funkmikrofone</h3>
-        <img src="/bilder/funkmikro.jpg" alt="Funkmikrofone" />
+        <img src="/bilder/bild7.jpg" alt="Funkmikrofone" />
       </div>
 
       <div class="option-card">
@@ -143,20 +143,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     margin: 0 auto;
   }
 
-  .paket-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 1.2rem;
-  }
+ .paket-img-wrapper {
+  width: 420px;        /* feste Breite */
+  height: 280px;       /* feste Höhe */
+  margin: 0 auto;
+  overflow: hidden;    /* wichtig */
+  border-radius: 1.2rem;
+}
 
-  .option-card img {
-    max-width: 220px;
-    max-height: 150px;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-  }
 </style>
