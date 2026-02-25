@@ -1,84 +1,120 @@
 ---
 // index.astro
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
   <section class="heading">
     <h1>Willkommen bei <span class="highlight">Petrievents</span></h1>
-    <p class="subheading">Ihre Eventtechnik und DJ-Experten für unvergessliche Momente!</p>
+    <p class="subheading">
+      Ihre Eventtechnik und DJ-Experten für unvergessliche Momente!
+    </p>
   </section>
 
   <section class="intro card offset-left">
-    <p>
-      <strong>Sie</strong> sind genau am richtigen Ort, wenn Sie auf der Suche nach
-      <strong>erstklassiger Eventtechnik</strong> und einem <strong>DJ-Service</strong> sind, der Ihre Veranstaltung
-      unvergesslich macht! Egal ob <em>Hochzeiten</em>, <em>Geburtstagsfeiern</em>, <em>Firmenfeiern</em> oder jede andere
-      Art von Event – bei uns bekommen Sie alles, was Sie für ein perfektes Event brauchen.
-    </p>
+    <div class="card-content">
+      <div class="card-text">
+        <p>
+          <strong>Sie</strong> sind genau am richtigen Ort, wenn Sie auf der Suche
+          nach
+          <strong>erstklassiger Eventtechnik</strong> und einem <strong
+            >DJ-Service</strong
+          > sind, der Ihre Veranstaltung unvergesslich macht! Egal ob <em
+            >Hochzeiten</em
+          >, <em>Geburtstagsfeiern</em>, <em>Firmenfeiern</em> oder jede andere Art
+          von Event – bei uns bekommen Sie alles, was Sie für ein perfektes Event
+          brauchen.
+        </p>
 
-    <p>
-      Unsere Mission ist es, jedes Event mit der richtigen Technik und der perfekten Musik zu bereichern, damit Sie sich
-      zurücklehnen können und sich um nichts mehr sorgen müssen. Von der Hochzeitsfeier über die große Firmenfeier bis hin
-      zu privaten Geburtstagsfeiern – wir sorgen dafür, dass Ihre Gäste von der ersten bis zur letzten Minute begeistert
-      sind.
-    </p>
+        <p>
+          Unsere Mission ist es, jedes Event mit der richtigen Technik und der
+          perfekten Musik zu bereichern, damit Sie sich zurücklehnen können und
+          sich um nichts mehr sorgen müssen. Von der Hochzeitsfeier über die
+          große Firmenfeier bis hin zu privaten Geburtstagsfeiern – wir sorgen
+          dafür, dass Ihre Gäste von der ersten bis zur letzten Minute
+          begeistert sind.
+        </p>
+      </div>
+      <div class="card-image">
+        <img src="/Bilder/jubelchris.jpg" alt="Intro Bild" />
+      </div>
+    </div>
   </section>
 
   <section class="features card offset-right">
-    <h2>Warum <span class="highlight">Petrievents</span>?</h2>
+    <div class="card-content">
+      <div class="card-text">
+        <h2>Warum <span class="highlight">Petrievents</span>?</h2>
 
-    <ul>
-      <li>
-        <strong>Professionelle Technik:</strong> Modernste Technik, die für jeden Eventtyp perfekt geeignet ist –
-        mit klarem Sound und eindrucksvoller Wirkung.
-      </li>
-      <li>
-        <strong>DJ-Service der Extraklasse:</strong> Mit der perfekten Mischung aus Musikstilen bringen wir jede
-        Stimmung auf den Höhepunkt. Kein Fuß bleibt still!
-      </li>
-      <li>
-        <strong>Flexibilität & Individualität:</strong> Jedes Event ist einzigartig – wir passen unseren Service
-        individuell an Ihre Wünsche an.
-      </li>
-      <li>
-        <strong>Erfahrung & Leidenschaft:</strong> Mit jahrelanger Erfahrung und echter Begeisterung sorgen wir für
-        reibungslose Abläufe und begeisterte Gäste.
-      </li>
-    </ul>
+        <ul>
+          <li>
+            <strong>Professionelle Technik:</strong> Modernste Technik, die für jeden
+            Eventtyp perfekt geeignet ist – mit klarem Sound und eindrucksvoller Wirkung.
+          </li>
+          <li>
+            <strong>DJ-Service der Extraklasse:</strong> Mit der perfekten Mischung
+            aus Musikstilen bringen wir jede Stimmung auf den Höhepunkt. Kein Fuß
+            bleibt still!
+          </li>
+          <li>
+            <strong>Flexibilität & Individualität:</strong> Jedes Event ist einzigartig
+            – wir passen unseren Service individuell an Ihre Wünsche an.
+          </li>
+          <li>
+            <strong>Erfahrung & Leidenschaft:</strong> Mit jahrelanger Erfahrung und
+            echter Begeisterung sorgen wir für reibungslose Abläufe und begeisterte
+            Gäste.
+          </li>
+        </ul>
+      </div>
+      <div class="card-image">
+        <img src="/Bilder/bodennebel2.png" alt="Intro Bild" />
+      </div>
+    </div>
   </section>
 
   <section class="mission card offset-left">
-    <h2>Ihr Event. Unsere Leidenschaft.</h2>
-    <p>
-      Ob elegante Hochzeit, ausgelassene Geburtstagsfeier oder großartiges Firmenevent – wir helfen Ihnen, das perfekte
-      Erlebnis zu schaffen. Verlassen Sie sich auf uns, um die richtige Atmosphäre zu kreieren, bei der sich Ihre Gäste
-      rundum wohlfühlen und noch lange davon sprechen werden.
-    </p>
-    <p>
-      <strong>Kontaktieren Sie uns noch heute</strong> – wir freuen uns darauf, Ihre Veranstaltung mit unserer Technik und
-      Musik zu einem echten Highlight zu machen. Bei <strong>Petrievents</strong> ist jedes Event ein Meisterwerk! 🎧✨
-    </p>
+    <div class="card-content">
+      <div class="card-text">
+        <h2>Ihr Event. Unsere Leidenschaft.</h2>
+        <p>
+          Ob elegante Hochzeit, ausgelassene Geburtstagsfeier oder großartiges
+          Firmenevent – wir helfen Ihnen, das perfekte Erlebnis zu schaffen.
+          Verlassen Sie sich auf uns, um die richtige Atmosphäre zu kreieren,
+          bei der sich Ihre Gäste rundum wohlfühlen und noch lange davon
+          sprechen werden.
+        </p>
+        <p>
+          <strong>Kontaktieren Sie uns noch heute</strong> – wir freuen uns darauf,
+          Ihre Veranstaltung mit unserer Technik und Musik zu einem echten Highlight
+          zu machen. Bei <strong>Petrievents</strong> ist jedes Event ein Meisterwerk!
+          🎧✨
+        </p>
+      </div>
+      <div class="card-image">
+        <img src="/Bilder/20260225_CasinoPartyorange.jpg" alt="Intro Bild" />
+      </div>
+    </div>
   </section>
 
-  <p class="counter">Besucher Startseite: <span id="count-startseite">Lädt...</span></p>
+  <p class="counter">
+    Besucher Startseite: <span id="count-startseite">Lädt...</span>
+  </p>
 
   <script>
-    const counters = [
-      { key: 'startseite', elementId: 'count-startseite' },
-    ];
+    const counters = [{ key: "startseite", elementId: "count-startseite" }];
 
-    counters.forEach(counter => {
+    counters.forEach((counter) => {
       fetch(`https://api.counterapi.dev/v1/petrievents/${counter.key}/up`)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           const el = document.getElementById(counter.elementId);
           if (el) el.textContent = data.count;
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(`Fehler beim Zähler für ${counter.key}:`, err);
           const el = document.getElementById(counter.elementId);
-          if (el) el.textContent = '❌';
+          if (el) el.textContent = "❌";
         });
     });
   </script>
@@ -91,25 +127,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.45);
       padding: 2rem;
       margin-bottom: 3rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     }
 
-.card:hover {
-  /* kombiniert Zoom + bestehenden X-Versatz */
-  transform: scale(1.02) translateX(var(--card-offset, 0));
-  box-shadow: 0 0 15px rgba(102, 204, 255, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .card:hover {
+      /* kombiniert Zoom + bestehenden X-Versatz */
+      transform: scale(1.02) translateX(var(--card-offset, 0));
+      box-shadow: 0 0 15px rgba(102, 204, 255, 0.3);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
 
-.offset-left {
-  --card-offset: -2%;
-  transform: translateX(var(--card-offset));
-}
+    .offset-left {
+      --card-offset: -2%;
+      transform: translateX(var(--card-offset));
+    }
 
-.offset-right {
-  --card-offset: 5%;
-  transform: translateX(var(--card-offset));
-}
+    .offset-right {
+      --card-offset: 5%;
+      transform: translateX(var(--card-offset));
+    }
 
     .offset-left,
     .offset-right {
@@ -153,6 +193,107 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       color: #aaa;
       font-size: 0.9rem;
       margin-top: 2rem;
+    }
+    /* Ab hier: Spezifische Stile für die Startseite Bilder in den cards*/
+    .card-content {
+      display: flex;
+      align-items: center; /* vertikal zentriert */
+      justify-content: space-between;
+      gap: 2rem; /* Abstand zwischen Text & Bild */
+      flex-wrap: wrap; /* für Mobile */
+    }
+
+    .card-text {
+      flex: 1 1 60%; /* Text nimmt ca. 60% der Breite ein */
+    }
+
+    .card-image {
+      flex: 1 1 35%; /* Bild nimmt ca. 35% ein */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem; /* optional */
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* === Hero-Intro Card mit Bild rechts === */
+    .intro.card {
+      background: rgba(17, 17, 29, 0.88);
+      border-radius: 2rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .intro.card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 25px rgba(102, 204, 255, 0.3);
+    }
+
+    /* Flexbox für Text + Bild */
+    .intro.card .card-content {
+      display: flex;
+      align-items: center; /* vertikal zentriert */
+      justify-content: space-between;
+      gap: 2rem; /* Abstand zwischen Text & Bild */
+      flex-wrap: wrap; /* für Mobile */
+    }
+
+    /* Textbereich */
+    .intro.card .card-text {
+      flex: 1 1 60%; /* Text nimmt ca. 60% der Breite ein */
+      color: #f0f0f0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Bildbereich */
+    .intro.card .card-image {
+      flex: 1 1 35%; /* Bild nimmt ca. 35% der Breite ein */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Bild selbst */
+    .intro.card .card-image img {
+      max-width: 100%; /* passt sich Container an */
+      max-height: 300px; /* verhindert dass es zu hoch wird */
+      height: auto;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Versatz links/rechts */
+    .offset-left .card-content {
+      flex-direction: row; /* Text links, Bild rechts */
+    }
+    .offset-right .card-content {
+      flex-direction: row-reverse; /* Text rechts, Bild links */
+    }
+
+    /* Mobile Ansicht */
+    @media (max-width: 900px) {
+      .intro.card .card-content {
+        flex-direction: column !important; /* Bild über Text */
+      }
+      .intro.card .card-text,
+      .intro.card .card-image {
+        flex: 1 1 100%;
+        text-align: center; /* Text zentriert auf Handy */
+      }
+      .intro.card .card-image img {
+        max-height: 250px; /* etwas kleiner für Mobil */
+      }
     }
   </style>
 </BaseLayout>
