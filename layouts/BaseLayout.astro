@@ -29,10 +29,6 @@ const { title = "Petrievents" } = Astro.props;
   </head>
 
   <body>
-    <button class="sidebar-toggle" aria-label="Menü ein-/ausblenden">
-      <img src="/favicon.svg" alt="Menü" />
-    </button>
-
     <div class="layout">
       <aside class="sidebar">
         <nav class="sidebar-nav">
@@ -40,7 +36,7 @@ const { title = "Petrievents" } = Astro.props;
           <a href="/leistungen">Leistungen</a>
           <a href="/kosten">Was kostet ein DJ?</a>
           <a href="/galerie">Galerie</a>
-          <a href="/kontakt">Kontakt</a>
+          <a href="/kontakt">Kontaktiere mich</a>
           <a href="/partner">Partner</a>
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutzerklärung</a>
@@ -53,10 +49,6 @@ const { title = "Petrievents" } = Astro.props;
             Instagram
           </a>
         </nav>
-
-        <div class="sidebar-bottom">
-          <img src="/mein-bild.png" alt="Petrievents Logo" />
-        </div>
       </aside>
 
 
@@ -64,18 +56,5 @@ const { title = "Petrievents" } = Astro.props;
         <slot />
       </main>
     </div>
-
-    <script>
-      const toggle = document.querySelector('.sidebar-toggle');
-      const sidebar = document.querySelector('.sidebar');
-      if (toggle && sidebar) {
-        toggle.addEventListener('click', () => {
-          sidebar.classList.toggle('collapsed');
-        });
-      }
-    </script>
-    <!-- 🟢 Dein zusätzliches Sidebar-Skript -->
-    <script type="module" src="/scripts/adjustSidebar.js"></script>
-    <script type="module" src="/scripts/hideSidebarOnScroll.js"></script>
   </body>
 </html>
