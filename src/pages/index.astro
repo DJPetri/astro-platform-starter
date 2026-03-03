@@ -6,7 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <BaseLayout>
   <section class="heading">
     <div class="card-imageheading">
-      <img src="/bilder/logo.svg" alt="Intro Bild" />
+      <img src="/bilder/logo.png" alt="Intro Bild" />
     </div>
     <div class="card-contentheading">
       <h1 class="artist-name">
@@ -318,6 +318,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
+      padding: 0.5rem 0;
     }
 
     .card-imageheading {
@@ -337,11 +338,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
 
     .card-imageheading img {
-      width: 120px;
-      border-radius: 1rem;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      width: 200px;
+      border-radius: 0rem;
+     
     }
-
     .name-first {
       color: #66ccff; /* Logo Blau */
     }
