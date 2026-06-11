@@ -3,174 +3,206 @@ const { eventData } = Astro.props;
 const clientEventData = {
   title: eventData.title,
   date: eventData.date,
-  storageFolder: eventData.storageFolder
+  storageFolder: eventData.storageFolder,
 };
 ---
 
-<script define:vars={{ clientEventData }}>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const fileInput = document.getElementById("fileInput");
-  const fileList = document.getElementById("fileList");
-  const submitButton = document.getElementById("submitButton");
-  
-if (
-  !(fileInput instanceof HTMLInputElement) ||
-  !(fileList instanceof HTMLDivElement) ||
-  !(submitButton instanceof HTMLButtonElement)
-) {
-  return;
-}
-
-  if (!fileInput || !fileList || !submitButton) {
-    return;
+<style>
+  .upload-button {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 999px;
+    background: #000;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.2s;
   }
+  .upload-button:hover {
+    transform: translateY(-2px);
+  }
+  .submit-button {
+    width: 100%;
+    height: 68px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 999px;
+    background: #d9cdbd;
+    color: #222;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .submit-button:hover {
+    background: #cfc0ad;
+    transform: translateY(-2px);
+  }
+  .file-list {
+    margin-top: 20px;
+    text-align: left;
+  }
+  .file-entry {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #333;
+    word-break: break-word;
+  }
+</style>
+<div>
+  <button
+    class="upload-button"
+    onclick="document.getElementById('fileInput')?.click()"
+  >
+    📸 FOTOS & VIDEOS HOCHLADEN
+  </button>
+  <input
+    type="file"
+    id="fileInput"
+    multiple
+    accept="image/*,video/*"
+    style="display:none"
+  />
+  <div id="fileList" class="file-list"></div>
+  <button id="submitButton" class="submit-button" style="display:none;">
+    🚀 DATEIEN SENDEN
+  </button>
+</div>
 
-  fileInput.addEventListener("change", () => {
+<script define:vars={{ clientEventData }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const fileInput = document.getElementById("fileInput");
+    const fileList = document.getElementById("fileList");
+    const submitButton = document.getElementById("submitButton");
 
-    fileList.innerHTML = "";
-
-    let validFiles = 0;
-
-    const files = Array.from(fileInput.files || []);
-
-    files.forEach((file) => {
-
-      const sizeMB = file.size / 1024 / 1024;
-
-      const isImage = file.type.startsWith("image/");
-      const isVideo = file.type.startsWith("video/");
-
-      let valid = true;
-      let error = "";
-
-      // Nur Bilder und Videos
-
-      if (!isImage && !isVideo) {
-        valid = false;
-        error = "Nur Bilder und Videos erlaubt";
-      }
-
-      // Bilder maximal 15 MB
-
-      if (isImage && sizeMB > 15) {
-        valid = false;
-        error = "Bild größer als 15 MB";
-      }
-
-      // Videos maximal 200 MB
-
-      if (isVideo && sizeMB > 200) {
-        valid = false;
-        error = "Video größer als 200 MB";
-      }
-
-      if (valid) {
-        validFiles++;
-      }
-
-      const row = document.createElement("div");
-
-      row.className = "file-entry";
-
-      row.innerHTML = valid
-        ? `✅ ${file.name} (${sizeMB.toFixed(1)} MB)`
-        : `❌ ${file.name} (${error})`;
-
-      fileList.appendChild(row);
-
-    });
-
-    submitButton.style.display =
-      validFiles > 0
-        ? "block"
-        : "none";
-
-  });
-
-  submitButton.addEventListener("click", async () => {
-
-    const files = Array.from(fileInput.files || []);
-
-    if (files.length === 0) {
+    if (
+      !(fileInput instanceof HTMLInputElement) ||
+      !(fileList instanceof HTMLDivElement) ||
+      !(submitButton instanceof HTMLButtonElement)
+    ) {
       return;
     }
 
-    submitButton.disabled = true;
-    submitButton.innerText = "⏳ UPLOAD LÄUFT...";
+    fileInput.addEventListener("change", () => {
+      fileList.innerHTML = "";
 
-    try {
+      let validFiles = 0;
 
-      for (const file of files) {
+      const files = Array.from(fileInput.files || []);
 
-        const response = await fetch(
-          "/.netlify/functions/create-upload-url",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-            storageFolder: clientEventData.storageFolder,
-            eventDate: clientEventData.date,
-            eventTitle: clientEventData.title,
-            fileName: file.name,
-            contentType: file.type
-          })
-          }
-        );
+      files.forEach((file) => {
+        const sizeMB = file.size / 1024 / 1024;
 
-        if (!response.ok) {
-          throw new Error(
-            "Upload URL konnte nicht erstellt werden"
-          );
+        const isImage = file.type.startsWith("image/");
+        const isVideo = file.type.startsWith("video/");
+
+        let valid = true;
+        let error = "";
+
+        // Nur Bilder und Videos
+
+        if (!isImage && !isVideo) {
+          valid = false;
+          error = "Nur Bilder und Videos erlaubt";
         }
 
-        const { uploadUrl } = await response.json();
+        // Bilder maximal 15 MB
 
-        const uploadResponse = await fetch(
-          uploadUrl,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": file.type
-            },
-            body: file
-          }
-        );
-
-        if (!uploadResponse.ok) {
-          throw new Error(
-            "Datei konnte nicht hochgeladen werden"
-          );
+        if (isImage && sizeMB > 15) {
+          valid = false;
+          error = "Bild größer als 15 MB";
         }
 
+        // Videos maximal 200 MB
+
+        if (isVideo && sizeMB > 200) {
+          valid = false;
+          error = "Video größer als 200 MB";
+        }
+
+        if (valid) {
+          validFiles++;
+        }
+
+        const row = document.createElement("div");
+
+        row.className = "file-entry";
+
+        row.innerHTML = valid
+          ? `✅ ${file.name} (${sizeMB.toFixed(1)} MB)`
+          : `❌ ${file.name} (${error})`;
+
+        fileList.appendChild(row);
+      });
+
+      submitButton.style.display = validFiles > 0 ? "block" : "none";
+    });
+
+    submitButton.addEventListener("click", async () => {
+      const files = Array.from(fileInput.files || []);
+
+      if (files.length === 0) {
+        return;
       }
 
-      submitButton.innerText =
-        "✅ UPLOAD ERFOLGREICH";
+      submitButton.disabled = true;
+      submitButton.innerText = "⏳ UPLOAD LÄUFT...";
 
-      setTimeout(() => {
-        window.location.href = "/danke";
-      }, 1000);
+      try {
+        for (const file of files) {
+          const response = await fetch(
+            "/.netlify/functions/create-upload-url",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                storageFolder: clientEventData.storageFolder,
+                eventDate: clientEventData.date,
+                eventTitle: clientEventData.title,
+                fileName: file.name,
+                contentType: file.type,
+              }),
+            },
+          );
 
-    } catch (error) {
+          if (!response.ok) {
+            throw new Error("Upload URL konnte nicht erstellt werden");
+          }
 
-      console.error(error);
+          const { uploadUrl } = await response.json();
 
-      alert(
-        "Beim Upload ist ein Fehler aufgetreten."
-      );
+          const uploadResponse = await fetch(uploadUrl, {
+            method: "PUT",
+            headers: {
+              "Content-Type": file.type,
+            },
+            body: file,
+          });
 
-      submitButton.disabled = false;
-      submitButton.innerText =
-        "🚀 DATEIEN SENDEN";
+          if (!uploadResponse.ok) {
+            throw new Error("Datei konnte nicht hochgeladen werden");
+          }
+        }
 
-    }
+        submitButton.innerText = "✅ UPLOAD ERFOLGREICH";
 
+        setTimeout(() => {
+          window.location.href = "/danke";
+        }, 1000);
+      } catch (error) {
+        console.error(error);
+
+        alert("Beim Upload ist ein Fehler aufgetreten.");
+
+        submitButton.disabled = false;
+        submitButton.innerText = "🚀 DATEIEN SENDEN";
+      }
+    });
   });
-
-});
-
 </script>
