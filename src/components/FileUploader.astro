@@ -175,8 +175,21 @@ const clientEventData = {
       progressBar.value = 0;
       progressText.innerText = "Upload wird vorbereitet...";
       try {
-        for (const file of files) {
-          const response = await fetch(
+      for (const [index, file] of files.entries()) {
+
+        submitButton.innerText =
+          `📤 ${index + 1}/${files.length} DATEIEN`;
+
+        progressBar.value = 0;
+
+        progressText.innerText =
+          `Datei ${index + 1} von ${files.length}
+
+      📤 ${file.name}
+
+      Warte auf Uploadstart...`;
+
+        const response = await fetch(
             "/.netlify/functions/create-upload-url",
             {
               method: "POST",
@@ -212,12 +225,16 @@ const clientEventData = {
               progressBar.value = percent;
 
               const loadedMB = (event.loaded / 1024 / 1024).toFixed(1);
-
               const totalMB = (event.total / 1024 / 1024).toFixed(1);
 
-              progressText.innerText = `${file.name}
-${loadedMB} MB von ${totalMB} MB
-(${percent}%)`;
+              progressText.innerText =
+                `Datei ${index + 1} von ${files.length}
+
+              📤 ${file.name}
+
+              ${loadedMB} MB von ${totalMB} MB
+
+              (${percent}%)`;
             });
 
             xhr.onload = () => {
@@ -239,7 +256,13 @@ ${loadedMB} MB von ${totalMB} MB
             xhr.send(file);
           });
         }
-        submitButton.innerText = "✅ UPLOAD ERFOLGREICH";
+        progressBar.value = 100;
+
+        progressText.innerText =
+          `✅ Alle ${files.length} Dateien erfolgreich hochgeladen`;
+
+        submitButton.innerText =
+          "✅ UPLOAD ERFOLGREICH";
 
         setTimeout(() => {
           window.location.href = window.location.pathname + "?success=1";
