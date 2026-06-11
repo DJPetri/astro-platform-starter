@@ -3,7 +3,7 @@ import path from "path";
 import crypto from "crypto";
 import readline from "readline";
 import QRCode from "qrcode";
-
+import { generateQrCard } from "./generate-qr-card.mjs";
 /* =========================
 KONFIGURATION
 ========================= */
@@ -119,14 +119,11 @@ await ask("Datum (YYYYMMDD): ");
 
 if (!isValidDate(date)) {
 
-```
-console.log(
-  "❌ Ungültiges Datum. Beispiel: 20260610"
-);
+  console.log(
+    "❌ Ungültiges Datum. Beispiel: 20260610"
+  );
 
-continue;
-```
-
+  continue;
 }
 
 break;
@@ -264,6 +261,29 @@ margin: QR_MARGIN
 fs.copyFileSync(
 qrFile,
 backupFile
+);
+
+/* =========================
+QR-KARTE ERZEUGEN
+========================= */
+
+const qrCardFile =
+  await generateQrCard({
+    brideAndGroom,
+    date,
+    eventUrl,
+    eventId
+  });
+
+  const qrCardBackupFile =
+  path.join(
+    QR_BACKUP_DIR,
+    path.basename(qrCardFile)
+  );
+
+fs.copyFileSync(
+  qrCardFile,
+  qrCardBackupFile
 );
 
 /* =========================
