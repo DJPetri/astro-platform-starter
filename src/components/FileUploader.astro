@@ -1,0 +1,165 @@
+<style>
+
+.upload-button {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 999px;
+  background: #000;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.upload-button:hover {
+  transform: translateY(-2px);
+}
+
+.submit-button {
+  width: 100%;
+  height: 68px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 999px;
+  background: #d9cdbd;
+  color: #222;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #cfc0ad;
+  transform: translateY(-2px);
+}
+
+.file-list {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.file-entry {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #333;
+  word-break: break-word;
+}
+
+</style>
+
+<div>
+
+  <button
+    class="upload-button"
+    onclick="document.getElementById('fileInput')?.click()"
+  >
+    📸 FOTOS & VIDEOS HOCHLADEN
+  </button>
+
+  <input
+    type="file"
+    id="fileInput"
+    multiple
+    accept="image/*,video/*"
+    style="display:none"
+  />
+
+  <div
+    id="fileList"
+    class="file-list"
+  ></div>
+
+  <button
+    id="submitButton"
+    class="submit-button"
+    style="display:none;"
+  >
+    🚀 DATEIEN SENDEN
+  </button>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const fileInput = document.getElementById("fileInput");
+  const fileList = document.getElementById("fileList");
+  const submitButton = document.getElementById("submitButton");
+
+  if (!fileInput || !fileList || !submitButton) {
+    return;
+  }
+
+  fileInput.addEventListener("change", () => {
+
+    fileList.innerHTML = "";
+
+    let validFiles = 0;
+
+    const files = Array.from(
+      (fileInput as HTMLInputElement).files || []
+    );
+
+    files.forEach((file) => {
+
+      const sizeMB = file.size / 1024 / 1024;
+
+      const isImage = file.type.startsWith("image/");
+      const isVideo = file.type.startsWith("video/");
+
+      let valid = true;
+      let error = "";
+
+      // Nur Bilder und Videos
+
+      if (!isImage && !isVideo) {
+        valid = false;
+        error = "Nur Bilder und Videos erlaubt";
+      }
+
+      // Bilder maximal 15 MB
+
+      if (isImage && sizeMB > 15) {
+        valid = false;
+        error = "Bild größer als 15 MB";
+      }
+
+      // Videos maximal 200 MB
+
+      if (isVideo && sizeMB > 200) {
+        valid = false;
+        error = "Video größer als 200 MB";
+      }
+
+      if (valid) {
+        validFiles++;
+      }
+
+      const row = document.createElement("div");
+
+      row.className = "file-entry";
+
+      row.innerHTML = valid
+        ? `✅ ${file.name} (${sizeMB.toFixed(1)} MB)`
+        : `❌ ${file.name} (${error})`;
+
+      fileList.appendChild(row);
+
+    });
+
+    submitButton.style.display =
+      validFiles > 0
+        ? "block"
+        : "none";
+
+  });
+
+});
+
+</script>

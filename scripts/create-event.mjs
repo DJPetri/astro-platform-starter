@@ -9,16 +9,20 @@ KONFIGURATION
 ========================= */
 
 const EVENTS_PATH = "./src/data/events.json";
+
 const QR_OUTPUT_DIR = "./public/qr";
-const QR_BACKUP_DIR = "N:/Meine Ablage/PC2Handy_Videos/QRCodes";
+
+const QR_BACKUP_DIR =
+"N:/Meine Ablage/PC2Handy_Videos/QRCodes";
+
+const EVENT_URL_BASE =
+"https://petrievents.de/fotos";
 
 const MIN_YEAR = 2000;
 const MAX_YEAR = 2100;
 
 const QR_WIDTH = 1000;
 const QR_MARGIN = 2;
-
-const EVENT_URL_BASE = "https://petrievents.de/fotos";
 
 /* =========================
 HILFSFUNKTIONEN
@@ -30,11 +34,15 @@ output: process.stdout
 });
 
 const ask = (question) =>
-new Promise((resolve) => rl.question(question, resolve));
+new Promise((resolve) =>
+rl.question(question, resolve)
+);
 
 function ensureDirectory(directory) {
 if (!fs.existsSync(directory)) {
-fs.mkdirSync(directory, { recursive: true });
+fs.mkdirSync(directory, {
+recursive: true
+});
 }
 }
 
@@ -53,73 +61,165 @@ return name
 }
 
 function isValidDate(date) {
+
 if (!/^\d{8}$/.test(date)) {
 return false;
 }
 
-const year = parseInt(date.substring(0, 4), 10);
-const month = parseInt(date.substring(4, 6), 10);
-const day = parseInt(date.substring(6, 8), 10);
+const year =
+parseInt(date.substring(0, 4), 10);
 
-const testDate = new Date(year, month - 1, day);
+const month =
+parseInt(date.substring(4, 6), 10);
 
-const valid =
-testDate.getFullYear() === year &&
-testDate.getMonth() === month - 1 &&
-testDate.getDate() === day;
+const day =
+parseInt(date.substring(6, 8), 10);
+
+const testDate =
+new Date(year, month - 1, day);
 
 return (
-valid &&
+testDate.getFullYear() === year &&
+testDate.getMonth() === month - 1 &&
+testDate.getDate() === day &&
 year >= MIN_YEAR &&
 year <= MAX_YEAR
 );
+}
+
+function formatDate(dateObj) {
+
+const year =
+dateObj.getFullYear();
+
+const month =
+String(dateObj.getMonth() + 1)
+.padStart(2, "0");
+
+const day =
+String(dateObj.getDate())
+.padStart(2, "0");
+
+return `${year}${month}${day}`;
 }
 
 /* =========================
 HAUPTPROGRAMM
 ========================= */
 
-const brideAndGroom = await ask("Brautpaar: ");
+const brideAndGroom =
+await ask("Brautpaar: ");
 
 let date;
 
 while (true) {
-date = await ask("Datum (YYYYMMDD): ");
+
+date =
+await ask("Datum (YYYYMMDD): ");
 
 if (!isValidDate(date)) {
+
+```
 console.log(
-`❌ Ungültiges Datum. Beispiel: ${new Date()
-        .toISOString()
-        .slice(0, 10)
-        .replace(/-/g, "")}`
+  "❌ Ungültiges Datum. Beispiel: 20260610"
 );
+
 continue;
+```
+
 }
 
 break;
 }
 
-ensureDirectory(path.dirname(EVENTS_PATH));
+ensureDirectory(
+path.dirname(EVENTS_PATH)
+);
 
 let events = {};
 
 if (fs.existsSync(EVENTS_PATH)) {
+
 events = JSON.parse(
-fs.readFileSync(EVENTS_PATH, "utf8")
+fs.readFileSync(
+EVENTS_PATH,
+"utf8"
+)
 );
 }
+
+/* =========================
+EVENT-ID
+========================= */
 
 let eventId;
 
 do {
-eventId = crypto.randomBytes(4).toString("hex");
+
+eventId =
+crypto.randomBytes(4)
+.toString("hex");
+
 } while (events[eventId]);
 
+/* =========================
+EVENT-DATEN
+========================= */
+
+const safeName =
+createSafeName(brideAndGroom);
+
+const storageFolder =
+`${date}_${safeName}_${eventId}`;
+
+const eventDate = new Date(
+parseInt(date.substring(0, 4), 10),
+parseInt(date.substring(4, 6), 10) - 1,
+parseInt(date.substring(6, 8), 10)
+);
+
+/* Upload Ende = +72h */
+
+const uploadUntilDate =
+new Date(eventDate);
+
+uploadUntilDate.setDate(
+uploadUntilDate.getDate() + 3
+);
+
+const uploadUntil =
+formatDate(uploadUntilDate);
+
+/* Löschung = +3 Monate */
+
+const deleteAfterDate =
+new Date(eventDate);
+
+deleteAfterDate.setMonth(
+deleteAfterDate.getMonth() + 3
+);
+
+const deleteAfter =
+formatDate(deleteAfterDate);
+
+/* =========================
+EVENT SPEICHERN
+========================= */
+
 events[eventId] = {
+
 title: brideAndGroom,
+
 date,
-active: true,
-createdAt: new Date().toISOString()
+
+storageFolder,
+
+uploadUntil,
+
+deleteAfter,
+
+createdAt:
+new Date().toISOString()
 };
 
 fs.writeFileSync(
@@ -127,9 +227,12 @@ EVENTS_PATH,
 JSON.stringify(events, null, 2)
 );
 
-const eventUrl = `${EVENT_URL_BASE}/${eventId}`;
+/* =========================
+QR-CODE
+========================= */
 
-const safeName = createSafeName(brideAndGroom);
+const eventUrl =
+`${EVENT_URL_BASE}/${eventId}`;
 
 const qrFileName =
 `${date}_${safeName}_${eventId}.png`;
@@ -137,12 +240,14 @@ const qrFileName =
 ensureDirectory(QR_OUTPUT_DIR);
 ensureDirectory(QR_BACKUP_DIR);
 
-const qrFile = path.join(
+const qrFile =
+path.join(
 QR_OUTPUT_DIR,
 qrFileName
 );
 
-const backupFile = path.join(
+const backupFile =
+path.join(
 QR_BACKUP_DIR,
 qrFileName
 );
@@ -156,12 +261,43 @@ margin: QR_MARGIN
 }
 );
 
-fs.copyFileSync(qrFile, backupFile);
+fs.copyFileSync(
+qrFile,
+backupFile
+);
+
+/* =========================
+AUSGABE
+========================= */
 
 console.log("\n✅ Event erstellt");
-console.log(`ID: ${eventId}`);
-console.log(`URL: ${eventUrl}`);
-console.log(`QR-Code: ${qrFile}`);
-console.log(`Kopie: ${backupFile}`);
+
+console.log(
+`ID: ${eventId}`
+);
+
+console.log(
+`URL: ${eventUrl}`
+);
+
+console.log(
+`Storage: ${storageFolder}`
+);
+
+console.log(
+`Upload bis: ${uploadUntil}`
+);
+
+console.log(
+`Löschung: ${deleteAfter}`
+);
+
+console.log(
+`QR-Code: ${qrFile}`
+);
+
+console.log(
+`Kopie: ${backupFile}`
+);
 
 rl.close();

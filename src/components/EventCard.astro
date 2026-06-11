@@ -1,0 +1,174 @@
+---
+import FileUploader from "./FileUploader.astro";
+
+const { eventData } = Astro.props;
+
+const formattedDate =
+  eventData.date.length === 8
+    ? `${parseInt(eventData.date.slice(6, 8), 10)}/${parseInt(eventData.date.slice(4, 6), 10)}/${eventData.date.slice(0, 4)}`
+    : eventData.date;
+---
+
+<html lang="de">
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+
+  <title>{eventData.title} | Petri Events</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #ebe6de;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: #f8f4ee;
+      border-radius: 32px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      width: 220px;
+      max-width: 100%;
+      margin-bottom: 40px;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 8px;
+      color: #7d746f;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-family: "Abhaya Libre", serif;
+      font-size: 4rem;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: 2px;
+      color: #111;
+      margin-bottom: 20px;
+    }
+
+    .date {
+      font-family: "Abhaya Libre", serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #8b817b;
+      margin-bottom: 40px;
+    }
+
+    .text {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 480px) {
+
+      .card {
+        padding: 30px 20px;
+      }
+
+      .logo {
+        width: 180px;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .date {
+        font-size: 1.3rem;
+      }
+
+      .subtitle {
+        letter-spacing: 5px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="card">
+
+    <img
+      src="/bilder/logo.png"
+      alt="Petri Events"
+      class="logo"
+    />
+
+    <div class="subtitle">
+      HOCHZEITSGALERIE
+    </div>
+
+    <h1>
+      {eventData.title}
+    </h1>
+
+    <div class="date">
+      {formattedDate}
+    </div>
+
+    <div class="text">
+      Vielen Dank, dass ihr eure schönsten Fotos und Videos
+      mit dem Brautpaar teilt.
+    </div>
+
+    <FileUploader />
+
+    <div class="footer">
+      Die hochgeladenen Dateien werden ausschließlich dem Brautpaar
+      und Petri Events zur Verfügung gestellt.
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,50 +1,36 @@
 {
-  "77ca0ee6": {
-    "title": "test1",
-    "date": "20260610",
-    "active": true,
-    "createdAt": "2026-06-10T21:11:52.452Z"
-  },
-  "22cdf4e4": {
-    "title": "test2",
-    "date": "20260610",
-    "active": true,
-    "createdAt": "2026-06-10T21:13:51.902Z"
-  },
-  "1f63c341": {
-    "title": "testqr",
+  "508da895": {
+    "title": "testmorestring",
     "date": "20260606",
     "active": true,
-    "createdAt": "2026-06-10T21:17:58.162Z"
+    "storageFolder": "20260606_testmorestring_508da895",
+    "uploadUntil": "20260609",
+    "deleteAfter": "20260906",
+    "createdAt": "2026-06-10T23:04:35.455Z"
   },
-  "eb591230": {
-    "title": "testqr",
-    "date": "20260606",
+  "614629a9": {
+    "title": "testendyear",
+    "date": "20261229",
     "active": true,
-    "createdAt": "2026-06-10T21:19:26.940Z"
+    "storageFolder": "20261229_testendyear_614629a9",
+    "uploadUntil": "20270101",
+    "deleteAfter": "20270329",
+    "createdAt": "2026-06-10T23:05:16.837Z"
   },
-  "c6ef1253": {
-    "title": "testqr2",
+  "71ca4cb2": {
+    "title": "testohneactive",
     "date": "20260606",
-    "active": true,
-    "createdAt": "2026-06-10T21:22:31.743Z"
+    "storageFolder": "20260606_testohneactive_71ca4cb2",
+    "uploadUntil": "20260609",
+    "deleteAfter": "20260906",
+    "createdAt": "2026-06-10T23:09:45.534Z"
   },
-  "9306b1bf": {
-    "title": "testN",
-    "date": "20260606",
-    "active": true,
-    "createdAt": "2026-06-10T21:30:32.259Z"
-  },
-  "e88ce9d8": {
-    "title": "testn2",
-    "date": "20260606",
-    "active": true,
-    "createdAt": "2026-06-10T21:31:09.152Z"
-  },
-  "8151f162": {
-    "title": "Jens & Kerstin",
-    "date": "20260606",
-    "active": true,
-    "createdAt": "2026-06-10T21:59:51.213Z"
+  "81afabf9": {
+    "title": "testexpired",
+    "date": "20250606",
+    "storageFolder": "20250606_testexpired_81afabf9",
+    "uploadUntil": "20250609",
+    "deleteAfter": "20250906",
+    "createdAt": "2026-06-10T23:13:42.460Z"
   }
 }
