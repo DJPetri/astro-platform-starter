@@ -5,7 +5,10 @@ import events from "../../data/events.json";
 
 import EventCard from "../../components/EventCard.astro";
 import EventExpired from "../../components/EventExpired.astro";
+import EventUploadComplete from "../../components/EventUploadComplete.astro";
 
+const uploadSuccess =
+  Astro.url.searchParams.get("success") === "1";
 const event = Astro.params.event;
 
 if (!event) {
@@ -35,5 +38,7 @@ const uploadExpired = today > uploadUntil;
 {
   uploadExpired
     ? <EventExpired />
-    : <EventCard eventData={eventData} />
+    : uploadSuccess
+      ? <EventUploadComplete eventData={eventData} />
+      : <EventCard eventData={eventData} />
 }
