@@ -72,17 +72,37 @@ const clientEventData = {
     🚀 DATEIEN SENDEN
   </button>
 </div>
+<div
+  id="progressContainer"
+  style="display:none; margin-top:20px; text-align:center;"
+>
+  <progress
+    id="progressBar"
+    value="0"
+    max="100"
+    style="width:100%; height:24px;"></progress>
 
+  <div id="progressText" style="margin-top:10px;">0%</div>
+</div>
 <script define:vars={{ clientEventData }}>
   document.addEventListener("DOMContentLoaded", () => {
     const fileInput = document.getElementById("fileInput");
     const fileList = document.getElementById("fileList");
     const submitButton = document.getElementById("submitButton");
+    const progressContainer =
+      document.getElementById("progressContainer");
+    const progressBar =
+      document.getElementById("progressBar");
+    const progressText =
+      document.getElementById("progressText");
 
     if (
       !(fileInput instanceof HTMLInputElement) ||
       !(fileList instanceof HTMLDivElement) ||
-      !(submitButton instanceof HTMLButtonElement)
+      !(submitButton instanceof HTMLButtonElement)||
+      !(progressContainer instanceof HTMLDivElement) ||
+      !(progressBar instanceof HTMLProgressElement) ||
+      !(progressText instanceof HTMLDivElement)
     ) {
       return;
     }
@@ -151,7 +171,14 @@ const clientEventData = {
 
       submitButton.disabled = true;
       submitButton.innerText = "⏳ UPLOAD LÄUFT...";
+      progressContainer.style.display = "block";
+      progressBar.value = 0;
+      progressText.innerText =
+        `📤 ${file.name}
 
+      ${loadedMB} MB / ${totalMB} MB
+
+      ${percent}%`;
       try {
         for (const file of files) {
           const response = await fetch(
@@ -177,24 +204,51 @@ const clientEventData = {
 
           const { uploadUrl } = await response.json();
 
-          const uploadResponse = await fetch(uploadUrl, {
-            method: "PUT",
-            headers: {
-              "Content-Type": file.type,
-            },
-            body: file,
+          await new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+
+            xhr.upload.addEventListener("progress", (event) => {
+              if (!event.lengthComputable) {
+                return;
+              }
+
+              const percent = Math.round((event.loaded / event.total) * 100);
+
+              progressBar.value = percent;
+
+              const loadedMB = (event.loaded / 1024 / 1024).toFixed(1);
+
+              const totalMB = (event.total / 1024 / 1024).toFixed(1);
+
+              progressText.innerText = `${file.name}
+${loadedMB} MB von ${totalMB} MB
+(${percent}%)`;
+            });
+
+            xhr.onload = () => {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                resolve();
+              } else {
+                reject(new Error("Datei konnte nicht hochgeladen werden"));
+              }
+            };
+
+            xhr.onerror = () => {
+              reject(new Error("Datei konnte nicht hochgeladen werden"));
+            };
+
+            xhr.open("PUT", uploadUrl);
+
+            xhr.setRequestHeader("Content-Type", file.type);
+
+            xhr.send(file);
           });
-
-          if (!uploadResponse.ok) {
-            throw new Error("Datei konnte nicht hochgeladen werden");
-          }
         }
-
         submitButton.innerText = "✅ UPLOAD ERFOLGREICH";
 
         setTimeout(() => {
-          window.location.href =
-            window.location.pathname + "?success=1";        }, 1000);
+          window.location.href = window.location.pathname + "?success=1";
+        }, 1000);
       } catch (error) {
         console.error(error);
 
