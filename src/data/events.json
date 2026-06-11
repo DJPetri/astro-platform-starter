@@ -54,5 +54,13 @@
     "uploadUntil": "20260623",
     "deleteAfter": "20260920",
     "createdAt": "2026-06-11T11:23:02.643Z"
+  },
+  "1e94122e": {
+    "title": "testIonos",
+    "date": "20260611",
+    "storageFolder": "20260611_testIonos_1e94122e",
+    "uploadUntil": "20260614",
+    "deleteAfter": "20260911",
+    "createdAt": "2026-06-11T13:58:48.265Z"
   }
 }
