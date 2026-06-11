@@ -113,8 +113,8 @@ const clientEventData = {
       let validFiles = 0;
 
       const files = Array.from(fileInput.files || []);
-      if (files.length > 5) {
-        alert("Maximal 5 Dateien erlaubt");
+      if (files.length > 50) {
+        alert("Maximal 50 Dateien erlaubt");
         return;
       }
       files.forEach((file) => {
