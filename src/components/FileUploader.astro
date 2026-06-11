@@ -173,12 +173,7 @@ const clientEventData = {
       submitButton.innerText = "⏳ UPLOAD LÄUFT...";
       progressContainer.style.display = "block";
       progressBar.value = 0;
-      progressText.innerText =
-        `📤 ${file.name}
-
-      ${loadedMB} MB / ${totalMB} MB
-
-      ${percent}%`;
+      progressText.innerText = "Upload wird vorbereitet...";
       try {
         for (const file of files) {
           const response = await fetch(
