@@ -1,19 +1,40 @@
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
-const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-const s3 = new S3Client({
-  endpoint: process.env.IONOS_ENDPOINT,
-  region: "eu-central-1",
-  forcePathStyle: true,
-  credentials: {
-    accessKeyId: process.env.IONOS_ACCESS_KEY,
-    secretAccessKey: process.env.IONOS_SECRET_KEY
-  }
+const requiredEnv = [
+  "IONOS_ENDPOINT",
+  "IONOS_ACCESS_KEY",
+  "IONOS_SECRET_KEY",
+  "IONOS_BUCKET",
+];
+
+const jsonResponse = (statusCode, body) => ({
+  statusCode,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(body),
 });
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
 
   try {
+    if (event.httpMethod !== "POST") {
+      return jsonResponse(405, {
+        error: "Method not allowed",
+      });
+    }
+
+    const missingEnv =
+      requiredEnv.filter((key) => !process.env[key]);
+
+    if (missingEnv.length > 0) {
+      console.error("Missing upload environment variables:", missingEnv);
+
+      return jsonResponse(500, {
+        error: "Upload ist nicht korrekt konfiguriert.",
+      });
+    }
 
     const {
       storageFolder,
@@ -21,16 +42,36 @@ exports.handler = async (event) => {
       eventTitle,
       fileName,
       contentType
-    } = JSON.parse(event.body);
+    } = JSON.parse(event.body || "{}");
+
+    if (!storageFolder || !eventDate || !eventTitle || !fileName || !contentType) {
+      return jsonResponse(400, {
+        error: "Upload-Anfrage ist unvollständig.",
+      });
+    }
 
     const ext =
-      fileName.split(".").pop().toLowerCase();
+      fileName.includes(".")
+        ? fileName.split(".").pop().toLowerCase()
+        : "bin";
 
     const slugTitle =
       eventTitle
         .toLowerCase()
         .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, "-");
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "") || "event";
+
+    const s3 = new S3Client({
+      endpoint: process.env.IONOS_ENDPOINT,
+      region: "eu-central-1",
+      forcePathStyle: true,
+      credentials: {
+        accessKeyId: process.env.IONOS_ACCESS_KEY,
+        secretAccessKey: process.env.IONOS_SECRET_KEY
+      }
+    });
 
     const now = new Date();
 
@@ -74,25 +115,20 @@ exports.handler = async (event) => {
       }
     );
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        uploadUrl,
-        key,
-        filename: newFilename
-      })
-    };
+    return jsonResponse(200, {
+      uploadUrl,
+      key,
+      filename: newFilename
+    });
 
   } catch (error) {
 
     console.error(error);
 
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        error: error.message
-      })
-    };
+    return jsonResponse(500, {
+      error: "Upload URL konnte nicht erstellt werden.",
+      detail: error.message
+    });
 
   }
 

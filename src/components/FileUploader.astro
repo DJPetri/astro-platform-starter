@@ -226,11 +226,15 @@ const clientEventData = {
             },
           );
 
-          if (!response.ok) {
-            throw new Error("Upload URL konnte nicht erstellt werden");
+          const uploadData = await response.json().catch(() => ({}));
+
+          if (!response.ok || !uploadData.uploadUrl) {
+            throw new Error(
+              uploadData.error || "Upload URL konnte nicht erstellt werden"
+            );
           }
 
-          const { uploadUrl } = await response.json();
+          const { uploadUrl } = uploadData;
 
           await new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
@@ -290,7 +294,11 @@ const clientEventData = {
       } catch (error) {
         console.error(error);
 
-        alert("Beim Upload ist ein Fehler aufgetreten.");
+        alert(
+          error instanceof Error
+            ? error.message
+            : "Beim Upload ist ein Fehler aufgetreten."
+        );
 
         submitButton.disabled = false;
         submitButton.innerText = "🚀 DATEIEN SENDEN";
