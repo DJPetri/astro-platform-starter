@@ -213,6 +213,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       .offset-right {
         transform: none;
       }
+
+      .card:hover {
+        transform: none;
+      }
     }
 
     /* =========================
@@ -348,6 +352,49 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     .name-last {
       color: #eb8136; /* Logo Orange */
+    }
+
+    @media (max-width: 900px) {
+      .heading {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+
+      .card-contentheading {
+        font-size: 1.25rem;
+      }
+
+      .card-contentheading .subheading {
+        font-size: 1.35rem;
+      }
+
+      .artist-name {
+        font-size: clamp(2rem, 12vw, 3.25rem);
+        line-height: 1;
+      }
+
+      .card-imageheading img {
+        width: min(160px, 55vw);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .card-text,
+      .card-image {
+        text-align: left;
+      }
+
+      .card-image img {
+        max-height: 220px;
+      }
     }
   </style>
 </BaseLayout>

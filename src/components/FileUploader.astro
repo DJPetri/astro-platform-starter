@@ -52,6 +52,23 @@ const clientEventData = {
     color: #333;
     word-break: break-word;
   }
+
+  @media (max-width: 480px) {
+    .upload-button,
+    .submit-button {
+      height: auto;
+      min-height: 58px;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      line-height: 1.25;
+    }
+
+    .upload-button:hover,
+    .submit-button:hover {
+      transform: none;
+    }
+  }
 </style>
 <div>
   <button
