@@ -19,11 +19,11 @@ const EVENT_URL_BASE =
 "https://petrievents.de/fotos";
 
 const EVENT_VARIANTS = {
-hochzeit: {
+1: {
   key: "wedding",
   label: "Hochzeit"
 },
-neutral: {
+2: {
   key: "neutral",
   label: "Neutral"
 }
@@ -118,19 +118,18 @@ async function askEventVariant() {
 while (true) {
 
 const answer =
-(await ask("Variante (hochzeit/neutral) [hochzeit]: "))
+(await ask("Variante (1 = Hochzeit, 2 = Neutral) [1]: "))
 .trim()
-.toLowerCase();
 
 const selectedVariant =
-answer || "hochzeit";
+answer || "1";
 
 if (EVENT_VARIANTS[selectedVariant]) {
 return EVENT_VARIANTS[selectedVariant];
 }
 
 console.log(
-"Ungueltige Variante. Bitte hochzeit oder neutral eingeben."
+"Ungueltige Variante. Bitte 1 fuer Hochzeit oder 2 fuer Neutral eingeben."
 );
 }
 }

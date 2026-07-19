@@ -23,5 +23,32 @@
     "uploadUntil": "20260723",
     "deleteAfter": "20261020",
     "createdAt": "2026-07-19T13:41:31.296Z"
+  },
+  "3e27a835": {
+    "title": "HochzeitTest1",
+    "date": "20260720",
+    "storageFolder": "20260720_HochzeitTest1_3e27a835",
+    "eventVariant": "wedding",
+    "uploadUntil": "20260723",
+    "deleteAfter": "20261020",
+    "createdAt": "2026-07-19T13:45:13.749Z"
+  },
+  "8251cd95": {
+    "title": "hochzeitneutral",
+    "date": "20260720",
+    "storageFolder": "20260720_hochzeitneutral_8251cd95",
+    "eventVariant": "wedding",
+    "uploadUntil": "20260723",
+    "deleteAfter": "20261020",
+    "createdAt": "2026-07-19T13:48:48.161Z"
+  },
+  "577a46e8": {
+    "title": "NeutralTest2",
+    "date": "20260720",
+    "storageFolder": "20260720_NeutralTest2_577a46e8",
+    "eventVariant": "neutral",
+    "uploadUntil": "20260723",
+    "deleteAfter": "20261020",
+    "createdAt": "2026-07-19T13:49:38.812Z"
   }
 }
