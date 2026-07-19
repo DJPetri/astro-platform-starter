@@ -14,5 +14,14 @@
     "uploadUntil": "20260709",
     "deleteAfter": "20261206",
     "createdAt": "2026-06-18T21:33:54.754Z"
+  },
+  "f2caab8b": {
+    "title": "RheinspringenNeutral",
+    "date": "20260720",
+    "storageFolder": "20260720_RheinspringenNeutral_f2caab8b",
+    "eventVariant": "neutral",
+    "uploadUntil": "20260723",
+    "deleteAfter": "20261020",
+    "createdAt": "2026-07-19T13:41:31.296Z"
   }
 }

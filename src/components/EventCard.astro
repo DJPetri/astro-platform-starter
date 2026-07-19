@@ -1,7 +1,9 @@
 ---
 import FileUploader from "./FileUploader.astro";
+import { getEventTheme } from "../lib/eventTheme.js";
 
 const { eventData } = Astro.props;
+const eventTheme = getEventTheme(eventData);
 
 const formattedDate =
   eventData.date.length === 8
@@ -157,8 +159,8 @@ const formattedDate =
   <div class="card">
 
     <img
-    src="/bilder/Weddingbackground.png"
-    alt="Hochzeitslocation"
+    src={eventTheme.heroImage}
+    alt={eventTheme.heroAlt}
     class="hero-image"
     />
 
@@ -171,15 +173,13 @@ const formattedDate =
     </div>
 
     <div class="text">
-      Vielen Dank, dass ihr eure schönsten Fotos und Videos
-      mit dem Brautpaar teilt.
+      {eventTheme.shareText}
     </div>
 
 <FileUploader eventData={eventData} />
 
     <div class="footer">
-      Die hochgeladenen Dateien werden ausschließlich dem Brautpaar
-      und DJ Christian Petri zur Verfügung gestellt.
+      {eventTheme.privacyText}
     </div>
 
   </div>

@@ -37,7 +37,7 @@ const uploadExpired = today > uploadUntil;
 
 {
   uploadExpired
-    ? <EventExpired />
+    ? <EventExpired eventData={eventData} />
     : uploadSuccess
       ? <EventUploadComplete eventData={eventData} />
       : <EventCard eventData={eventData} />

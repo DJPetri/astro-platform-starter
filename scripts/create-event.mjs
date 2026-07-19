@@ -18,6 +18,17 @@ const QR_BACKUP_DIR =
 const EVENT_URL_BASE =
 "https://petrievents.de/fotos";
 
+const EVENT_VARIANTS = {
+hochzeit: {
+  key: "wedding",
+  label: "Hochzeit"
+},
+neutral: {
+  key: "neutral",
+  label: "Neutral"
+}
+};
+
 const MIN_YEAR = 2000;
 const MAX_YEAR = 2100;
 
@@ -103,12 +114,36 @@ String(dateObj.getDate())
 return `${year}${month}${day}`;
 }
 
+async function askEventVariant() {
+while (true) {
+
+const answer =
+(await ask("Variante (hochzeit/neutral) [hochzeit]: "))
+.trim()
+.toLowerCase();
+
+const selectedVariant =
+answer || "hochzeit";
+
+if (EVENT_VARIANTS[selectedVariant]) {
+return EVENT_VARIANTS[selectedVariant];
+}
+
+console.log(
+"Ungueltige Variante. Bitte hochzeit oder neutral eingeben."
+);
+}
+}
+
 /* =========================
 HAUPTPROGRAMM
 ========================= */
 
 const brideAndGroom =
-await ask("Brautpaar: ");
+await ask("Event-Titel / Brautpaar: ");
+
+const eventVariant =
+await askEventVariant();
 
 let date;
 
@@ -211,6 +246,8 @@ date,
 
 storageFolder,
 
+eventVariant: eventVariant.key,
+
 uploadUntil,
 
 deleteAfter,
@@ -272,7 +309,8 @@ const qrCardFile =
     brideAndGroom,
     date,
     eventUrl,
-    eventId
+    eventId,
+    eventVariant: eventVariant.key
   });
 
   const qrCardBackupFile =
@@ -298,6 +336,10 @@ console.log(
 
 console.log(
 `URL: ${eventUrl}`
+);
+
+console.log(
+`Variante: ${eventVariant.label}`
 );
 
 console.log(

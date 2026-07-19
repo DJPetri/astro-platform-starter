@@ -1,4 +1,8 @@
 ---
+import { getEventTheme } from "../lib/eventTheme.js";
+
+const { eventData } = Astro.props;
+const eventTheme = getEventTheme(eventData);
 ---
 
 <html lang="de">
@@ -215,8 +219,8 @@
   <div class="card">
 
     <img
-    src="/bilder/Weddingbackground.png"
-    alt="Hochzeitslocation"
+    src={eventTheme.heroImage}
+    alt={eventTheme.heroAlt}
     class="hero-image"
     />
 
@@ -253,7 +257,7 @@
     </a>
 
     <div class="footer">
-      DJ • Hochzeiten • Eventtechnik
+      {eventTheme.footerText}
     </div>
 
   </div>

@@ -1,12 +1,19 @@
 import path from "path";
+import fs from "fs";
 import sharp from "sharp";
 import QRCode from "qrcode";
+
+const QR_CARD_BACKGROUNDS = {
+  wedding: "./public/bilder/CardBG.png",
+  neutral: "./public/bilder/event-templates/neutral/qr-card.png"
+};
 
 export async function generateQrCard({
   brideAndGroom,
   date,
   eventUrl,
-  eventId
+  eventId,
+  eventVariant = "wedding"
 }) {
 
   /* =========================
@@ -43,8 +50,22 @@ export async function generateQrCard({
      HINTERGRUND
   ========================= */
 
+  const requestedBackground =
+    QR_CARD_BACKGROUNDS[eventVariant] || QR_CARD_BACKGROUNDS.wedding;
+
+  const backgroundPath =
+    fs.existsSync(requestedBackground)
+      ? requestedBackground
+      : QR_CARD_BACKGROUNDS.wedding;
+
+  if (backgroundPath !== requestedBackground) {
+    console.log(
+      `Hinweis: QR-Hintergrund fehlt (${requestedBackground}), verwende ${backgroundPath}`
+    );
+  }
+
   const backgroundImage = await sharp(
-    "./public/bilder/CardBG.png"
+    backgroundPath
   )
     .resize(WIDTH, HEIGHT)
     .toBuffer();
