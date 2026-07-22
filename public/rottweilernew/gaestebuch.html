@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gästebuch | Rottweiler-Zwinger vom heiligen Häuschen</title>
+  <meta name="description" content="Einträge und Rückmeldungen unserer Besucher.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-hero" id="top">
+    <div class="hero-media" aria-hidden="true">
+      <img src="images/Garten.jpg" alt="">
+      <img src="userfiles/images/wicky neu 19072026.JPG" alt="">
+      <img src="images/heiligeshauschen_klein1.jpg" alt="">
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow">Rottweiler-Zwinger</p>
+      <h1>Gästebuch</h1>
+      <p>Einträge und Rückmeldungen unserer Besucher.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="kontakt.html">Kontakt aufnehmen</a>
+        <a class="button secondary" href="welpen.html">Welpen ansehen</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Seitennavigation">
+<a href="index.html">Zwinger</a>
+<a href="wurfplanung.html">Wurfplanung</a>
+<a href="wurfmeldung.html">Wurfmeldung</a>
+<a href="huendinnen.html">Hündinnen</a>
+<a href="rueden.html">Rüden</a>
+<a href="junghunde.html">Junghunde</a>
+<a href="welpen.html">Welpen</a>
+<a href="zu-verkaufen.html">Zu Verkaufen</a>
+<a href="unvergessen.html">Unvergessen</a>
+<a href="gaestebuch.html" aria-current="page">Gästebuch</a>
+<a href="links.html">Links</a>
+<a href="news.html">News</a>
+<a href="kontakt.html">Kontakt</a>
+<a href="datenschutz.html">Datenschutz</a>
+  </nav>
+
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="index.html">
+        <span>Vom heiligen Häuschen</span>
+        <strong>Rottweiler-Zucht</strong>
+      </a>
+      <nav class="side-nav" aria-label="Seitennavigation">
+<a href="index.html">Zwinger</a>
+<a href="wurfplanung.html">Wurfplanung</a>
+<a href="wurfmeldung.html">Wurfmeldung</a>
+<a href="huendinnen.html">Hündinnen</a>
+<a href="rueden.html">Rüden</a>
+<a href="junghunde.html">Junghunde</a>
+<a href="welpen.html">Welpen</a>
+<a href="zu-verkaufen.html">Zu Verkaufen</a>
+<a href="unvergessen.html">Unvergessen</a>
+<a href="gaestebuch.html" aria-current="page">Gästebuch</a>
+<a href="links.html">Links</a>
+<a href="news.html">News</a>
+<a href="kontakt.html">Kontakt</a>
+<a href="datenschutz.html">Datenschutz</a>
+      </nav>
+      <section class="contact-card" aria-label="Kontakt">
+        <strong>Volker Trutzel</strong>
+        <span>Dirmsteiner Str. 6<br>67551 Worms-Pfeddersheim</span>
+        <span>Tel. + Fax: 06247 - 1597<br>Mobil: 0173 2306311</span>
+        <a href="mailto:vtrutzel@t-online.de">vtrutzel@t-online.de</a>
+      </section>
+    </aside>
+
+    <main class="content">
+      <section class="notice">Wir erwarten im August/September Welpen!!!</section>
+      <article class="article">
+
+
+
+
+<!-- QualiFIREs Guestbook >>GBook<< Code starts here -->
+<div><br>
+<script language="javascript" type="text/javascript">
+function gb_showDetail(iNum) {
+var IDName;
+IDdetail = 'detail' + iNum;
+IDanchor = 'anchor' + iNum;
+if (document.getElementById(IDdetail).style.display.indexOf('block') == -1) {
+document.getElementById(IDdetail).style.display = "block";
+document.getElementById(IDanchor).style.display = "none";
+document.gbook.gbcc.focus();
+} else {
+document.getElementById(IDdetail).style.display = "none";
+document.getElementById(IDanchor).style.display = "block";
+}
+}
+function gb_showCC(){
+return deRot(unescape("%6c%77%6c%32%68%71"));
+}
+function gb_checkForm() {
+if (document.gbook.gbcc.value.replace(/\s+/g,'') == '') {
+document.gbook.gbcc.style.border = 'red 1px solid';
+document.gbook.gbcc.focus();
+alert('Die Eingabe ist unvollst�ndig!');
+return false;
+}
+if (document.gbook.gbname.value.replace(/\s+/g,'') == '') {
+document.gbook.gbname.style.border = 'red 1px solid';
+document.gbook.gbname.focus();
+alert('Die Eingabe ist unvollst�ndig!');
+return false;
+}
+if (document.gbook.gbemail.value.replace(/\s+/g,'') == '') {
+document.gbook.gbemail.style.border = 'red 1px solid';
+document.gbook.gbemail.focus();
+alert('Die Eingabe ist unvollst�ndig!');
+return false;
+}
+if ((gb_checkEMA(document.gbook.gbemail.value) == false) && (document.gbook.gbemail.value.replace(/\s+/g,'') != '')) {
+document.gbook.gbemail.style.border = 'red 1px solid';
+document.gbook.gbemail.focus();
+alert('Die E-Mail Adresse ist falsch.\nBitte �berpr�fen Sie Ihre Eingabe!');
+return false;
+}
+if (document.gbook.gbmessage.value.replace(/\s+/g,'') == '') {
+document.gbook.gbmessage.style.border = 'red 1px solid';
+document.gbook.gbmessage.focus();
+alert('Die Eingabe ist unvollst�ndig!');
+return false;
+}
+}
+function gb_checkEMA(sEMail) {
+var res = false;
+res = (sEMail.search('@') >= 1 && sEMail.lastIndexOf('.') > sEMail.search('@') && sEMail.lastIndexOf('.') >= sEMail.length-5)
+return(res);
+}
+function deRot(sCode) {
+var key ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+txtRot = new String()
+for(var i = 0; i < sCode.length; i++) {
+var codechar	= sCode.substring(i, i + 1)
+var pos = key.indexOf(codechar.toUpperCase())
+if(pos >= 0) {
+pos = (pos + key.length / 2) % key.length
+codechar = (codechar == codechar.toUpperCase()) ? key.substring(pos, pos + 1) : key.substring(pos, pos + 1).toLowerCase()
+}
+txtRot = txtRot + codechar
+}
+return txtRot;
+}
+function insertText(chrField, chrValue) {
+var objField = document.getElementById(chrField);
+if (document.selection) {
+objField.focus();
+sel = document.selection.createRange();
+sel.text = chrValue;
+}
+else if (objField.selectionStart || objField.selectionStart == '0') {
+var startPos = objField.selectionStart;
+var endPos = objField.selectionEnd;
+objField.value = objField.value.substring(0, startPos) + chrValue + objField.value.substring(endPos, objField.value.length);
+} else {
+objField.value += chrValue;
+}
+objField.focus();
+}
+</script>
+<div id="anchor1"><a href="javascript:gb_showDetail(1)">Neuen G�stebuch-Eintrag anlegen</a><br></div><div id="detail1"><form name="gbook" onSubmit="return gb_checkForm();" method="post" action="gaestebuch.html">Bitte diesen Text eingeben: <strong><script language="javascript" type="text/javascript">document.write(gb_showCC());</script></strong><br><input name="gbcc" type="text" size="8" maxlength="6"> *<br><div></div>Name: *<br><input name="gbname" type="text" size="40" maxlength="80"><br><div></div>E-Mail: *<br><input name="gbemail" type="text" size="40" maxlength="80"><br><input name="gbwebsite" type="hidden" size="40" maxlength="80"><input name="gbtitle" type="hidden" size="40" maxlength="80"><div></div><table><tr><td>Eintrag: *</td><td>&nbsp;</td></tr></table><textarea rows="6" cols="40" name="gbmessage" id="gbmessage"></textarea><br><br>* = Pflichtfeld, muss ausgef�llt werden<br>&nbsp;<br><input type="submit" value=" Senden "></form>&nbsp;<br></div>&nbsp;<br><TABLE bgcolor="#666666"><TR><TD valign="top"><div title="Heinz und Simone Wetz">Heinz und Simone Wetz&nbsp;</div>10.03.2024, 10:25:13<br></TD><TD valign="top">Hallo Familie Trutzel,<br>wir haben im Anfang Februar 2024 bei Ihnen unsere Welpen Zeus (Sam vom heiligen Häuschen) bei Ihnen abgeholt. Er entwickelt sich toll! Er ist ein ruhiger zufriedener Welpe, der mittlerweile 43 cm groß ist und 14,3 kg wiegt. Wir haben jeden Tag neue und tolle Erlebnisse mit ihm. Er ist ein offener lieber Hund. Sehr schlau und lernt schnell. Auch im Umgang mit Kindern und fremden Menschen ist er sehr lieb. Wir freuen uns schon auf die weiter Entwicklung von Zeus bis er mal ein "richtiger Hund" ist, wie Herr Trutzel immer so liebevoll sagt.<br>Wir würden jederzeit wieder einen Hund von Familie Trutzel nehmen. Uns hat es super gefallen, wie Herr und Frau Trutzel mit den Welpen und den erwachsenen Hunde umgehen. Auch den kompletten Ablauf bis zur Übergabe des Welpen, hat uns sehr beeindruckt und wunderbar gefallen. Auch die Tipps von Herrn Truzel waren sehr hilfreich.<br>Ihnen und Ihrer Zucht, liebes Ehepaar Trutzel wünschen wir alles Gute.<br>Liebe Grüße<br>Heinz und Simone Wetz&nbsp;</TD></TR></TABLE><br><TABLE bgcolor="#666666"><TR><TD valign="top"><div title="Angelina Haar">Angelina Haar&nbsp;</div>13.02.2024, 15:23:15<br></TD><TD valign="top">Hallo Fam. Trutzel,<br>ich habe meine Mascha im September 2022 bei Ihnen abgeholt. (Paula vom heiligen Häuschen) Was soll ich sagen, ich bin schlicht weg begeistert von meinem Hund. So ein schönes Mädchen geworden. Sie war von vorne herein super im Umgang mit Menschen und vorallem Kindern. Sie ist mittlerweile ein toller Wegbegleiter und bester Freund. Vielen lieben Dank! &nbsp;</TD></TR></TABLE><br><TABLE bgcolor="#666666"><TR><TD valign="top"><div title="Ulrike Schlosser">Ulrike Schlosser&nbsp;</div>19.10.2023, 13:02:22<br></TD><TD valign="top">Hallo Herr Trottel,<br>Ich habe bei Ihnen eine Tochter  von Fizzi WT 16.11.2017 gekauft. Wir nennen wir  sie Fee. Sie hat sich zu einem ganz wunderbaren Hund entwickelt - ein Traumhund- Sie ist kerngesund, intelligent, souverän,  wesensstark.<br>Ich danke Ihnen von ganzen Herzen, dass in Ihrer Zucht ein solch phantastischer Hund entstanden ist. Ich bekomme diese Tatsache von vielen Menschen bestätigt, sogar von Rottweilergegnern.<br>Nochmals vielen Dank für Ihr Können.<br>Ulrike Schlosser<br>&nbsp;</TD></TR></TABLE><br><TABLE bgcolor="#666666"><TR><TD valign="top"><div title="Nadine Knorpp">Nadine Knorpp&nbsp;</div>23.06.2022, 11:54:46<br></TD><TD valign="top">Hallo liebe Familie Trutzel,<br>letztes Jahr im April habe ich einen Rottweiler Rüden von Ihnen übernommen.<br>Iwan vom heiligen Häuschen.<br>Ich muss sagen er ist ein super Junge. Super lieb, neugierig, anhänglich, verschmust. Kurzum mein bester Freund und Begleiter. <br>So ein toller Charakter. Auch mit seiner Dackelfreundin geht er total liebevoll und zart um, obwohl wir ja eher die Befürchtung hatten er macht sie mit seinen 40 kg Gewichtsunterschied platt. <img loading="lazy" decoding="async" src="plugins/gbook/images/emi_smile.png"><br>Er ist jetzt 2 Jahre alt, 66 cm hoch und wiegt 49 kg und hat sich echt prima entwickelt. <br>Ich bin wirklich froh mich damals für ihn entschieden zu haben. <br>Es war wohl Liebe auf den ersten Blick. Wir haben uns gegenseitig sofort vertraut. <br>Gerne sende ich Ihnen auch ein paar Fotos wenn Sie das möchten. E-mail Adresse haben Sie ja. <img loading="lazy" decoding="async" src="plugins/gbook/images/emi_smile.png"><br>Einen Hund von Ihnen egal ob groß oder klein würde ich jederzeit wieder nehmen. <br>Viele Grüße aus Bechtheim.<br>Nadine und Teddy der Seelentröster (Iwan)&nbsp;</TD></TR></TABLE><br><TABLE bgcolor="#666666"><TR><TD valign="top"><div title="Roy">Roy&nbsp;</div>01.12.2016, 06:25:09<br></TD><TD valign="top">Sehr geehrter Herr Trutzel,<br>auf Grund einer Notsituation wurde uns vor einiger Zeit Emma, die eigentlich Zina II. vom Heiligen H�uschen<br>hei�t, �bereignet. Mit gro�er Freude und ebenso gro�em Erstaunen mu�ten wir feststellen, wie sie schnell und ohne jegliche Probleme in unser Familienleben integriert wurde.Ihre Bereitschaft zu lernen und ihr Wille zu Gefallen h�tte ich bei einer 7 Jahre alten H�ndin nicht erwartet. Kompliment und Anerkennung f�r Ihre Zucht. Wenn es in hoffentlich vielen Jahren soweit ist nach einem neuen Begleiter f�r uns zu suchen, werden wir uns pers�nlich kennen lernen. <br>Hochachtungsvoll<br>Roy &nbsp;</TD></TR></TABLE><br><div><b>1</b>&nbsp;&nbsp;&nbsp;<a href="gaestebuch.html">2</a>&nbsp;&nbsp;&nbsp;<a href="gaestebuch.html">3</a>&nbsp;&nbsp;&nbsp;<a href="gaestebuch.html">4</a>&nbsp;&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;&nbsp;&nbsp;<a href="gaestebuch.html">Ende >></a></div><div><br>&nbsp;<br>&nbsp;&nbsp;&nbsp;Guestbook plugin, Ver. 0.8a beta by <a href="http://www.qualifire.de/cmsimple" target="_blank">QualiFIRE</a>&nbsp;&nbsp;&nbsp;</div></div>
+<!-- QualiFIREs Guestbook >>GBook<< Code ends here -->
+
+      </article>
+      <a class="to-top" href="#top">Seitenanfang</a>
+    </main>
+  </div>
+</body>
+</html>
