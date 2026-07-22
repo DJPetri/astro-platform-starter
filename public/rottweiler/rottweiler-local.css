@@ -1,0 +1,27 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 920px) {
+  body {
+    background-size: auto 100%;
+  }
+
+  body > div[align="center"] {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  body > div[align="center"] > table {
+    min-width: 900px;
+  }
+}

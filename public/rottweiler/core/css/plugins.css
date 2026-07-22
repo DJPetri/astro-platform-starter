@@ -1,0 +1,531 @@
+/*
+ * Automatically created by CMSimple_XH 1.6.9. DO NOT MODIFY!
+ * filebrowser,gbook,hi_updatecheck,jquery,meta_tags,pagemanager,page_params,tinymce,utf8
+ */
+
+
+/*********************************** ./plugins/filebrowser/css/stylesheet.css */
+
+#xhFilebrowser, #xhFilebrowserMenu {
+background: #fff;
+min-width: 440px;
+color: #333;
+border: 1px solid #999999;
+margin: 1px 0;
+overflow: auto;
+padding: 8px 16px;
+font-family: arial, sans-serif;
+font-size: 14px;
+}
+
+#xhFilebrowserMenu {
+font-weight: 700;
+}
+
+
+/* FILEBROWSER MENU */
+
+#xhFilebrowser {
+font-family: arial, sans-serif;
+font-size: 14px;
+font-weight: 900;
+
+}
+
+#xhFilebrowser  fieldset, #xhFilebrowserMenu  fieldset {
+margin: 5px;
+display:none;
+}
+
+#xhFilebrowser fieldset legend, #xhFilebrowserMenu fieldset legend {
+   font-weight: bold;
+}
+
+
+/* FILEBROWSER LISTS */
+
+span.xhfb_files {
+font-weight: 700;
+color: #900;
+}
+
+p.xhfb_files {
+font-weight: 700;
+padding: 0;
+}
+
+#xhFilebrowser ul, #xhFilebrowserMenu ul {
+list-style-image: none;
+list-style-position:inside;
+padding: 0;
+margin: auto;
+}
+
+#xhFilebrowser ul.unseen, #xhFilebrowserMenu ul.unseen{
+display: none;
+}
+
+#xhFilebrowser li.openFolder, #xhFilebrowserMenu li.openFolder {
+list-style-image:url(../../plugins/filebrowser/css/icons/folder.png);
+padding: 2px 0 2px 5px;
+margin: 0 0 0 0;
+line-height: 1em;
+font-size: 14px;
+font-weight: 900;
+}
+
+#xhFilebrowser li.folder, #xhFilebrowserMenu li.folder{
+list-style-image:url(../../plugins/filebrowser/css/icons/folder.png);
+padding: 2px 0 2px 5px;
+margin: 0 0 0 0;
+line-height: 1em;
+font-size: 13px;
+font-weight: 300;
+}
+
+
+#xhFilebrowser li.openFolder ul, #xhFilebrowserMenu li.openFolder ul {margin-left: 20px;}
+
+
+/* FILEBROWSER FOLDERS */
+
+#xhFilebrowser #filebrowser_folders {
+    float: left;
+    width: 40%;
+    overflow: auto;
+
+}
+
+#filebrowser_subfolders {
+    padding: 0 0 10px 0;
+}
+
+#filebrowser_subfolders li {
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+/* FILEBROWSER FILES */
+
+#filebrowser_files {
+    font-weight: 300;
+    padding: 0 0 0 30px;
+    margin-bottom: 20px;
+}
+
+#filebrowser_files li {
+    list-style-type: none;
+    font-size: 13px;
+    padding: 2px 0;
+    margin: 0;
+}
+
+#filebrowser_files li:hover {
+   background-color: #ccc;
+}
+
+#filebrowser_files li.odd {}
+
+#filebrowser_files ul, #filebrowser_files ul li {
+    margin-left: 0em;
+    padding-left: 0em;
+}
+
+#xhFilebrowser a { color: #333;}
+a.xhfbfile, span.xhfbfile {padding: 0 2px 0 0; line-height: 1em;}
+a.xhfbfile img, span.xhfbfile img {border: none; margin: 6px;}
+a.xhfbfile span, span.xhfbfile span {display: none;}
+a.xhfbfile:hover span, #filebrowser_files ul li:hover a.xhfbfile span,
+span.xhfbfile:hover span, #filebrowser_files ul li:hover span.xhfbfile span {
+    display: block;
+    float: right;
+    border: #aaa 1px solid;
+    padding: 2px;
+    background-color: #ddd;
+}
+a.xhfbfile:hover, span.xhfbfile:hover {
+    background-color: #ccc;
+    cursor:pointer;
+}
+#xhFilebrowser div {
+    font-family: arial, sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+#filebrowser_subfolders  fieldset legend {}
+
+#xhFilebrowser a:link {color: #222; text-decoration: none; font-style: normal;}
+#xhFilebrowser a:visited {color: #222; text-decoration: none; font-style: normal;}
+#xhFilebrowser a:hover {color: #c60; text-decoration: none;}
+#xhFilebrowser a:active {color: #c60; text-decoration: none;}
+#xhFilebrowser a:focus {color: #c60; text-decoration: none;}
+
+#xhFilebrowser li.openFolder a:link {color: #920; text-decoration: none; font-style: normal;}
+#xhFilebrowser li.openFolder a:visited {color: #920; text-decoration: none; font-style: normal;}
+#xhFilebrowser li.openFolder a:hover {color: #c60; text-decoration: none;}
+#xhFilebrowser li.openFolder a:active {color: #c60; text-decoration: none;}
+#xhFilebrowser li.openFolder a:focus {color: #c60; text-decoration: none;}
+
+#xhFilebrowser li.folder a:link {color: #222; text-decoration: none; font-style: normal;}
+#xhFilebrowser li.folder a:visited {color: #222; text-decoration: none; font-style: normal;}
+#xhFilebrowser li.folder a:hover {color: #c60; text-decoration: none;}
+#xhFilebrowser li.folder a:active {color: #c60; text-decoration: none;}
+#xhFilebrowser li.folder a:focus {color: #c60; text-decoration: none;}
+
+#xhFilebrowserMenu a:link {color: #222; text-decoration: none; font-style: normal;}
+#xhFilebrowserMenu a:visited {color: #222; text-decoration: none; font-style: normal;}
+#xhFilebrowserMenu a:hover {color: #c60; text-decoration: none;}
+#xhFilebrowserMenu a:active {color: #c60; text-decoration: none;}
+#xhFilebrowserMenu a:focus {color: #c60; text-decoration: none;}
+
+
+/***************************************** ./plugins/gbook/css/stylesheet.css */
+
+td.gbtitle
+{
+   background: #ffffff;
+   font-weight: normal;
+   color: black;
+   font-size: 1.0em;
+}
+td.gblightline
+{
+   background: #FFFFFF;
+}
+td.gbdarkline
+{
+   background: #DAE5EA;
+}
+span.gbdatetime
+{
+   font-size: 0.8em;
+}
+div.gbname
+{
+   font-weight: bold;
+   font-size: 1.0em;
+   overflow: hidden;
+   width: 100%;
+}
+span.gbmessage
+{
+   font-weight: normal;
+   font-size: 1.0em;
+}
+input.gbcaptcha
+{
+   font-weight: normal;
+   color: black;
+   background: white;
+}
+input.gbtextbox
+{
+   font-weight: normal;
+   color: black;
+   background: white;
+}
+textarea.gbmsgbox
+{
+   font-weight: normal;
+   color: black;
+   background: white;
+   overflow: auto;
+}
+
+
+
+/******************************** ./plugins/hi_updatecheck/css/stylesheet.css */
+
+#upd_list_container {
+    max-width: 500px;
+}
+.upd_container {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.upd_container p {
+    margin: 5px 0;
+}
+
+hr.upd_list {
+    background-color: #999999;
+    border: 0 none;
+    clear: both;
+    color: #999999;
+    height: 1px;
+}
+
+/*** Messageboxes ***/
+.upd_info, .upd_success, .upd_warning, .upd_error {
+    min-width: 220px;
+    max-width: 440px;
+    display: inline-block;
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    /*background-position: 10px center;*/
+    background-position: 10px 10px;
+    -moz-border-radius:4px; /* Firefox */
+    -webkit-border-radius:4px; /* Safari, Chrome */
+    -khtml-border-radius:4px; /* Konqueror */
+    border-radius:4px; /* CSS3 */
+}
+.upd_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../../plugins/hi_updatecheck/css/../images/info.png');
+}
+.upd_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('../../plugins/hi_updatecheck/css/../images/success.png');
+}
+.upd_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../../plugins/hi_updatecheck/css/../images/warning.png');
+}
+.upd_error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../../plugins/hi_updatecheck/css/../images/error.png');
+}
+
+/*** Messages-List ***/
+
+ul.upd_list {
+	margin: 0;
+	padding: 0;
+    max-width: 600px;
+    list-style: none;
+    border-top: 1px solid #999;
+}
+
+ul.upd_list li {
+    border-bottom: 1px solid #999;
+    padding: 0;
+    margin: 0 0 0 0px;
+}
+
+.upd_info_list, .upd_success_list, .upd_warning_list, .upd_error_list, .upd_noinfo_list {
+    margin: 0;
+    padding:15px 10px 15px 50px;
+    border: 0px solid;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    /*background-position: 10px center;*/
+}
+.upd_info_list {
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../../plugins/hi_updatecheck/css/../images/info.png');
+}
+.upd_success_list {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('../../plugins/hi_updatecheck/css/../images/success.png');
+}
+.upd_warning_list {
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../../plugins/hi_updatecheck/css/../images/warning.png');
+}
+.upd_error_list {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../../plugins/hi_updatecheck/css/../images/error.png');
+}
+.upd_noinfo_list {
+    color: #999;
+    border: 0px solid #CCC;
+    background-color: #FFF;
+    background-image: url('../../plugins/hi_updatecheck/css/../images/warning_grey.png');
+}
+p.upd_license {
+    text-align: justify;
+}
+img.upd_plugin_icon {display: block; float: left; margin: 0 20px 0 0}
+
+/* Editmenu-Notification */
+
+#editmenu_update, #xh_adminmenu_update {
+    display: none;
+}
+
+li#editmenu_update, li#xh_adminmenu_update {
+    padding: 4px 0;
+    width: 44px;
+}
+
+#editmenu_update img, #xh_adminmenu_update img {
+    border: 0 none;
+}
+
+/* Fix for older (splitted) editmenu */
+#edit_menu {
+    width: auto;
+}
+
+
+/************************************* ./plugins/meta_tags/css/stylesheet.css */
+
+#meta_tags hr {
+	margin:6px 0;
+	visibility:hidden;
+}
+
+
+/*********************************** ./plugins/pagemanager/css/stylesheet.css */
+
+/*
+ * Treeview
+ */
+
+#pagemanager {
+    background: #fff;
+    border: 1px solid #999;
+    padding: 16px;
+    margin: 1px 0;
+    /* the following lines enable a scrollable treeview; adjust the height to your needs */
+    height: 400px;
+    overflow: scroll !important;
+}
+
+#pagemanager.pagemanager-vertical {
+    margin-left: 27px;
+}
+
+/*
+ * Toolbar
+ */
+
+#pagemanager-toolbar {
+    margin: 1px 0;
+    border: 1px solid #999;
+    background-color: #eee;
+    padding: 0 8px;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+#pagemanager-toolbar button,
+#pagemanager-toolbar a {
+    float: left;
+    border: 0;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../plugins/pagemanager/css/../images/tools.png");
+    background-color: #eee;
+    cursor: pointer;
+}
+
+#pagemanager-expand {background-position: -16px 0}
+#pagemanager-collapse {background-position: -32px 0}
+#pagemanager-create {background-position: -48px 0}
+#pagemanager-create_after {background-position: 0 -16px}
+#pagemanager-rename {background-position: -16px -16px}
+#pagemanager-delete {background-position: -32px -16px}
+#pagemanager-cut {background-position: -48px -16px}
+#pagemanager-copy {background-position: 0 -32px}
+#pagemanager-paste {background-position: -16px -32px}
+#pagemanager-paste_after {background-position: -32px -32px}
+#pagemanager-help {background-position: -48px -32px}
+
+/*
+ * horizontal toolbar
+ */
+
+/* for floating horizontal toolbar: uncomment the following */
+/*
+#pagemanager-toolbar.pagemanager-horizontal {
+    position: fixed;
+    top: 150px;
+    z-index: 1000;
+}
+*/
+
+#pagemanager-toolbar.pagemanager-horizontal img {
+    margin: 8px 0;
+}
+
+#pagemanager-toolbar.pagemanager-horizontal button,
+#pagemanager-toolbar.pagemanager-horizontal a {
+    margin: 6px 5px;
+}
+
+/*
+ * vertical toolbar
+ *
+ * The style should be adjusted to your needs.
+ * Change top and left accordingly.
+ */
+
+#pagemanager-toolbar.pagemanager-vertical {
+    text-align: center;
+    position: fixed;
+    margin: 0 auto;
+    padding: 0 2px;
+    z-index: 1000;
+}
+
+/* You might adjust the left or right margin of the treeview */
+/*
+#pagemanager {
+    margin-left: 32px;
+}
+*/
+/* and for a lefthand toolbar the margin of the submit button */
+/*
+#pagemanager-submit {
+    margin-left: 32px !important;
+}
+*/
+/* and for a righthand toolbar the position of the tooltips */
+/*
+#pagemanager-toolbar.pagemanager-vertical a.pl_tooltip:hover span {
+    left: -320px;
+}
+*/
+
+#pagemanager-toolbar.pagemanager-vertical img {
+    margin: 0 8px;
+}
+
+#pagemanager-toolbar.pagemanager-vertical button,
+#pagemanager-toolbar.pagemanager-vertical a {
+    margin: 6px 2px;
+}
+
+
+/*
+ * Context menu
+ */
+
+/* To have enough space for the whole context menu, if the template has a small footer */
+#pagemanager-footer {
+    height: 150px;
+}
+
+#vakata-contextmenu {
+    width: 20em;
+}
+
+
+
+/*********************************** ./plugins/page_params/css/stylesheet.css */
+
+#page_params hr {
+	margin:8px 0;
+}
+#page_params input {
+    width: auto;
+}
+#page_params img {
+    margin:0;
+}
