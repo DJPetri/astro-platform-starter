@@ -434,4 +434,5 @@ body:has(.doc) .topbar {
   .legal-panel,
   .contact-panel,
   .doc article { padding: 22px; }
+  
 }
