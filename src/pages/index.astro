@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <section class="heading">
+  <section class="heading home-heading">
     <div class="card-imageheading">
       <img src="/bilder/logo.png" alt="Intro Bild" />
     </div>
@@ -17,7 +17,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="intro card offset-left">
+  <section class="intro card offset-left home-reveal">
     <div class="card-content">
       <div class="card-text">
         <h2><span class="highlight">Wilkommen</span> !</h2>
@@ -44,7 +44,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="features card offset-right">
+  <section class="features card offset-right home-reveal">
     <div class="card-content">
       <div class="card-text">
         <h2>Warum Sie sich auf mich verlassen können</h2>
@@ -77,7 +77,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="mission card offset-left">
+  <section class="mission card offset-left home-reveal">
     <div class="card-content">
       <div class="card-text">
         <h2>So entsteht eine perfekte Feier</h2>
@@ -114,7 +114,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="card offset-right">
+  <section class="card offset-right home-reveal home-cta">
   <div class="card-content">
 
     <div class="card-text">
@@ -355,28 +355,46 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     }
 
     @media (max-width: 900px) {
+      .heading.home-heading {
+        display: none;
+      }
+
       .heading {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        padding: 1rem;
+        display: block;
+        min-height: 0;
+        padding: 1.15rem 1.25rem;
+        margin-bottom: 1rem;
       }
 
       .card-contentheading {
-        font-size: 1.25rem;
+        text-align: left;
+        font-size: 1rem;
       }
 
       .card-contentheading .subheading {
-        font-size: 1.35rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.28em;
+        margin-top: 0.55rem;
       }
 
       .artist-name {
-        font-size: clamp(2rem, 12vw, 3.25rem);
+        font-size: clamp(1.85rem, 9vw, 2.45rem);
         line-height: 1;
+        margin-bottom: 0;
       }
 
-      .card-imageheading img {
-        width: min(160px, 55vw);
+      .card-imageheading {
+        display: none;
+      }
+
+      .name-first,
+      .name-last {
+        display: inline;
+      }
+
+      .name-first::after {
+        content: " ";
+        white-space: pre;
       }
     }
 
@@ -446,6 +464,80 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     .card-imageheading img {
       filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.35));
+    }
+
+    .home-cta .card-content {
+      max-width: 720px;
+    }
+
+    @media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+      @supports (animation-timeline: view()) {
+        .home-heading {
+          animation: home-heading-focus linear both;
+          animation-timeline: view();
+          animation-range: entry 0% cover 38%;
+        }
+
+        .home-reveal {
+          animation: home-card-arrival linear both;
+          animation-timeline: view();
+          animation-range: entry 5% cover 36%;
+        }
+
+        .home-reveal:nth-of-type(even) {
+          animation-name: home-card-arrival-right;
+        }
+
+        .home-reveal .card-image img {
+          animation: home-image-focus linear both;
+          animation-timeline: view();
+          animation-range: entry 5% cover 74%;
+        }
+
+        @keyframes home-heading-focus {
+          from {
+            opacity: 0.35;
+            transform: scale(0.96);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes home-card-arrival {
+          from {
+            opacity: 0.2;
+            transform: translateX(-16px) scale(0.975);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+
+        @keyframes home-card-arrival-right {
+          from {
+            opacity: 0.2;
+            transform: translateX(16px) scale(0.975);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+
+        @keyframes home-image-focus {
+          from {
+            transform: scale(0.93);
+            filter: saturate(0.82) brightness(0.82);
+          }
+          to {
+            transform: scale(1.03);
+            filter: saturate(1.06) brightness(1.02);
+          }
+        }
+      }
     }
   </style>
 </BaseLayout>

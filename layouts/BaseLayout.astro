@@ -38,23 +38,21 @@ const { title = "Petrievents" } = Astro.props;
             <small>DJ & Eventtechnik</small>
           </span>
         </a>
-        <nav class="sidebar-nav">
+        <button class="mobile-menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-navigation">
+          <span class="mobile-menu-label">MenÃ¼</span>
+          <span class="mobile-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <nav class="sidebar-nav" id="site-navigation">
           <a href="/">Startseite</a>
           <a href="/leistungen">Leistungen</a>
-          <a href="/kosten">Was kostet ein DJ?</a>
+          <a href="/kosten">Preise</a>
+          <a href="/kontakt" class="nav-contact">Termin anfragen</a>
           <a href="/galerie">Galerie</a>
-          <a href="/kontakt">Kontaktiere mich</a>
           <a href="/partner">Partner</a>
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutzerklärung</a>
           <!--<a href="/PetriEvents_mietkatalog.pdf" target="_blank">Mietkatalog 💾</a>-->
-          <a href="/instagram" class="with-icon" aria-label="Instagram Seite">
-            <svg width="18" height="18" viewBox="0 0 448 512" aria-hidden="true" style="vertical-align:-2px; margin-right:.5rem;">
-              <title>Instagram Icon</title>
-              <path fill="currentColor" d="M224 202.66A53.34 53.34 0 1 0 277.34 256 53.38 53.38 0 0 0 224 202.66zm124.71-41a54 54 0 0 0-30.53-30.53C296.69 121 224 121 224 121s-72.69 0-94.18 10.1a54 54 0 0 0-30.53 30.53C89.19 163.49 89.19 224 89.19 224s0 60.51 10.1 82a54 54 0 0 0 30.53 30.53C161.31 346.93 224 346.93 224 346.93s72.69 0 94.18-10.1a54 54 0 0 0 30.53-30.53c10.1-21.49 10.1-82 10.1-82s0-60.51-10.1-82zM224 318.6A94.6 94.6 0 1 1 318.6 224 94.61 94.61 0 0 1 224 318.6zm98.34-170.5a22.11 22.11 0 1 1 22.11-22.11 22.11 22.11 0 0 1-22.11 22.11zM448 80v352a80 80 0 0 1-80 80H80A80 80 0 0 1 0 432V80A80 80 0 0 1 80 0h288a80 80 0 0 1 80 80zm-64 0a16 16 0 0 0-16-16H80a16 16 0 0 0-16 16v352a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16z"/>
-            </svg>
-            Instagram
-          </a>
+          <a href="/instagram">Instagram </a>
         </nav>
       </aside>
 
@@ -65,3 +63,28 @@ const { title = "Petrievents" } = Astro.props;
     </div>
   </body>
 </html>
+
+<script>
+  const sidebar = document.querySelector(".sidebar");
+  const menuToggle = document.querySelector(".mobile-menu-toggle");
+
+  if (sidebar && menuToggle) {
+    const closeMenu = () => {
+      sidebar.removeAttribute("data-menu-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    };
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = sidebar.toggleAttribute("data-menu-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    sidebar.querySelectorAll(".sidebar-nav a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+  }
+</script>
