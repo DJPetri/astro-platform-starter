@@ -3,7 +3,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Danke | Petrievents">
-  <h2>Vielen Dank!</h2>
-  <p>Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns so bald wie möglich bei Ihnen.</p>
-  <a href="/">Zurück zur Startseite</a>
+  <section class="features danke-seite">
+    <h2>Vielen Dank!</h2>
+
+    <p>
+      Ihre Nachricht wurde erfolgreich gesendet.
+      Wir melden uns so bald wie möglich bei Ihnen.
+    </p>
+
+    <a href="/">Zurück zur Startseite</a>
+  </section>
 </BaseLayout>
+
+<style>
+  .danke-seite {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .danke-seite h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .danke-seite p {
+    margin-bottom: 2rem;
+  }
+
+  .danke-seite a {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>
