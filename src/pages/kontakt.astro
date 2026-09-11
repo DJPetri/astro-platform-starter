@@ -44,8 +44,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       </button>
 
       <!-- Fehlermeldung -->
-      <p id="form-error" style="display: none;">
-        Die Nachricht konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut.
+      <p id="form-error" class="form-error" style="display: none;">
+        ❌ Die Nachricht konnte nicht gesendet werden.
+        Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.
       </p>
     </form>
   </section>
@@ -58,10 +59,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      // Fehlermeldung ausblenden
       errorMessage.style.display = "none";
 
-      // Button während des Versands deaktivieren
       submitButton.disabled = true;
       submitButton.textContent = "Wird gesendet...";
 
@@ -80,19 +79,35 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         );
 
         if (response.ok) {
-          // Erfolgreich gesendet → eigene Dankeseite
+          // Nachricht wurde erfolgreich an Formspree übermittelt
           window.location.href = "/danke";
         } else {
+          // Formspree hat einen Fehler zurückgegeben
           throw new Error("Formspree Fehler");
         }
+
       } catch (error) {
         console.error("Fehler beim Senden des Formulars:", error);
 
+        // Nutzer informieren
         errorMessage.style.display = "block";
 
+        // Button wieder aktivieren
         submitButton.disabled = false;
-        submitButton.textContent = "Absenden";
+        submitButton.textContent = "Erneut versuchen";
       }
     });
   </script>
+
+  <style>
+    .form-error {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      background: rgba(180, 0, 0, 0.15);
+      border: 1px solid rgba(255, 80, 80, 0.5);
+      color: #ff6b6b;
+      font-weight: 600;
+    }
+  </style>
 </BaseLayout>
