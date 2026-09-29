@@ -29,7 +29,7 @@ const consent = document.getElementById('ig-consent');
 const embed = document.getElementById('ig-embed');
 
 
-function buildFallbackBadge(url) {
+function buildFallbackBadge(url: string) {
 // Fallback: Zeige ein großes Profil-Badge, falls kein Widget hinterlegt ist
 const a = document.createElement('a');
 a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
