@@ -9,11 +9,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <img src="/bilder/logo.png" alt="Intro Bild" />
     </div>
     <div class="card-contentheading">
-      <h1 class="artist-name">
-        <span class="name-first">Christian</span>
-        <span class="name-last">Petri</span>
-      </h1>
-      <p class="subheading">DJ</p>
+      <div class="artist-name">
+        <span class="dj"><strong>D</strong>J</span>
+        <span class="denny"><strong>D</strong>enny</span>
+        <span class="dusk"><strong>D</strong>usk</span>
+      </div>
     </div>
   </section>
 
@@ -538,5 +538,42 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         }
       }
     }
+ .artist-name {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+
+  font-size: 62px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.artist-name span {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+/* Nur das D wird größer */
+.artist-name strong {
+  font-size: 1.4em;
+  line-height: 0.8;
+  color: inherit;
+}
+
+/* DJ – komplett blau */
+.artist-name .dj {
+  color: #5fc3f5;
+}
+
+/* Denny – komplett orange */
+.artist-name .denny {
+  color: #5fc3f5;
+}
+
+/* Dusk – komplett weiß */
+.artist-name .dusk {
+  color: #5fc3f5;
+}
   </style>
 </BaseLayout>
