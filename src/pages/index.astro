@@ -4,19 +4,24 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <section class="heading home-heading">
-    <div class="card-imageheading">
-      <img src="/bilder/logo.png" alt="Intro Bild" />
-    </div>
-    <div class="card-contentheading">
-      <div class="artist-name">
-        <h2>
-        <span class="dj"><strong>D</strong>J</span>
-        <span class="denny"><strong>D</strong>enny</span>
-        <span class="dusk"><strong>D</strong>usk</span>
+<section class="heading home-heading">
+  <div class="card-imageheading">
+    <img src="/bilder/logo.png" alt="DJ Denny Dusk" />
+  </div>
+
+  <div class="card-contentheading">
+    <div class="artist-name">
+      <div class="dj-label">DJ</div>
+
+      <div class="name-line"></div>
+
+      <div class="main-name">
+        <span class="denny">Denny</span>
+        <span class="dusk">Dusk</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section class="intro card offset-left home-reveal">
     <div class="card-content">
@@ -539,42 +544,62 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         }
       }
     }
- .artist-name {
-  display: flex;
-  align-items: baseline;
-  gap: 18px;
+  .artist-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 
-  font-size: 62px;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-}
+    margin: 0;
+    text-align: left;
+  }
 
-.artist-name span {
-  display: inline-flex;
-  align-items: baseline;
-}
+  .artist-name .dj-label {
+    color: #F4C982;
 
-/* Nur das D wird größer */
-.artist-name strong {
-  font-size: 1.4em;
-  line-height: 0.8;
-  color: inherit;
-}
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
 
-/* DJ – komplett blau */
-.artist-name .dj {
-  color: #5fc3f5;
-}
+    margin-bottom: 10px;
+  }
 
-/* Denny – komplett orange */
-.artist-name .denny {
-  color: #5fc3f5;
-}
+  .artist-name .name-line {
+    width: 330px;
+    height: 1px;
 
-/* Dusk – komplett weiß */
-.artist-name .dusk {
-  color: #5fc3f5;
-}
+    background: linear-gradient(
+      90deg,
+      #F4C982,
+      rgba(244, 201, 130, 0.45),
+      transparent
+    );
+
+    margin-bottom: 14px;
+  }
+
+  .artist-name .main-name {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    font-size: clamp(52px, 5vw, 76px);
+    font-weight: 600;
+    line-height: 1;
+
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .artist-name .denny {
+    color: #F4C982;
+  }
+
+  .artist-name .dusk {
+    color: #f5f2ed;
+  }
+
   </style>
 </BaseLayout>

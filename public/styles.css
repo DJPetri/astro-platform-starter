@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
 /* === Reset & Grundlayout === */
 * {
   box-sizing: border-box;
@@ -151,6 +153,7 @@ h1,
 h2 {
   color: #66ccff;
   margin-bottom: 1rem;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 }
 
 /* === Galerie === */
