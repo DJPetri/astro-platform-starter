@@ -5,7 +5,7 @@ const EVENT_THEMES = {
     shareText:
       "Vielen Dank, dass ihr eure schönsten Fotos und Videos mit dem Brautpaar teilt.",
     privacyText:
-      "Die hochgeladenen Dateien werden ausschließlich dem Brautpaar und DJ Christian Petri zur Verfügung gestellt.",
+      "Die hochgeladenen Dateien werden ausschließlich dem Brautpaar und DJ Denny Dusk zur Verfügung gestellt.",
     expiredText:
       "Der Uploadzeitraum dieser Hochzeitsgalerie ist leider abgelaufen.",
     footerText: "DJ • Hochzeiten • Eventtechnik"
@@ -16,7 +16,7 @@ const EVENT_THEMES = {
     shareText:
       "Vielen Dank, dass ihr eure schönsten Fotos und Videos von diesem Event teilt.",
     privacyText:
-      "Die hochgeladenen Dateien werden ausschließlich dem Veranstalter und DJ Christian Petri zur Verfügung gestellt.",
+      "Die hochgeladenen Dateien werden ausschließlich dem Veranstalter und DJ Denny Dusk zur Verfügung gestellt.",
     expiredText:
       "Der Uploadzeitraum dieser Eventgalerie ist leider abgelaufen.",
     footerText: "DJ • Events • Eventtechnik"
