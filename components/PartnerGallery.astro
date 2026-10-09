@@ -59,12 +59,17 @@
         const card = document.createElement('a');
         card.href = data.url;
         card.target = '_blank';
+        card.rel = 'noopener noreferrer';
         card.className = 'gallery-card';
-        card.innerHTML = `
-          <img src="${data.image}" alt="${data.title}" />
-          <h3>${data.title}</h3>
-          <p>${data.description}</p>
-        `;
+        const image = document.createElement('img');
+        const imageUrl = new URL(data.image, location.origin);
+        image.src = ['http:', 'https:'].includes(imageUrl.protocol) ? imageUrl.href : '/fallback.png';
+        image.alt = data.title;
+        const title = document.createElement('h3');
+        title.textContent = data.title;
+        const description = document.createElement('p');
+        description.textContent = data.description;
+        card.append(image, title, description);
 
         gallery.replaceChild(card, placeholderCards[index]);
       });

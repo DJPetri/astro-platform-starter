@@ -126,6 +126,7 @@ const clientEventData = {
 
     fileInput.addEventListener("change", () => {
       fileList.innerHTML = "";
+      submitButton.style.display = "none";
 
       let validFiles = 0;
 
@@ -172,20 +173,24 @@ const clientEventData = {
 
         row.className = "file-entry";
 
-        row.innerHTML = valid
+        row.textContent = valid
           ? `✅ ${file.name} (${sizeMB.toFixed(1)} MB)`
           : `❌ ${file.name} (${error})`;
 
         fileList.appendChild(row);
       });
 
-      submitButton.style.display = validFiles > 0 ? "block" : "none";
+      submitButton.style.display = validFiles > 0 && validFiles === files.length ? "block" : "none";
     });
 
     submitButton.addEventListener("click", async () => {
       const files = Array.from(fileInput.files || []);
 
-      if (files.length === 0) {
+      if (files.length === 0 || files.length > 50 || files.some((file) => {
+        const isImage = file.type.startsWith("image/");
+        const isVideo = file.type.startsWith("video/");
+        return (!isImage && !isVideo) || file.size > (isImage ? 15 : 200) * 1024 * 1024;
+      })) {
         return;
       }
 

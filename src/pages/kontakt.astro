@@ -6,7 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <section class="features">
     <h2>Kontakt</h2>
 
-    <form id="kontakt-form">
+    <form id="kontakt-form" action="https://formspree.io/f/xzeboyva" method="POST">
       <!-- Honeypot-Feld gegen Spam -->
       <input
         type="text"
@@ -39,12 +39,14 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         required
       ></textarea>
 
+      <p>Ihre Angaben werden zur Bearbeitung Ihrer Anfrage über Formspree übermittelt. Weitere Informationen finden Sie in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>
+
       <button type="submit" id="submit-button">
         Absenden
       </button>
 
       <!-- Fehlermeldung -->
-      <p id="form-error" class="form-error" style="display: none;">
+      <p id="form-error" class="form-error" role="alert" style="display: none;">
         ❌ Die Nachricht konnte nicht gesendet werden.
         Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.
       </p>

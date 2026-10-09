@@ -7,7 +7,7 @@ const IG_URL = `https://www.instagram.com/${IG_USER}/`;
 
 <BaseLayout title="Instagram | DJ Denny Dusk">
 <section class="hero">
-<h1>Folge DJ Denny Dusk auf <span class="highlight">Instagram</span></h1>
+<h1>Folgen Sie DJ Denny Dusk auf <span class="highlight">Instagram</span></h1>
 <p class="subheading">Aktuelle Bilder & Reels von Events ansehen.</p>
 
 
@@ -16,51 +16,6 @@ const IG_URL = `https://www.instagram.com/${IG_USER}/`;
 <a class="btn" href={IG_URL} target="_blank" rel="noopener noreferrer">@{IG_USER} auf Instagram öffnen</a>
 </p>
 </section>
-
-
-<script>
-  // IG_URL aus Astro-Template ins Skript bringen
-  const IG_URL = "{IG_URL}";
-  const WIDGET_URL = ""; // optional: z.B. "https://lightwidget.com/widgets/DEIN_WIDGET.html"
-
-
-const loadBtn = document.getElementById('ig-load');
-const consent = document.getElementById('ig-consent');
-const embed = document.getElementById('ig-embed');
-
-
-function buildFallbackBadge(url: string) {
-// Fallback: Zeige ein großes Profil-Badge, falls kein Widget hinterlegt ist
-const a = document.createElement('a');
-a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
-a.className = 'ig-badge';
-a.textContent = url.replace('https://www.instagram.com/','@');
-return a;
-}
-
-
-if (loadBtn && consent && embed) {
-loadBtn.addEventListener('click', () => {
-consent.hidden = true;
-embed.hidden = false;
-
-
-if (WIDGET_URL) {
-const iframe = document.createElement('iframe');
-iframe.src = WIDGET_URL;
-iframe.loading = 'lazy';
-iframe.referrerPolicy = 'no-referrer-when-downgrade';
-iframe.style.width = '100%';
-iframe.style.height = '800px';
-iframe.style.border = '0';
-iframe.setAttribute('title', 'Instagram Vorschau');
-embed.appendChild(iframe);
-} else {
-embed.appendChild(buildFallbackBadge("" + IG_URL));
-}
-});
-}
-</script>
 
 
 <style>
