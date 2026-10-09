@@ -4,6 +4,43 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
+  <script is:inline>
+    const mobileEntry = window.matchMedia("(max-width: 900px)");
+
+    if (mobileEntry.matches && (!location.hash || location.hash === "#willkommen")) {
+      const previousRestoration = history.scrollRestoration;
+      history.scrollRestoration = "manual";
+
+      if (location.hash === "#willkommen") {
+        history.replaceState(history.state, "", location.pathname + location.search);
+      }
+
+      let interacted = false;
+      const showPhoto = () => {
+        if (mobileEntry.matches && !interacted) {
+          history.scrollRestoration = "manual";
+          window.scrollTo({ top: 0, behavior: "instant" });
+        }
+      };
+
+      ["pointerdown", "touchstart", "wheel", "keydown", "click"].forEach((type) => {
+        window.addEventListener(type, () => { interacted = true; }, { once: true, passive: true });
+      });
+      mobileEntry.addEventListener("change", () => {
+        history.scrollRestoration = mobileEntry.matches ? "manual" : previousRestoration;
+      });
+      window.addEventListener("pagehide", () => {
+        history.scrollRestoration = previousRestoration;
+      });
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) interacted = false;
+        showPhoto();
+      });
+      window.addEventListener("load", showPhoto, { once: true });
+      showPhoto();
+    }
+  </script>
+
 <section class="heading home-heading">
   <div class="card-imageheading">
     <img src="/bilder/logo.png" alt="DJ Denny Dusk" />
@@ -23,7 +60,27 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </div>
 </section>
 
-  <section class="intro card offset-left home-reveal">
+  <section class="home-welcome" aria-labelledby="mobile-welcome-title">
+    <div class="home-welcome-content">
+      <p class="home-welcome-eyebrow">Willkommen bei DJ Denny Dusk</p>
+      <h1 id="mobile-welcome-title">
+        Ihre Feier.<br />
+        <span>Ihr Moment.</span>
+      </h1>
+      <p class="home-welcome-description">
+        Musik. Licht. Unvergessliche Nächte.
+      </p>
+      <a href="/kontakt" class="home-welcome-contact">Termin anfragen</a>
+    </div>
+    <a href="#willkommen" class="home-welcome-discover">
+      <span>Mehr entdecken</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4v16m-6-6 6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </section>
+
+  <section id="willkommen" class="intro card offset-left home-reveal">
     <div class="card-content">
       <div class="card-text">
         <h2><span class="highlight">Willkommen</span> !</h2>
@@ -175,6 +232,74 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           if (el) el.textContent = "❌";
         });
     });
+  </script>
+
+  <script>
+    const welcome = document.querySelector<HTMLElement>(".home-welcome");
+    const introduction = document.querySelector<HTMLElement>("#willkommen");
+    const discover = welcome?.querySelector<HTMLAnchorElement>(".home-welcome-discover");
+
+    if (welcome && introduction && discover) {
+      const glideMedia = window.matchMedia(
+        "(max-width: 900px) and (prefers-reduced-motion: no-preference)"
+      );
+      const scrollFactor = 1.5;
+      let distance = 1;
+      let frame = 0;
+
+      const reset = () => {
+        cancelAnimationFrame(frame);
+        frame = 0;
+        welcome.removeAttribute("data-scroll-glide");
+        welcome.style.removeProperty("--welcome-collapse");
+        welcome.style.removeProperty("--welcome-scale");
+        welcome.style.removeProperty("--welcome-opacity");
+        welcome.inert = false;
+      };
+
+      const render = () => {
+        frame = 0;
+        if (!glideMedia.matches) return;
+
+        const progress = Math.min(1, Math.max(0, window.scrollY / (distance / scrollFactor)));
+        const collapse = distance * (1 - 1 / scrollFactor) * progress;
+        welcome.style.setProperty("--welcome-collapse", `${collapse}px`);
+        welcome.style.setProperty("--welcome-scale", String(1 - 0.18 * progress));
+        welcome.style.setProperty("--welcome-opacity", String(1 - progress * progress));
+        welcome.inert = progress === 1;
+      };
+
+      const measure = () => {
+        document.documentElement.toggleAttribute("data-home-glide", glideMedia.matches);
+        reset();
+        if (!glideMedia.matches) return;
+
+        const top = welcome.getBoundingClientRect().top + window.scrollY;
+        const gap = parseFloat(getComputedStyle(welcome).marginBottom);
+        const targetOffset = parseFloat(getComputedStyle(introduction).scrollMarginTop);
+        distance = Math.max(1, top + welcome.offsetHeight + gap - targetOffset);
+        welcome.setAttribute("data-scroll-glide", "");
+        render();
+      };
+
+      window.addEventListener("scroll", () => {
+        if (glideMedia.matches && !frame) frame = requestAnimationFrame(render);
+      }, { passive: true });
+      window.addEventListener("resize", measure);
+      glideMedia.addEventListener("change", measure);
+      new ResizeObserver(measure).observe(welcome);
+      document.fonts.ready.then(measure);
+
+      discover.addEventListener("click", (event) => {
+        if (!glideMedia.matches || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        introduction.setAttribute("tabindex", "-1");
+        introduction.focus({ preventScroll: true });
+        window.scrollTo({ top: distance / scrollFactor, behavior: "smooth" });
+      });
+
+      measure();
+    }
   </script>
 
   <style>
@@ -600,6 +725,127 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   .artist-name .dusk {
     color: #f5f2ed;
   }
+
+    .home-welcome {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .home-welcome {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        gap: 1.5rem;
+        min-height: calc(100vh - 7.5rem);
+        min-height: calc(100svh - 7.5rem);
+        padding: clamp(1.25rem, 5vw, 2.5rem);
+        margin-bottom: 1.25rem;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(11, 8, 11, 0.05), rgba(11, 8, 11, 0.12) 40%, rgba(11, 8, 11, 0.78) 75%, rgba(11, 8, 11, 0.94)),
+          url('/bilder/20260225_CasinoPartyorange.jpg') center / cover no-repeat;
+        border: 1px solid rgba(255, 208, 138, 0.28);
+        border-radius: 18px;
+        transform: none;
+      }
+
+      .home-welcome-content {
+        align-self: end;
+        max-width: 32rem;
+        padding-top: clamp(9rem, 26svh, 16rem);
+      }
+
+      .home-welcome-eyebrow {
+        margin-bottom: 1rem;
+        color: var(--gold);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .home-welcome h1 {
+        margin-bottom: 1rem;
+        color: var(--text);
+        font-size: clamp(2.1rem, 8vw, 3.25rem);
+        line-height: 1.04;
+        letter-spacing: -0.025em;
+      }
+
+      .home-welcome h1 span {
+        color: var(--gold);
+      }
+
+      .home-welcome-description {
+        max-width: 28rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+        line-height: 1.6;
+      }
+
+      .home-welcome-contact {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+      }
+
+      .home-welcome-contact:hover {
+        color: var(--text);
+      }
+
+      .home-welcome-discover {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        min-height: 48px;
+        padding: 0.5rem;
+        color: var(--text);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+      }
+
+      .home-welcome-discover:hover {
+        color: var(--gold);
+      }
+
+      .home-welcome a:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 4px;
+      }
+
+      #willkommen {
+        scroll-margin-top: 6rem;
+      }
+    }
+
+    @media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+      :global(html[data-home-glide]) {
+        overflow-anchor: none;
+      }
+
+      .home-welcome[data-scroll-glide] {
+        margin-bottom: calc(1.25rem - var(--welcome-collapse, 0px));
+        transform: translateY(calc(-1 * var(--welcome-collapse, 0px))) scale(var(--welcome-scale, 1));
+        transform-origin: center top;
+        opacity: var(--welcome-opacity, 1);
+        transition: none;
+        will-change: transform, opacity;
+      }
+    }
+
+    @media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+      :global(html) {
+        scroll-behavior: auto;
+      }
+    }
 
   </style>
 </BaseLayout>

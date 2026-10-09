@@ -627,7 +627,7 @@ footer {
   html,
   body {
     height: auto;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
@@ -1114,8 +1114,8 @@ textarea:focus {
   }
 
   .sidebar {
-    position: static;
-    position: relative;
+    position: sticky;
+    top: 0.75rem;
     display: flex;
     flex-direction: row;
     min-height: 0;
@@ -1205,6 +1205,10 @@ textarea:focus {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0;
     padding: 0.55rem 0.85rem 0.75rem;
+    max-height: calc(100vh - 7rem);
+    max-height: calc(100svh - 7rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background: rgba(22, 17, 22, 0.98);
     border: 1px solid var(--line);
     border-radius: 14px;
