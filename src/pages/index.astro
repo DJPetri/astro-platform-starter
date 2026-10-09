@@ -94,12 +94,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           Publikum. Jede Veranstaltung ist einzigartig und genau so behandle
           ich sie auch.
         </p>
+        <div class="mobile-text-flow">
+        <div class="card-image mobile-card-image">
+          <img src="/bilder/ambiente.jpg" alt="Atmosphäre und Ambiente für eine Feier" width="1024" height="1024" loading="lazy" decoding="async" />
+        </div>
         <p>
           Mit hochwertiger eigener Ton- und Lichttechnik, stilvollem Aufbau und
           einem Musikmix, der Generationen verbindet, entsteht eine Atmosphäre,
           die Ihre Gäste nicht vergessen werden.
         </p>
         <p>Lehnen Sie sich zurück, ich sorge für eine volle Tanzfläche.</p>
+        </div>
       </div>
       <div class="card-image">
         <img src="/bilder/bild7.jpg" alt="Intro Bild" />
@@ -135,7 +140,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         </ul>
       </div>
       <div class="card-image">
-        <img src="/bilder/20260225_CasinoPartyorange.jpg" alt="Intro Bild" />
+        <picture>
+          <source media="(max-width: 900px)" srcset="/bilder/bild6.jpg" />
+          <img src="/bilder/20260225_CasinoPartyorange.jpg" alt="Intro Bild" />
+        </picture>
       </div>
     </div>
   </section>
@@ -159,6 +167,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         flexibel und situationsgerecht zu reagieren.
       </p>
 
+      <div class="mobile-text-flow">
+      <div class="card-image mobile-card-image">
+        <img src="/bilder/beratung_hochzeitsdj.jpg" alt="Persönliches Vorgespräch zur Planung einer Hochzeit" width="1536" height="1024" loading="lazy" decoding="async" />
+      </div>
+
       <p>
         Während Ihrer Veranstaltung lese ich das Publikum,
         steuere die Energie des Abends
@@ -170,6 +183,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         Sie feiern
         ich kümmere mich um den Rest.
       </p>
+      </div>
       </div>
       <div class="card-image">
         <img src="/bilder/bodennebel2.png" alt="Intro Bild" />
@@ -211,28 +225,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
   </div>
 </section>
-
-  <p class="counter">
-    Besucher Startseite: <span id="count-startseite">Lädt...</span>
-  </p>
-
-  <script>
-    const counters = [{ key: "startseite", elementId: "count-startseite" }];
-
-    counters.forEach((counter) => {
-      fetch(`https://api.counterapi.dev/v1/petrievents/${counter.key}/up`)
-        .then((response) => response.json())
-        .then((data) => {
-          const el = document.getElementById(counter.elementId);
-          if (el) el.textContent = data.count;
-        })
-        .catch((err) => {
-          console.error(`Fehler beim Zähler für ${counter.key}:`, err);
-          const el = document.getElementById(counter.elementId);
-          if (el) el.textContent = "❌";
-        });
-    });
-  </script>
 
   <script>
     const welcome = document.querySelector<HTMLElement>(".home-welcome");
@@ -726,6 +718,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     color: #f5f2ed;
   }
 
+    .mobile-card-image {
+      display: none;
+    }
+
+    div.mobile-text-flow {
+      display: contents;
+    }
+
+    .card-image picture {
+      display: contents;
+    }
+
     .home-welcome {
       display: none;
     }
@@ -755,11 +759,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       }
 
       .home-welcome-eyebrow {
-        margin-bottom: 1rem;
+        margin-bottom: clamp(2.25rem, 5svh, 3rem);
         color: var(--gold);
-        font-size: 0.72rem;
+        font-size: clamp(1rem, 3.5vw, 1.25rem);
         font-weight: 700;
-        letter-spacing: 0.12em;
+        line-height: 1.4;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
       }
 
@@ -819,6 +824,92 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       .home-welcome a:focus-visible {
         outline: 2px solid var(--gold);
         outline-offset: 4px;
+      }
+
+      .intro .card-content,
+      .features .card-content,
+      .mission .card-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: 1rem;
+      }
+
+      .intro .card-text,
+      .features .card-text,
+      .mission .card-text {
+        display: contents;
+        text-align: left;
+      }
+
+      .intro .card-text > *,
+      .features .card-text > *,
+      .mission .card-text > * {
+        grid-column: 1 / -1;
+        min-width: 0;
+        margin-bottom: 0;
+      }
+
+      .intro .card-content {
+        grid-template-columns: minmax(0, 1fr) clamp(5.5rem, 30vw, 10rem);
+      }
+
+      .intro .card-text > p:first-of-type {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .intro .card-image {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: stretch;
+        align-items: stretch;
+        min-width: 0;
+      }
+
+      .intro .card-image img {
+        height: 100%;
+        max-height: none;
+        aspect-ratio: auto;
+      }
+
+      .features .card-image,
+      .mission .card-image {
+        grid-column: 1;
+        grid-row: 3;
+        min-width: 0;
+      }
+
+      .features .card-image img,
+      .mission .card-image img {
+        max-height: 260px;
+        aspect-ratio: 16 / 10;
+      }
+
+      .mobile-card-image {
+        display: flex;
+      }
+
+      .intro .mobile-text-flow,
+      .mission .mobile-text-flow {
+        display: flow-root;
+      }
+
+      .intro .mobile-card-image,
+      .features .mobile-card-image,
+      .mission .mobile-card-image {
+        display: block;
+        float: left;
+        width: clamp(5.5rem, 30vw, 10rem);
+        margin: 0.25rem 1rem 0.75rem 0;
+      }
+
+      .intro .mobile-card-image img,
+      .features .mobile-card-image img,
+      .mission .mobile-card-image img {
+        height: auto;
+        max-height: none;
+        aspect-ratio: 1;
       }
 
       #willkommen {
