@@ -13,14 +13,15 @@ const IG_URL = `https://www.instagram.com/${IG_USER}/`;
 
 <!-- Primärer Profil-Link -->
 <p style="margin-top:1rem">
-<a class="btn" href={IG_URL} target="_blank" rel="noopener noreferrer">@{IG_USER} auf Instagram öffnen</a>
+<a class="btn-primary" href={IG_URL} target="_blank" rel="noopener noreferrer">@{IG_USER} auf Instagram öffnen</a>
 </p>
 </section>
 
 
 <style>
-.btn { display:inline-block; padding:.6rem 1rem; border-radius:.6rem; background:#66ccff; color:#00121a; text-decoration:none; font-weight:600; }
-.btn:hover { filter:brightness(.95); }
+.hero h1 { color:var(--text); }
+.hero .highlight { color:var(--gold); }
+.btn-primary:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
 
 
 .ig-consent { background:#11111de0; border-radius:1rem; padding:1rem; box-shadow:0 0 10px rgba(0,0,0,.4); }
