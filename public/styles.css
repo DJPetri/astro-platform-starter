@@ -1109,6 +1109,26 @@ textarea:focus {
     background-attachment: scroll;
   }
 
+  .layout .main-content section:not(.home-heading) :is(h1, h2, h3),
+  .layout .main-content section:not(.home-heading) :is(h1, h2, h3) span {
+    color: var(--gold);
+  }
+
+  .layout .main-content section:not(.home-welcome) {
+    background: linear-gradient(180deg, #1b161d, #120e14);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .layout .main-content,
+  .layout .main-content section :is(.preise-card, .faktor, .gallery-card, .option-card) {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   h2,
   .features h2 {
     font-size: clamp(1.75rem, 4vw, 2.125rem);
