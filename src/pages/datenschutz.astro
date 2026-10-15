@@ -110,18 +110,23 @@ section:hover {
 }
 
 h1, h2 {
-  color: #66ccff;
+  color: var(--gold);
   margin-bottom: 1rem;
 }
 
 /* Nur Links anders einfärben */
 a {
-  color: #3399ff;
+  color: var(--gold);
   text-decoration: underline;
 }
 
 a:hover,
 a:focus {
-  color: #143f69;
+  color: var(--rose);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
 }
   </style>

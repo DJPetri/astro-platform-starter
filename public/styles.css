@@ -973,6 +973,7 @@ h3 {
 }
 
 h1 {
+  color: var(--gold);
   font-size: clamp(2.4rem, 5vw, 5rem);
 }
 
