@@ -1,0 +1,95 @@
+---
+import { customerReviews, GOOGLE_PROFILE_URL } from "../data/customer-reviews.mjs";
+---
+
+<div class="google-reviews">
+  <div class="review-summary">
+	<p class="eyebrow">Erfahrungen meiner Kunden</p>
+	<h2>Das sagen meine Kunden</h2>
+	<p class="business-name">DJ Denny Dusk</p>
+	<a class="btn-primary profile-link" href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer">Bewertungen bei Google ansehen <span class="sr-only">(neuer Tab)</span></a>
+	<a class="google-attribution" href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer" aria-label="Quelle: Google Maps (neuer Tab)">
+	</a>
+  </div>
+
+	<div class="review-content" data-review-carousel tabindex={customerReviews.length > 1 ? "0" : undefined} role="region" aria-roledescription="Karussell" aria-label="Kundenbewertungen">
+		<ul class="review-list">
+		  {customerReviews.map((review) => (
+			<li class="review-card">
+			  <div class="review-author">
+				<div class="author-info">
+				  <strong class="author-name">{review.author}</strong>
+				</div>
+				<p class="review-rating" aria-label={`${review.rating} von 5 Sternen`}><span aria-hidden="true">{"★".repeat(review.rating)}</span><span class="sr-only"> {review.rating} von 5 Sternen</span></p>
+			  </div>
+			  <blockquote class="review-text"><p>{review.text}</p></blockquote>
+			</li>
+		  ))}
+		</ul>
+		<div class="review-controls" hidden>
+		  <p class="review-position" data-review-position aria-live="polite" aria-atomic="true"></p>
+		  <button type="button" data-review-prev aria-label="Vorherige Bewertung">← Zurück</button>
+		  <button type="button" data-review-next aria-label="Nächste Bewertung">Weiter →</button>
+		</div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-review-carousel]").forEach((carousel) => {
+	const cards = Array.from(carousel.querySelectorAll<HTMLElement>(".review-card"));
+	const controls = carousel.querySelector<HTMLElement>(".review-controls");
+	const position = carousel.querySelector<HTMLElement>("[data-review-position]");
+	if (cards.length < 2 || !controls || !position) return;
+
+	let current = 0;
+	const show = (index: number) => {
+	  current = (index + cards.length) % cards.length;
+	  cards.forEach((card, cardIndex) => { card.hidden = cardIndex !== current; });
+	  position.textContent = `Bewertung ${current + 1} von ${cards.length}`;
+	};
+	carousel.querySelector("[data-review-prev]")?.addEventListener("click", () => show(current - 1));
+	carousel.querySelector("[data-review-next]")?.addEventListener("click", () => show(current + 1));
+	carousel.addEventListener("keydown", (event) => {
+	  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+	  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+		event.preventDefault();
+		show(current + (event.key === "ArrowRight" ? 1 : -1));
+	  }
+	});
+	controls.hidden = false;
+	show(0);
+  });
+</script>
+
+<style>
+	.google-reviews { min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(1.5rem, 3vw, 3rem); align-items: start; }
+  .review-summary, .review-content, .review-card, .author-info { min-width: 0; }
+	.review-summary { overflow-wrap: anywhere; }
+  .review-summary h2 { margin-bottom: 0.75rem; }
+  .eyebrow { color: var(--gold); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.65rem; }
+  .business-name { color: var(--text); font-weight: 600; }
+	.review-rating > span { color: var(--gold); }
+  .profile-link { margin-top: 0.75rem; max-width: 100%; text-align: center; overflow-wrap: anywhere; }
+  .google-attribution { display: block; width: fit-content; padding: 10px 10px 5px; margin-top: 0.75rem; }
+  .google-attribution img { display: block; height: 18px; width: auto; max-width: none; }
+	.selection-note { font-size: 0.85rem; margin-block: 1rem; }
+  .review-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  .review-card[hidden], .review-controls[hidden] { display: none; }
+  .review-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+  .review-position { flex: 1 0 100%; text-align: center; font-size: 0.85rem; }
+  .review-controls button { flex: 1 1 90px; min-width: 0; background: transparent; color: var(--gold); border: 1px solid var(--line); box-shadow: none; }
+  .review-controls button:hover { border-color: var(--gold); background: rgba(255, 208, 138, 0.06); transform: none; }
+  .review-controls button:focus-visible, .review-content:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+	.review-card { padding: 0 0 1.25rem; border-bottom: 1px solid var(--line); }
+  .review-author { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+  .author-info { flex: 1 1 100px; }
+  .author-name { color: var(--text); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .review-rating { white-space: nowrap; color: var(--text); }
+	.review-text { margin: 0; font-style: normal; white-space: pre-line; overflow-wrap: anywhere; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(1.4rem, 2.4vw, 1.8rem); line-height: 1.45; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  @media (max-width: 900px) {
+	.google-reviews { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+	.review-summary { padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+  }
+</style>

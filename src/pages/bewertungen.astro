@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GoogleReviews from "../components/GoogleReviews.astro";
+---
+
+<BaseLayout title="Kundenbewertungen | DJ Denny Dusk">
+  <section class="reviews-heading">
+	<h1>Kundenbewertungen</h1>
+	<p>Persönliche Erfahrungen mit DJ Denny Dusk – von Kunden, deren Feier ich begleiten durfte.</p>
+  </section>
+  <section class="reviews-section" aria-label="Kundenstimmen">
+	<GoogleReviews />
+  </section>
+  <p class="reviews-privacy">Informationen zur Darstellung <a href="/datenschutz">Datenschutzerklärung</a>.</p>
+</BaseLayout>
+
+<style>
+  .reviews-heading h1 { color: var(--gold); font-size: clamp(2rem, 4vw, 3.5rem); overflow-wrap: anywhere; }
+  .reviews-section { min-width: 0; }
+  .reviews-heading:hover, .reviews-section:hover { transform: none; }
+  .reviews-privacy { font-size: 0.85rem; overflow-wrap: anywhere; }
+  .reviews-privacy a { color: var(--gold); }
+</style>
